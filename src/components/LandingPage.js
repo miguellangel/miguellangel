@@ -4,7 +4,7 @@ const LandingPage = () => {
     return (
         <>
             <div>
-                <h1>My name is Miguel Arriaga</h1>
+                <h1>My name is Miguel</h1>
             </div>
         </>
     )
