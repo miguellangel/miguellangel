@@ -1,13 +1,16 @@
 import React from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 
+
 let button_style = {
     "color" : "#222222",
 }
-
 const NavBar = () => {
+    React.useEffect( () => {
+    })
     return (
         <>
+            <header></header>
             <Navbar id="pageNav" bg = "transparent" variant = "light" collapseOnSelect expand="lg" fixed="top">
                 <Navbar.Brand style={ button_style }>miguellangel</Navbar.Brand>
                 <Navbar.Toggle bg="primary" aria-controls="responsive-navbar-nav" />
@@ -21,13 +24,17 @@ const NavBar = () => {
                         </Nav.Item>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#services">SERVICES</Nav.Link>
-                        <Nav.Link href="#pages">PAGES</Nav.Link>
+                        <Nav.Link href="#skills">SKILLS</Nav.Link>
+                        <Nav.Link href="#projects">PROJECTS</Nav.Link>
                         <Nav.Link href="#contact">CONTACT</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
+
+            
         </>
     )
 }
+
+
 export default NavBar;

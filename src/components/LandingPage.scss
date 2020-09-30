@@ -1,0 +1,9 @@
+body {
+    background-color : #f2f4f9;
+}
+
+html:not([data-scroll='0']) {
+    #pageNav {
+        background-color: white !important;
+    }
+}
