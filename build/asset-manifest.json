@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/miguellangel.github.io/static/css/main.ab8b21d3.chunk.css",
+    "main.js": "/miguellangel.github.io/static/js/main.54f8904b.chunk.js",
+    "main.js.map": "/miguellangel.github.io/static/js/main.54f8904b.chunk.js.map",
+    "runtime-main.js": "/miguellangel.github.io/static/js/runtime-main.8495142d.js",
+    "runtime-main.js.map": "/miguellangel.github.io/static/js/runtime-main.8495142d.js.map",
+    "static/css/2.11829350.chunk.css": "/miguellangel.github.io/static/css/2.11829350.chunk.css",
+    "static/js/2.0c6ca3ee.chunk.js": "/miguellangel.github.io/static/js/2.0c6ca3ee.chunk.js",
+    "static/js/2.0c6ca3ee.chunk.js.map": "/miguellangel.github.io/static/js/2.0c6ca3ee.chunk.js.map",
+    "index.html": "/miguellangel.github.io/index.html",
+    "precache-manifest.97eecb341b644c2b8f39e4e72cf35d78.js": "/miguellangel.github.io/precache-manifest.97eecb341b644c2b8f39e4e72cf35d78.js",
+    "service-worker.js": "/miguellangel.github.io/service-worker.js",
+    "static/css/2.11829350.chunk.css.map": "/miguellangel.github.io/static/css/2.11829350.chunk.css.map",
+    "static/css/main.ab8b21d3.chunk.css.map": "/miguellangel.github.io/static/css/main.ab8b21d3.chunk.css.map",
+    "static/js/2.0c6ca3ee.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.0c6ca3ee.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8495142d.js",
+    "static/css/2.11829350.chunk.css",
+    "static/js/2.0c6ca3ee.chunk.js",
+    "static/css/main.ab8b21d3.chunk.css",
+    "static/js/main.54f8904b.chunk.js"
+  ]
+}
