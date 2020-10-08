@@ -3,8 +3,13 @@ import {Container, Row, Col} from "react-bootstrap";
 import WindowSize from "./WindowSize.js";
 // import SideBar from './SideBar.js';
 import NavBar from './NavBar.js';
-import MainBody from './MainBody.js';
+import Intro from './Intro.js';
+import About from './About.js';
+import Skills from './Skills.js';
+import Projects from './Projects.js';
+import Contact from './Contact.js';
 import './LandingPage.scss';
+import portrait from '../portrait.png';
 
 // Limit the number of resize calls
 function debounce(fn, ms) {
@@ -27,7 +32,7 @@ const LandingPage = () => {
 		}, 500)
 		
 		const debouncedStoreScroll = debounce(function storeScroll() {
-			document.documentElement.dataset.scroll = window.scrollY;
+            document.documentElement.dataset.scroll = window.scrollY;
 		}, 25)
 
 
@@ -44,18 +49,39 @@ const LandingPage = () => {
     return (
         <>
             <NavBar/>
-            <Container>
-                <Row>
-                    <Col lg={12}>
-                        <MainBody width={
-                                dimensions.width
-                            }
-                            height={
-                                dimensions.height
-                            }/>
-                    </Col>
-                </Row>
-            </Container>
+            <section id="main" >
+                <Container className="fullsize">
+                    <Row className="fullsize">
+                        <Col className="justify-content-center">
+                            <Container style={{width: "100%", height: "100%"}}>
+                                <img id="portrait" src={portrait} alt="This is me: Miguel Arriaga" />
+                            </Container>
+                        </Col>
+                        <Col>
+                            <Intro />
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+            <section id="about">
+                <About />
+            </section>
+            <section id="skills" >
+                <Container >
+                    <Skills />
+                </Container>
+            </section>
+            <section id="projects" >
+                <Container >
+                    <Projects />
+                </Container>
+            </section>
+            <section id="contact" >
+                <Container >
+                    <Contact />
+                </Container>
+
+            </section>
         </>
     );
 }
