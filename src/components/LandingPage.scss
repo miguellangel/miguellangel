@@ -1,6 +1,9 @@
 body {
     background: #f2f4f9;
     
+    canvas {
+        display: none;
+    }
     #root {
         section {
             width: 100%;
@@ -16,11 +19,12 @@ body {
 
             #portrait {
                 position: relative;
-                width: 15em;
+                width: 20em;
                 height: 20em;
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%, -50%);
+                border-radius: 50%;
             }
 
             #intro {

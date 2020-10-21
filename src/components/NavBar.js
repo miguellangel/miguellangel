@@ -4,8 +4,15 @@ import {Navbar, Nav, Container} from 'react-bootstrap';
 
 let button_style = {
     "color" : "#222222",
-}
+};
+
 const NavBar = () => {
+
+    const scrollToView = (sectionId) => {
+        document.querySelector(sectionId).scrollIntoView({
+            behavior: "smooth"
+        });
+    };
     React.useEffect( () => {
     })
     return (
@@ -16,14 +23,14 @@ const NavBar = () => {
                 <Container className="justify-content-end">
                     <Nav activeKey="/home" >
                         <Nav.Item>
-                            <Nav.Link style={button_style} href="/home">HOME</Nav.Link>
+                            <Nav.Link style={button_style} onClick={() => scrollToView("#main")} >HOME</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link style={button_style} href="#about">ABOUT</Nav.Link>
+                            <Nav.Link style={button_style} onClick={() => scrollToView("#about")} >ABOUT</Nav.Link>
                         </Nav.Item>
-                        <Nav.Link href="#skills">SKILLS</Nav.Link>
-                        <Nav.Link href="#projects">PROJECTS</Nav.Link>
-                        <Nav.Link href="#contact">CONTACT</Nav.Link>
+                        <Nav.Link onClick={() => scrollToView("#skills")} >SKILLS</Nav.Link>
+                        <Nav.Link onClick={() => scrollToView("#projects")} >PROJECTS</Nav.Link>
+                        <Nav.Link onClick={() => scrollToView("#contact")} >CONTACT</Nav.Link>
                     </Nav>
 
                 </Container>
