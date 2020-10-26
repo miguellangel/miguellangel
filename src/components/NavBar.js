@@ -3,7 +3,7 @@ import {Navbar, Nav, Container} from 'react-bootstrap';
 
 
 let button_style = {
-    "color" : "#222222",
+    // "color" : "#222222",
 };
 
 const NavBar = () => {
@@ -17,7 +17,10 @@ const NavBar = () => {
     })
     return (
         <Navbar id="pageNav" bg = "transparent" variant = "light" collapseOnSelect expand="lg" fixed="top">
-            <Navbar.Brand style={ button_style }>miguellangel</Navbar.Brand>                
+            <Container>
+                <Navbar.Brand style={ button_style }>miguellangel</Navbar.Brand>                
+
+            </Container>
             <Navbar.Toggle bg="primary" aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Container className="justify-content-end">

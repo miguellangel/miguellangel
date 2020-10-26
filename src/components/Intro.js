@@ -8,11 +8,11 @@ const MainBody = () => {
         });
     };
     return (
-        <Container id="intro" className="fullsize center">
+        <Container id="intro" className="fullsize">
             <h4>THIS IS ME</h4>
             <h1>MIGUEL ARRIAGA</h1>
             <div>
-                <a onClick={ () => scrollToView("#about")} href="#about" className="btn btn-primary">Learn more about me!</a>                
+                <button onClick={ () => scrollToView("#about")} className="btn btn-primary">Learn more about me!</button>                
             </div>
         </Container>
     );
