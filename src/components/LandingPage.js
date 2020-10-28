@@ -9,6 +9,8 @@ import Projects from './Projects.js';
 import Contact from './Contact.js';
 import './LandingPage.scss';
 import portrait from '../portrait.png';
+import tower from '../UT-Tower.png';
+import nlp from '../nlp.png';
 // import html2canvas from 'html2canvas';
 // import {canvasRGB} from 'stackblur-canvas';
 // import $ from 'jquery';
@@ -73,7 +75,7 @@ const LandingPage = () => {
                 </Container>
             </section>
             <section id="about">
-                <About />
+                <About tower = {tower} nlp=  {nlp}/>
             </section>
             <section id="skills" >
                 <Container >

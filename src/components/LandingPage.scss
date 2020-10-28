@@ -3,9 +3,6 @@
 body {
     background: #f2f4f9;
     
-    canvas {
-        display: none;
-    }
     #root {
         #pageNav {
             padding: 1em;
@@ -35,8 +32,8 @@ body {
 
             #portrait {
                 position: relative;
-                width: 20em;
-                height: 20em;
+                width: 15em;
+                height: 15em;
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%, -50%);
@@ -69,9 +66,18 @@ body {
             }
         }
         #about {
-            div > div > div > p {
-                text-align: center;
+            .about-img {
+                shape-outside: circle(50%);
+                // border-radius: 100%;
+                position: relative;
+                left: 50%;
+                transform: translate(-50%);
+
+            }
+            .about-p{
+                // text-align: justify;
                 font-family: 'Montserrat', sans-serif;
+                text-align: center;
             }
         }
         #about, #projects {
