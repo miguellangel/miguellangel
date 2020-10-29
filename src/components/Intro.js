@@ -1,20 +1,22 @@
 import React from 'react';
-import {Container} from "react-bootstrap";
+import {Row, Col} from "react-bootstrap";
 
-const MainBody = () => {
-    const scrollToView = (sectionId) => {
-        document.querySelector(sectionId).scrollIntoView({
-            behavior: "smooth"
-        });
-    };
+const MainBody = ({portrait}) => {
     return (
-        <Container id="intro" className="fullsize">
-            <h4>THIS IS ME</h4>
-            <h1>MIGUEL ARRIAGA</h1>
-            <div>
-                <button onClick={ () => scrollToView("#about")} className="btn btn-primary">Learn more about me!</button>                
-            </div>
-        </Container>
+        // <Container className="fullsize">
+            <Row  className="fullsize" id="intro" xs={1} md={2}>
+                <Col>
+                    {/* <Container style={{width: "100%", height: "100%"}}> */}
+                        <img id="portrait" src={portrait} alt="This is me: Miguel Arriaga" />
+                    {/* </Container> */}
+                </Col>
+                <Col>
+                    <h4 className="center el">THIS IS ME</h4>
+                    <h1 className="center el">MIGUEL ARRIAGA</h1>
+                </Col>
+            </Row>
+    // </Container>
+    
     );
 }
 export default MainBody;

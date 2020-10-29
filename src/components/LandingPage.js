@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 // import SideBar from './SideBar.js';
 import NavBar from './NavBar.js';
 import Intro from './Intro.js';
@@ -61,18 +61,7 @@ const LandingPage = () => {
         <>
             <NavBar/>
             <section id="main" >
-                <Container className="fullsize">
-                    <Row className="fullsize">
-                        <Col sm={3} lg={3} className="justify-content-center">
-                            <Container style={{width: "100%", height: "100%"}}>
-                                <img id="portrait" src={portrait} alt="This is me: Miguel Arriaga" />
-                            </Container>
-                        </Col>
-                        <Col sm={10} lg={9}>
-                            <Intro />
-                        </Col>
-                    </Row>
-                </Container>
+                <Intro portrait={portrait}/>
             </section>
             <section id="about">
                 <About tower = {tower} nlp=  {nlp}/>

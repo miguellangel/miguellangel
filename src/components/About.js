@@ -7,7 +7,6 @@ const About = ({tower, nlp}) => {
             <Container className="fullsize">
                 <Row className="fullsize" xs={1} md={3}>
                     <Col className="">
-                        <Container className="fullsize">
                             <Row xs={1} md={2} className="center">
                                 <Col>
                                     <img className="about-img" alt="placeholder for now!" src={tower} width="150px" height="150px" />
@@ -18,34 +17,27 @@ const About = ({tower, nlp}) => {
                                     </p>
                                 </Col>
                             </Row>
-
-
-                        </Container>
                     </Col>
                     <Col className="">
-                        <Container className="fullsize" >
-                            <Row className="center">
-                                <Col>
-                                    <img className="about-img" alt="web-dev" src="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_960_720.png" width="300em" height="300em" />
-                                </Col>
-                                <Col>
-                                    <p className="about-p">My professional interests are in Frontend Development and Machine Learning as applied to Natural Language Processing (NLP)</p>
-                                </Col>
-                            </Row>
-
-                        </Container>
+                        <Row className="center" md={1}>
+                            <Col>
+                                <img className="about-img" alt="web-dev" src="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_960_720.png" width="250px" height="250px" />
+                            </Col>
+                            <Col>
+                                <p className="about-p">My professional interests are in Frontend Development and Machine Learning as applied to Natural Language Processing (NLP)</p>
+                            </Col>
+                        </Row>
                     </Col>
                     <Col className="">
-                        <Container className="fullsize" >
-                            <Row className="center">
-                                <Col>
-                                    <p className="about-p">I plan to further my academic career in the future by pursuing a Masters in Computational Linguistics and Computer Science.</p>
-                                </Col>
-                                <Col>
-                                    <img className="about-img" alt="comp-lin" src={nlp} width="150px" height="150px" />
-                                </Col>
-                            </Row>
-                        </Container>
+                        <Row className="center">
+                            <Col>
+                                <p className="about-p">I plan to further my academic career in the future by pursuing a Masters in Computational Linguistics and Computer Science.</p>
+                            </Col>
+                            <Col>
+                                <img className="about-img" alt="comp-lin" src={nlp} width="150px" height="150px" />
+                            </Col>
+                        </Row>
+                    
                     </Col>
                 </Row>
 
