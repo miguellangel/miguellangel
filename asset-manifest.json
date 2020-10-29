@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/miguellangel.github.io/static/css/main.9ec63354.chunk.css",
-    "main.js": "/miguellangel.github.io/static/js/main.976ca0ac.chunk.js",
-    "main.js.map": "/miguellangel.github.io/static/js/main.976ca0ac.chunk.js.map",
+    "main.css": "/miguellangel.github.io/static/css/main.381ef8b5.chunk.css",
+    "main.js": "/miguellangel.github.io/static/js/main.e9431b45.chunk.js",
+    "main.js.map": "/miguellangel.github.io/static/js/main.e9431b45.chunk.js.map",
     "runtime-main.js": "/miguellangel.github.io/static/js/runtime-main.8495142d.js",
     "runtime-main.js.map": "/miguellangel.github.io/static/js/runtime-main.8495142d.js.map",
     "static/css/2.11829350.chunk.css": "/miguellangel.github.io/static/css/2.11829350.chunk.css",
-    "static/js/2.ff123b40.chunk.js": "/miguellangel.github.io/static/js/2.ff123b40.chunk.js",
-    "static/js/2.ff123b40.chunk.js.map": "/miguellangel.github.io/static/js/2.ff123b40.chunk.js.map",
+    "static/js/2.15f53819.chunk.js": "/miguellangel.github.io/static/js/2.15f53819.chunk.js",
+    "static/js/2.15f53819.chunk.js.map": "/miguellangel.github.io/static/js/2.15f53819.chunk.js.map",
     "index.html": "/miguellangel.github.io/index.html",
-    "precache-manifest.3cfe60ce791c622969c1b855cff13464.js": "/miguellangel.github.io/precache-manifest.3cfe60ce791c622969c1b855cff13464.js",
+    "precache-manifest.ebc8a8fe6b190817eebcef60b341770f.js": "/miguellangel.github.io/precache-manifest.ebc8a8fe6b190817eebcef60b341770f.js",
     "service-worker.js": "/miguellangel.github.io/service-worker.js",
     "static/css/2.11829350.chunk.css.map": "/miguellangel.github.io/static/css/2.11829350.chunk.css.map",
-    "static/css/main.9ec63354.chunk.css.map": "/miguellangel.github.io/static/css/main.9ec63354.chunk.css.map",
-    "static/js/2.ff123b40.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.ff123b40.chunk.js.LICENSE.txt",
+    "static/css/main.381ef8b5.chunk.css.map": "/miguellangel.github.io/static/css/main.381ef8b5.chunk.css.map",
+    "static/js/2.15f53819.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.15f53819.chunk.js.LICENSE.txt",
     "static/media/UT-Tower.png": "/miguellangel.github.io/static/media/UT-Tower.22237f16.png",
     "static/media/nlp.png": "/miguellangel.github.io/static/media/nlp.554b1af6.png",
     "static/media/portrait.png": "/miguellangel.github.io/static/media/portrait.a29c286f.png"
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.8495142d.js",
     "static/css/2.11829350.chunk.css",
-    "static/js/2.ff123b40.chunk.js",
-    "static/css/main.9ec63354.chunk.css",
-    "static/js/main.976ca0ac.chunk.js"
+    "static/js/2.15f53819.chunk.js",
+    "static/css/main.381ef8b5.chunk.css",
+    "static/js/main.e9431b45.chunk.js"
   ]
 }
