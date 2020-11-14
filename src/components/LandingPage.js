@@ -1,6 +1,5 @@
 import React from 'react';
 import {Container} from "react-bootstrap";
-// import SideBar from './SideBar.js';
 import NavBar from './NavBar.js';
 import Intro from './Intro.js';
 import About from './About.js';

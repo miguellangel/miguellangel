@@ -1,16 +1,18 @@
 import React from 'react';
-import ProgressBar from 'progressbar.js';
+import WavySVG from './WavySVG.js';
+// import ProgressBar from 'progressbar.js';
 
 const Skills = () => {
+    
     React.useEffect(() => {
-        var line = new ProgressBar.Line('#lineContainer');
-        line.animate();
+        // var line = new ProgressBar.Line('#lineContainer');
+        // line.animate();
 
     })
     // var ProgressBar = require('progressbar.js')
     return (
         <>
-            <div id="lineContainer"></div>
+        <WavySVG />
         </>
     )
 }
