@@ -1,5 +1,4 @@
 import React from 'react';
-import WavySVG from './WavySVG.js';
 // import ProgressBar from 'progressbar.js';
 
 const Skills = () => {
@@ -12,7 +11,7 @@ const Skills = () => {
     // var ProgressBar = require('progressbar.js')
     return (
         <>
-        <WavySVG />
+            <section id="skills"></section>
         </>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container} from "react-bootstrap";
+import SurroundWithWavySVG from './SurroundWithWavySVG.js';
 import NavBar from './NavBar.js';
 import Intro from './Intro.js';
 import About from './About.js';
@@ -65,21 +65,14 @@ const LandingPage = () => {
             <section id="about">
                 <About tower = {tower} nlp=  {nlp}/>
             </section>
-            <section id="skills" >
-                <Container >
+                <SurroundWithWavySVG>
                     <Skills />
-                </Container>
-            </section>
+                </SurroundWithWavySVG>
             <section id="projects" >
-                <Container >
                     <Projects />
-                </Container>
             </section>
             <section id="contact" >
-                <Container >
                     <Contact />
-                </Container>
-
             </section>
         </>
     );
