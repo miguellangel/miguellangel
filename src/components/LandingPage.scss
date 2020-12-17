@@ -1,12 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&family=Open+Sans:wght@300;400&display=swap');
+// convert variable fonts into all major formats for compatibility -> https://everythingfonts.com/font-face
+@mixin font($font-family, $font-file) {
+    @font-face {
+        font-family: $font-family;
+        src:url($font-file + '.eot');
+        src:url($font-file + '.eot?#iefix') format('embedded-opentype'),
+            url($font-file + '.woff') format('woff'),
+            url($font-file + '.ttf') format('truetype'),
+            url($font-file + '.svg#' + $font-family) format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+@include font('Quicksand', 'fonts/Quicksand');
+
+
 
 body {
-    background: #f2f4f9;
+    background: #fff;
     
     #root {
         #pageNav {
+            z-index: 3;
             padding: 1em;
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Quicksand','Open Sans';
+            // font-weight: 700;
             .container {
                 width: max-content;
                 text-align: center;
@@ -22,14 +40,20 @@ body {
             }
         }
         section {
+            z-index: 0;
             width: 100%;
             height: calc(100vh);
-            padding-top: 73px;
             border: 10px 10px black;
+        }
+        section > h3 {
+            font-family: 'Dancing Script';
+            padding: '30px';
+            letter-spacing: 5px;
+            padding-left: 20px;
         }
         
         #main {
-            background: #f2f4f9;
+            
 
             #portrait {
                 position: relative;
@@ -43,17 +67,14 @@ body {
             }
 
             #intro {
-                h4 {font-family: 'Montserrat', sans-serif; font-size: 4vh;}
-                h1, intro-button {font-family: 'Open Sans', sans-serif; font-size: 5vh;}
+                h4 {font-family: 'Dancing Script', sans-serif; font-size: 4vh;}
+                h1, intro-button {font-family: 'Montserrat', sans-serif; font-size: 5vh;}
 
             }
         }
 
         #about {
-            .container {
-                // max-width: 80vh !important;
-            }
-            // height: max-content;;
+
             .about-img {
                 shape-outside: circle(50%);
                 // border-radius: 100%;
@@ -68,20 +89,136 @@ body {
                 text-align: center;
             }
         }
-        #about, #projects {
-            background: white;
+        #main, #about, #skills, #projects, #contact {
+            // background: white;
+        }
+
+        #skills {
+            overflow: auto;
+
+            h3,h5 {
+                font-family: 'Dancing Script';
+                padding: '30px';
+                letter-spacing: 5px;
+                padding-left: 20px;
+            }
+            #lineContainer > svg {
+                border-radius: 50px;
+            }
+            .row {
+                #skillsetTypeOverviewContainer {
+                    border-right: 2px solid #f0f0f0;
+                    // box-sizing: border-box;
+                    box-shadow: inset -7px 0 5px -7px #c4c4c4;
+                    border-radius: 50px 50px 0px 0px;
+                    // height: 80vh;
+                    padding: 0;
+                }
+
+                #skillTypeOverviewContainer {
+                    background: white;
+                    border-radius: 50px 50px 0px 0px;
+                    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    // height: 30vh;
+                    ul {
+                        list-style: none;
+                        padding-top: 5vh;
+
+                        li {
+                            font-family: 'Quicksand';
+                            font-size: 1.5em;
+                        }
+                    }
+                }
+                
+                #skillsetDetailsContainer {
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 50px;
+                    z-index: 40;
+                    margin-bottom: 8px;
+                    padding-left: 0px;
+                    
+                    .nav {
+                        a {
+                            font-family: 'Quicksand';
+                        }
+                        a:first-child {
+                            border-radius: 50px 0px 0px 0px;
+                            box-shadow: 1px 1px 10px #f0f0f0;
+
+                            &[aria-selected=true] {
+                                box-shadow: inset 1px 1px 10px #f0f0f0;
+                                border-bottom: none;
+                            }
+                        }
+                        a:nth-child(2) {
+                            border-radius: 0px 50px 0px 0px;
+                            box-shadow: 1px 1px 10px #f0f0f0;
+                            
+                            &[aria-selected=true] {
+                                box-shadow: inset 1px 1px 10px #f0f0f0;
+                                border-bottom: none;
+
+
+                            }
+                        }
+
+
+                    }
+
+                    .skillSpanContainer {
+                        transform: scale(0.7);
+                        display: inline-table;
+                        border: 1px dashed #f0f0f0;
+                        border-radius: 20px;
+                        padding: 6px;
+                        margin: -6px;
+
+                        span {
+                            padding: 8px !important;
+                        }
+                    }
+                }
+                
+            }
+
         }
 
     
     }
 }
+// html:not([data-scroll='0']) {
+//     #navSVGPath {
+//         fill: #ffffff !important;
+//         display: trans;
+//     }
+
+// }
 html:not([data-scroll='0']) {
-    #pageNav {
-        background-color: white !important;
-        box-shadow: 5px 5px 5px grey;
-        border-radius: 0px 0px 20px 20px;
+    #navSVGPath {
+        fill: #ffffff !important;
+        display: trans;
     }
 }
+
+html[isMobile=true] {
+    #navCurveSVG, .sectionCurveSVG {
+        width: 100%;
+        height: 20%;
+    }
+}
+html[isMobile=false] {
+    #main {
+        // background: blue;
+    }
+}
+
+// @if html[isMobile] == false {
+//     #main {
+//         background: white !important;
+//     }
+// }
+
 
 @media (pointer:coarse), (max-){
     #about {
@@ -103,7 +240,12 @@ html:not([data-scroll='0']) {
 
   .fullsize {
       width: 100% !important;
-      max-width: 80vw !important;
       height: 100% !important;
   }
   
+//   BOOTSTRAP OVERRIDES
+
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}

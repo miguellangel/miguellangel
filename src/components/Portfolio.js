@@ -1,5 +1,6 @@
 import React from 'react';
-import SurroundWithWavySVG from './SurroundWithWavySVG.js';
+
+import WavySVG from './WavySVG.js';
 import NavBar from './NavBar.js';
 import Intro from './Intro.js';
 import About from './About.js';
@@ -26,10 +27,9 @@ function debounce(fn, ms) {
     };
 }
 
-const LandingPage = () => {
+const Portfolio = ({viewMode}) => {
 
     React.useEffect(() => {
-		
 		const debouncedStoreScroll = debounce(function storeScroll() {
             document.documentElement.dataset.scroll = window.scrollY;
         }, 25)
@@ -58,24 +58,30 @@ const LandingPage = () => {
 
     return (
         <>
-            <NavBar/>
-            <section id="main" >
-                <Intro portrait={portrait}/>
-            </section>
-            <section id="about">
-                <About tower = {tower} nlp=  {nlp}/>
-            </section>
-                <SurroundWithWavySVG>
-                    <Skills />
-                </SurroundWithWavySVG>
-            <section id="projects" >
-                    <Projects />
-            </section>
-            <section id="contact" >
-                    <Contact />
-            </section>
+
+            <NavBar>
+                <WavySVG isNav={true} fill={'#fff'} />
+            </NavBar>
+
+            <Intro portrait={portrait}/>
+
+            <About tower = {tower} nlp = {nlp}>
+                <WavySVG isNav={false} fill={'#fff'}/>
+            </About>
+
+            <Skills>
+                <WavySVG isNav={false} fill={'#fff'} />
+            </Skills>
+
+            <Projects>
+                <WavySVG isNav={false} fill={'#fff'}/>
+            </Projects>
+
+            <Contact>
+                <WavySVG isNav={false} fill={'#fff'} />
+            </Contact>
         </>
     );
 }
 
-export default LandingPage;
+export default Portfolio;
