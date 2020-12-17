@@ -3,7 +3,7 @@ import {Row, Col} from "react-bootstrap";
 
 const MainBody = ({portrait}) => {
     return (
-        // <Container className="fullsize">
+        <section id="main">
             <Row  className="fullsize" id="intro" xs={1} md={2}>
                 <Col>
                     {/* <Container style={{width: "100%", height: "100%"}}> */}
@@ -15,7 +15,7 @@ const MainBody = ({portrait}) => {
                     <h1 className="center el">MIGUEL ARRIAGA</h1>
                 </Col>
             </Row>
-    // </Container>
+    </section>
     
     );
 }
