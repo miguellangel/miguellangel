@@ -12,15 +12,8 @@ const App = ({breakpoints, currentBreakpoint}) => {
 	
 	
 	React.useEffect(() => {
-		if (breakpoints[currentBreakpoint] < breakpoints.mobileLandscape) {
-			document.getElementsByTagName('html')[0].setAttribute('isMobile', true)
-			document.getElementById('navCurveSVG').setAttribute('viewBox', '0 0 300 70')
-			Array.from(document.getElementsByClassName('sectionCurveSVG')).map((sectionSVG) => sectionSVG.setAttribute('viewBox', '0 0 300 70'))
-		} else {
-			document.getElementsByTagName('html')[0].setAttribute('isMobile', false)
-			document.getElementById('navCurveSVG').setAttribute('viewBox', '0 0 600 60')
-			Array.from(document.getElementsByClassName('sectionCurveSVG')).map((sectionSVG) => sectionSVG.setAttribute('viewBox', '0 0 600 60'))
-		}
+		breakpoints[currentBreakpoint] < breakpoints.mobileLandscape ? document.getElementsByTagName('html')[0].setAttribute('isMobile', true)
+		: document.getElementsByTagName('html')[0].setAttribute('isMobile', false)
 	})
 
 	return (

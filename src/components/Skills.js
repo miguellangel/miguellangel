@@ -31,7 +31,7 @@ const Skills = ({children}) => {
                         <textPath href={String('#svgPath' + capitalize(skill))}>{skill.toString()}</textPath>
                     </text>
                 </svg>
-                <span style={{ margin: '8px',padding: '8px', color: 'white' }} className="badge bg-info rounded-pill">{String(Object.values(skillset.frontend.skills[String(skill)])[0] * 100 +'%')}</span>
+                <span style={{ margin: '8px',padding: '8px', color: 'white', fontFamily: 'system-ui', fontWeight: 800 }} className="badge bg-info rounded-pill">{`${Object.values(skillset.frontend.skills[String(skill)])[0] * 100}%`}</span>
             </span>
         )
 
@@ -44,7 +44,7 @@ const Skills = ({children}) => {
                         <textPath href={String('#svgPath' + capitalize(library))}>{library.toString()}</textPath>
                     </text>
                 </svg>
-                <span style={{ margin: '8px',padding: '8px', color: 'white' }} className="badge bg-info rounded-pill">{String(Object.values(skillset.frontend.libraries[String(library)])[0] * 100 +'%')}</span>
+                <span style={{ margin: '8px',padding: '8px', color: 'white', fontFamily: 'system-ui' }} className="badge bg-info rounded-pill"> {`${Object.values(skillset.frontend.libraries[String(library)])[0] * 100}%`} </span>
             </span>
         )
 
@@ -71,10 +71,9 @@ const Skills = ({children}) => {
     return (
         <>
             <section id="skills">
-                <h3 style={{position: 'absolute', display: 'inline-flex'}}>my skillset</h3>
+                <h3 style={{position: 'absolute', display: 'table-caption'}}>my skillset</h3>
                 {children}
-                <Container>
-                    <Row>
+                    <Row className='center'>
                         <Col>
                             <Container id='skillsetDetailsContainer'>
                                 <Tabs defaultActiveKey="languages" id="uncontrolled-tab-example" style={{display: 'inline-flex'}}>
@@ -88,7 +87,6 @@ const Skills = ({children}) => {
                             </Container>
                         </Col>
                     </Row>
-                </Container>
 
             </section>
         </>

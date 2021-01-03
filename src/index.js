@@ -6,13 +6,13 @@ import App from './App.js';
 import * as serviceWorker from './serviceWorker';
 
 const breakpoints = {
-    mobile: 991,
-    mobileLandscape: 992,
-    // tablet: 769,
-    // tabletLandscape: 1024,
-    desktop: 1200,
-    desktopLarge: 1500,
-    desktopWide: 1920,
+    small: 576,
+    medium: 768,
+    large: 992,
+    extraLarge: 1200,
+    // desktop: 1440,
+    // desktopLarge: 1500,
+    // desktopWide: 1920,
   }
 
 ReactDOM.render(
