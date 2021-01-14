@@ -12,13 +12,13 @@ const App = ({breakpoints, currentBreakpoint}) => {
 	
 	
 	React.useEffect(() => {
-		breakpoints[currentBreakpoint] < breakpoints.mobileLandscape ? document.getElementsByTagName('html')[0].setAttribute('isMobile', true)
-		: document.getElementsByTagName('html')[0].setAttribute('isMobile', false)
+		// anime.remove('*')
+
 	})
 
 	return (
 		<>
-			<Portfolio viewMode={breakpoints[currentBreakpoint] < breakpoints.mobileLandscape ? 'mobile' : 'mobileLandscape'} />
+			<Portfolio />
 		</>
 	)
 }

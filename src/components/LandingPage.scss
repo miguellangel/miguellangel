@@ -42,7 +42,7 @@ body {
         section {
             z-index: 0;
             width: 100%;
-            height: calc(100vh);
+            height: calc(95vh);
             border: 10px 10px black;
         }
         section > h3 {
@@ -67,8 +67,8 @@ body {
             }
 
             #intro {
-                h4 {font-family: 'Dancing Script', sans-serif; font-size: 4vh;}
-                h1, intro-button {font-family: 'Montserrat', sans-serif; font-size: 5vh;}
+                h4 {font-family: 'Dancing Script', sans-serif; font-size: 8vmin;}
+                h1, intro-button {font-family: 'Montserrat', sans-serif; font-size: 9vmin;}
 
             }
         }
@@ -167,6 +167,7 @@ body {
                     }
 
                     .skillSpanContainer {
+                        width: 400px;
                         transform: scale(0.7);
                         display: inline-table;
                         border: 1px dashed #f0f0f0;
@@ -198,17 +199,6 @@ html:not([data-scroll='0']) {
     #navSVGPath {
         fill: #ffffff !important;
         display: trans;
-    }
-}
-
-html[isMobile=true] {
-    #navCurveSVG, .sectionCurveSVG {
-        width: 100%;
-    }
-}
-html[isMobile=false] {
-    #main {
-        // background: blue;
     }
 }
 

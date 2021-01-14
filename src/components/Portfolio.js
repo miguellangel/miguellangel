@@ -27,7 +27,8 @@ function debounce(fn, ms) {
     };
 }
 
-const Portfolio = ({ viewMode }) => {
+const Portfolio = () => {
+    
     React.useEffect(() => {
         const debouncedStoreScroll = debounce(function storeScroll() {
             document.documentElement.dataset.scroll = window.scrollY;

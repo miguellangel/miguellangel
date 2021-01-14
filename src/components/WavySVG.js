@@ -1,100 +1,104 @@
 import React from "react";
-import anime from "animejs/lib/anime.es.js";
+import  {anime} from "react-anime";
 // import ReactVisibilitySensor from 'react-visibility-sensor';
 import { withBreakpoints } from "react-breakpoints";
+import $ from 'jquery'
 
 const paths = {
     small: {
         filterProps: {'stdDeviation': 3},
         nav: {
             d:
-                "M 0 94.216 C 150 107.324 150 81.108 300 94.216 C 450 107.324 450 81.108 600 94.216 L 600 0 L 0 0 L 0 94.216",
+                "M 600 96.66 C 750 101.29 750 92.03 900 96.66 C 1050 101.29 1050 92.03 1200 96.66 L 1200 0 L 600 0 L 600 96.66 M 0 96.66 C 150 101.29 150 92.03 300 96.66 C 450 101.29 450 92.03 600 96.66 L 600 0 L 0 0 L 0 96.66",
             dx:
-                "M 0 94.216 C 135.00 96.59 135.00 73.00 270.00 84.79 C 405.00 96.59 405.00 73.00 600 94.216 L 600 0 L 0 0 L 0 94.216",
+                "M 0 98.66 C 150 103.29 150 94.03 300 98.66 C 450 103.29 450 94.03 600 98.66 L 600 2 L 0 2 L 0 98.66 M -600 98.66 C -450 103.29 -450 94.03 -300 98.66 C -150 103.29 -150 94.03 0 98.66 L 0 2 L -600 2 L -600 98.66",
             viewBox: "0 0 600 100",
         },
         section: {
             d:
-                "M 0 54.216 C 150 67.324 150 41.108 300 54.216 C 450 67.324 450 41.108 600 54.216 L 600 0 L 0 0 L 0 54.216",
+                "M 600 56.66 C 750 61.29 750 52.03 900 56.66 C 1050 61.29 1050 52.03 1200 56.66 L 1200 0 L 600 0 L 600 56.66 M 0 56.66 C 150 61.29 150 52.03 300 56.66 C 450 61.29 450 52.03 600 56.66 L 600 0 L 0 0 L 0 56.66",
             dx:
-                "M 0 54.216 C 135.00 56.59 135.00 33.00 270.00 44.79 C 405.00 56.59 405.00 33.00 600 54.216 L 600 0 L 0 0 L 0 54.216",
+                "M 0 56.66 C 150 61.29 150 52.03 300 56.66 C 450 61.29 450 52.03 600 56.66 L 600 0 L 0 0 L 0 56.66 M -600 56.66 C -450 61.29 -450 52.03 -300 56.66 C -150 61.29 -150 52.03 0 56.66 L 0 0 L -600 0 L -600 56.66",
             viewBox: "0 0 600 60",
         },
     },
     medium: {
-        filterProps: {'stdDeviation': 0.75},
+        filterProps: {'stdDeviation': 3},
         nav: {
             d:
-                "M 0 54.216 C 150 67.324 150 41.108 300 54.216 C 450 67.324 450 41.108 600 54.216 L 600 0 L 0 0 L 0 54.216",
+                "M 600 56.66 C 750 61.29 750 52.03 900 56.66 C 1050 61.29 1050 52.03 1200 56.66 L 1200 0 L 600 0 L 600 56.66 M 0 56.66 C 150 61.29 150 52.03 300 56.66 C 450 61.29 450 52.03 600 56.66 L 600 0 L 0 0 L 0 56.66",
             dx:
-                "M 0 54.216 C 135.00 60.59 135.00 37.00 270.00 48.79 C 405.00 60.59 405.00 37.00 600 54.216 L 600 0 L 0 0 L 0 54.216",
+                "M 0 56.66 C 150 61.29 150 52.03 300 56.66 C 450 61.29 450 52.03 600 56.66 L 600 0 L 0 0 L 0 56.66 M -600 56.66 C -450 61.29 -450 52.03 -300 56.66 C -150 61.29 -150 52.03 0 56.66 L 0 0 L -600 0 L -600 56.66",
             viewBox: "0 0 600 60",
         },
         section: {
             d:
-                "M 0 24.216 C 150 37.324 150 11.108 300 24.216 C 450 37.324 450 11.108 600 24.216 L 600 0 L 0 0 L 0 24.216",
+                "M 600 26.66 C 750 31.29 750 22.03 900 26.66 C 1050 31.29 1050 22.03 1200 26.66 L 1200 0 L 600 0 L 600 26.66 M 0 26.66 C 150 31.29 150 22.03 300 26.66 C 450 31.29 450 22.03 600 26.66 L 600 0 L 0 0 L 0 26.66",
             dx:
-                "M 0 24.216 C 135.00 30.59 135.00 7.00 270.00 18.79 C 405.00 30.59 405.00 7.00 600 24.216 L 600 0 L 0 0 L 0 24.216",
+                "M 0 26.66 C 150 31.29 150 22.03 300 26.66 C 450 31.29 450 22.03 600 26.66 L 600 0 L 0 0 L 0 26.66 M -600 26.66 C -450 31.29 -450 22.03 -300 26.66 C -150 31.29 -150 22.03 0 26.66 L 0 0 L -600 0 L -600 26.66",
             viewBox: "0 0 600 30",
         },
     },
     large: {
-        filterProps: {'stdDeviation': 0.75},        
+        filterProps: {'stdDeviation': 1.5},        
         nav: {
             d:
-                "M 0 36.216 C 150 49.324 150 23.108 300 36.216 C 450 49.324 450 23.108 600 36.216 L 600 0 L 0 0 L 0 36.216",
+                "M 600 38.66 C 750 43.29 750 34.03 900 38.66 C 1050 43.29 1050 34.03 1200 38.66 L 1200 0 L 600 0 L 600 38.66 M 0 38.66 C 150 43.29 150 34.03 300 38.66 C 450 43.29 450 34.03 600 38.66 L 600 0 L 0 0 L 0 38.66",
             dx:
-                "M 0 36.216 C 135.00 44.39 135.00 20.80 270.00 32.59 C 405.00 44.39 405.00 20.80 600 36.216 L 600 0 L 0 0 L 0 36.216",
+                "M 0 38.66 C 150 43.29 150 34.03 300 38.66 C 450 43.29 450 34.03 600 38.66 L 600 0 L 0 0 L 0 38.66 M -600 38.66 C -450 43.29 -450 34.03 -300 38.66 C -150 43.29 -150 34.03 0 38.66 L 0 0 L -600 0 L -600 38.66",
             viewBox: "0 0 600 42",
         },
         section: {
             d:
-                "M 0 17.216 C 150 30.324 150 4.108 300 17.216 C 450 30.324 450 4.108 600 17.216 L 600 0 L 0 0 L 0 17.216",
+                "M 600 18.66 C 750 23.29 750 14.03 900 18.66 C 1050 23.29 1050 14.03 1200 18.66 L 1200 0 L 600 0 L 600 18.66 M 0 18.66 C 150 23.29 150 14.03 300 18.66 C 450 23.29 450 14.03 600 18.66 L 600 0 L 0 0 L 0 18.66",
             dx:
-                "M 0 17.216 C 135.00 25.39 135.00 1.80 270.00 13.59 C 405.00 25.39 405.00 1.80 600 17.216 L 600 0 L 0 0 L 0 17.216",
-            viewBox: "0 0 600 23",
+                "M 0 18.66 C 150 23.29 150 14.03 300 18.66 C 450 23.29 450 14.03 600 18.66 L 600 0 L 0 0 L 0 18.66 M -600 18.66 C -450 23.29 -450 14.03 -300 18.66 C -150 23.29 -150 14.03 0 18.66 L 0 0 L -600 0 L -600 18.66",
+            viewBox: "0 0 600 22",
         },
     },
     extraLarge: {
-        filterProps: {'stdDeviation': 0.75},        
+        filterProps: {'stdDeviation': 1.5},        
         nav: {
             d:
-                "M 0 26.216 C 150 39.324 150 13.108 300 26.216 C 450 39.324 450 13.108 600 26.216 L 600 0 L 0 0 L 0 26.216",
+                "M 600 28.66 C 750 33.29 750 24.03 900 28.66 C 1050 33.29 1050 24.03 1200 28.66 L 1200 0 L 600 0 L 600 28.66 M 0 28.66 C 150 33.29 150 24.03 300 28.66 C 450 33.29 450 24.03 600 28.66 L 600 0 L 0 0 L 0 28.66",
             dx:
-                "M 0.0 26.216 C 135.00 35.39 135.00 11.80 270.00 23.59 C 405.00 35.39 405.00 11.80 600 26.22 L 600 0.0 L 0.0 0.0 L 0.0 26.216",
+                "M 0 28.66 C 150 33.29 150 24.03 300 28.66 C 450 33.29 450 24.03 600 28.66 L 600 0 L 0 0 L 0 28.66 M -600 28.66 C -450 33.29 -450 24.03 -300 28.66 C -150 33.29 -150 24.03 0 28.66 L 0 0 L -600 0 L -600 28.66",
             viewBox: "0 0 600 32",
         },
         section: {
             d:
-                "M 0.00 13.60 C 150.00 26.70 150.00 0.49 300.00 13.60 C 450.00 26.70 450.00 0.49 600.00 13.60 L 600.00 0.00 L 0.00 0.00 L 0.00 13.60",
+                "M 600 18.66 C 750 23.29 750 14.03 900 18.66 C 1050 23.29 1050 14.03 1200 18.66 L 1200 0 L 600 0 L 600 18.66 M 0 18.66 C 150 23.29 150 14.03 300 18.66 C 450 23.29 450 14.03 600 18.66 L 600 0 L 0 0 L 0 18.66",
             dx:
-                "M 0.00 13.60 C 135.00 22.77 135.00 -0.82 270.00 10.97 C 405.00 22.77 405.00 -0.82 600.00 13.60 L 600.00 0.00 L 0.00 0.00 L 0.00 13.60",
-            viewBox: "0 0 600 18",
+                "M 0 18.66 C 150 23.29 150 14.03 300 18.66 C 450 23.29 450 14.03 600 18.66 L 600 0 L 0 0 L 0 18.66 M -600 18.66 C -450 23.29 -450 14.03 -300 18.66 C -150 23.29 -150 14.03 0 18.66 L 0 0 L -600 0 L -600 18.66",
+            viewBox: "0 0 600 22",
         },
     },
 };
 
 const WavySVG = ({ isNav, fill, breakpoints, currentBreakpoint }) => {
+
+
     React.useEffect(() => {
-        console.log('some new brakpoint detected') // fix this bug; animation not changing through breakpoints
-        isNav
-            ? anime({
-                  targets: "#navSVGPath",
-                  keyframes: [{ d: paths[currentBreakpoint].nav.dx }],
-                  easing: "easeInOutQuad",
-                  duration: 2250,
-                  loop: true,
-                  direction: "alternate",
-              })
-            : anime({
-                  targets: ".sectionSVGPath",
-                  keyframes: [{ d: paths[currentBreakpoint].section.dx }],
-                  easing: "easeInOutQuad",
-                  duration: 2250,
-                  loop: true,
-                  direction: "alternate",
-              });
-    });
+        // console.log(`WavySVG component has re-rendered to --${currentBreakpoint}`)
+
+        // revert svg paths to original values before re-rendering animation
+        $('#navSVGPath').attr('d', paths[currentBreakpoint].nav.d)
+        $('.sectionSVGPath').toArray().map((i) => i.setAttribute('d', paths[currentBreakpoint].section.d))
+
+        anime({
+            targets: isNav ? '#navSVGPath' : '.sectionSVGPath',
+            keyframes: [{d: paths[currentBreakpoint][isNav ? 'nav' : 'section'].dx}],
+            easing: 'linear',
+            duration: 7000,
+            loop: true,
+            direction: "normal",
+            autoplay: true,
+        })
+
+
+
+        }, [isNav, currentBreakpoint] // only re-render on breakpoint change
+    )
 
     return isNav ? (
         <>
@@ -111,14 +115,12 @@ const WavySVG = ({ isNav, fill, breakpoints, currentBreakpoint }) => {
                         <feDropShadow dx="0.05" dy="0.1" stdDeviation={paths[currentBreakpoint].filterProps.stdDeviation}/>
                     </filter>
                 </defs>
-                <g>
-                    <path
-                        id="navSVGPath"
-                        style={{ fill: "transparent", filter: "url(#shadow)" }}
-                        d={paths[currentBreakpoint].nav.d}
-                    />
-                </g>
-            </svg>
+                <path
+                    id="navSVGPath"
+                    style={{ fill: "transparent", filter: "url(#shadow)" }}
+                    d={paths[currentBreakpoint].nav.d}
+                />
+        </svg>
         </>
     ) : (
         <>
@@ -135,13 +137,11 @@ const WavySVG = ({ isNav, fill, breakpoints, currentBreakpoint }) => {
                         <feDropShadow dx="0.05" dy="0.1" stdDeviation={paths[currentBreakpoint].filterProps.stdDeviation} />
                     </filter>
                 </defs>
-                <g>
-                    <path
-                        className="sectionSVGPath"
-                        d={paths[currentBreakpoint].section.d}
-                        style={{ fill: fill, filter: "url(#shadow)" }}
-                    />
-                </g>
+                <path
+                    className="sectionSVGPath"
+                    d={paths[currentBreakpoint].section.d}
+                    style={{ fill: fill, filter: "url(#shadow)" }}
+                />
             </svg>
         </>
     );

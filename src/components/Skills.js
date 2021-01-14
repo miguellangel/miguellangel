@@ -1,70 +1,124 @@
 import React from 'react';
-import ProgressBar from 'progressbar.js';
 import {Container, Row, Col, Tabs, Tab} from 'react-bootstrap'
+import { anime } from 'react-anime'
+import $ from 'jquery'
 
-const capitalize = (s) => {
-    if (typeof s !== 'string') return ''
-    return s.charAt(0).toUpperCase() + s.slice(1)
-  }
+
+
+const SkillAnimation = ({skillName, skillPercent}) => {
+
+
+    React.useEffect(() => {
+
+        var progressLog = $(`#skill-${skillName}-percentView`)
+        // var progressGloss = $(`#skill-${skillName}-progressGloss`)
+
+        var skillAnimation = anime({
+            targets: `#skillProgressBar-${skillName}`,
+            width: (el) => {return el.getAttribute('width') ? [0, 450 * skillPercent] : null},
+            fill: [`RGB(255, 0, 0`, `RGB(${(510 * skillPercent) > 255 ? Math.abs((510 * skillPercent) - 510) : 255}, ${(510 * skillPercent) > 255 ? 255 : (510 * skillPercent) }, 0)`],
+            easing: 'easeInOutQuad',
+            duration: 1500,
+            direction: 'alternate',
+            loop: false,
+            autoplay: true,
+            update: (anim) => {
+                progressLog.html(`${Math.round(anim.progress * skillPercent)}%`)
+            },
+            complete: (anim) => {
+                skillAnimation.remove()
+                // console.log(anime.running.length)
+            }
+        })
+        // skillAnimation.restart()
+
+        
+
+    })
+
+    return (
+        <svg id = {`svg-${skillName}`} viewBox="0 0 600 70" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <path id = {`skill-${skillName}-textPath`} d="M 15 36 L 515 35"></path>
+                <path id = {`skill-${skillName}-percentTextPath`} d="M 490 65 L 570 65"></path>
+                <filter id={`skill-${skillName}-insetShadow`} x="-100%" y="-100%" width="200%" height="200%">
+                    <feComponentTransfer in="SourceAlpha">
+                        <feFuncA type="table" tableValues="1 0" />
+                    </feComponentTransfer>
+                    <feGaussianBlur stdDeviation="5"/>
+                    <feOffset dx="5" dy="5" result="offsetblur"/>
+                    <feFlood floodColor="darkgrey" result="color"/>
+                    <feComposite in2="offsetblur" operator="in"/>
+                    <feComposite in2="SourceAlpha" operator="in" />
+                    <feMerge>
+                        <feMergeNode in="SourceGraphic" />
+                        <feMergeNode />
+                    </feMerge>
+                </filter>
+                <filter id = {`skill-${skillName}-barShadow`} >
+                    <feDropShadow dx="0.1" dy="0.1" stdDeviation="2" />
+                </filter>
+            </defs>
+            {/*<rect x="5" y="50" width='450' height="17.75" style={{fill: '#f0f0f0', filter: `url(#skill-${skillName}-insetShadow)`}} rx="7.5" ry="7.5"></rect>*/}
+            <rect id = {`skillProgressBar-${skillName}`} x="5" y="50.5" width='0' height="17" style={{fill: 'RGB(255, 0, 0)', filter: `url(#skill-${skillName}-insetShadow)`}} rx="7.5" ry="7.5"></rect>
+
+            <text style={{fontFamily: 'Quicksand', fontSize: '3em'}}>
+                <textPath href={`#skill-${skillName}-textPath`}>{skillName}</textPath>
+            </text>
+            <text style={{fontFamily: 'Quicksand', fontSize: '2em', letterSpacing: '3.125'}}>
+                <textPath id = {`skill-${skillName}-percentView`} href={`#skill-${skillName}-percentTextPath`}>0</textPath>
+            </text>
+
+        </svg>
+
+    )
+}
 
 const Skills = ({children}) => {
     //  each language/skill will consist of level of comprehension and amount of experience working with it.
     // amount of experience for each skill will be calculated based on the time spent working on projects over the total amount of time I have been programming.
     let frontend = {
-        'skills' : {
-            'html': [0.90, 5], 'python': [0.90, 5], 'css': [0.85, 2.5], 'javascript': [0.65, 2], 'SQL': [0.5,0.5], 'java': [0.3, 0.5], 'swift': [0.3, 0.5]
+        skills: {
+            python: [0.9, 5],
+            html: [0.9, 5],
+            css: [0.85, 2.5],
+            javascript: [0.65, 2],
+            SQL: [0.5, 0.5],
+            java: [0.3, 0.5],
+            swift: [0.3, 0.5],
         },
-        'libraries': {
-            'react': [0.7, 0.5]
-
+        libraries: {
+            react: [0.7, 0.5],
+            jQuery: [0.6, 1],
+            flask: [0.5, 0.5],
+            postgreSQL: [0.5, 0.5],
+            'processing-java': [0.5, 0.5],
+            'three-js': [0.5, 0.5],
+            'anime-js': [0.4, 0.5],
         }
-     };
+    }
 
-    let skillset = {'frontend': frontend}
+
+     let backend = {}
+     let dataSci = {}
+
+    let skillset = {'frontend': frontend, 'backgend': backend, 'data-sci': dataSci}
 
     let skillMap = Object.keys(skillset.frontend.skills).map(skill =>
-            <span className="skillSpanContainer" key={skill.toString()} >
-                <svg id={String('svg' + capitalize(skill))} xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100">
-                    <path fillOpacity="0" strokeWidth="1" stroke="#bbb" d="M 0 50 L 300 50 " style={{borderRadius: '25px'}}/>
-                    <path id={String('svgPath' + capitalize(skill))} stroke="lightblue" fill="none" strokeWidth='10' fillOpacity="0" d="M 0 50 L 300 50 " style={{borderRadius: '25px'}}/>
-                    <text style={{font: '24px Montserrat', transform: 'translate(0, -10px)'}}>
-                        <textPath href={String('#svgPath' + capitalize(skill))}>{skill.toString()}</textPath>
-                    </text>
-                </svg>
-                <span style={{ margin: '8px',padding: '8px', color: 'white', fontFamily: 'system-ui', fontWeight: 800 }} className="badge bg-info rounded-pill">{`${Object.values(skillset.frontend.skills[String(skill)])[0] * 100}%`}</span>
+            <span className="skillSpanContainer" key={skill.toString()}>
+                <SkillAnimation skillName = {skill.toString()} skillPercent = {Object.values(skillset.frontend.skills[String(skill)])[0]} />
             </span>
         )
 
     let libraryMap = Object.keys(skillset.frontend.libraries).map(library =>
             <span className='skillSpanContainer' key={library.toString()}>
-                <svg id={String('svg' + capitalize(library))} xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100">
-                    <path fillOpacity="0" strokeWidth="1" stroke="#bbb" d="M 0 50 L 300 50 " style={{borderRadius: '25px'}}/>
-                    <path id={String('svgPath' + capitalize(library))} stroke="lightblue" fill="none" strokeWidth='10' fillOpacity="0" d="M 0 50 L 300 50 " style={{borderRadius: '25px'}}/>
-                    <text style={{font: '24px Montserrat', transform: 'translate(0, -10px)'}}>
-                        <textPath href={String('#svgPath' + capitalize(library))}>{library.toString()}</textPath>
-                    </text>
-                </svg>
-                <span style={{ margin: '8px',padding: '8px', color: 'white', fontFamily: 'system-ui' }} className="badge bg-info rounded-pill"> {`${Object.values(skillset.frontend.libraries[String(library)])[0] * 100}%`} </span>
+                <SkillAnimation skillName = {library.toString()} skillPercent = {Object.values(skillset.frontend.libraries[String(library)])[0]} />
             </span>
         )
 
 
     React.useEffect(() => {
-        const animateSVGs = () => {
-            Object.keys(skillset.frontend.skills).map(skill => 
-                new ProgressBar.Path(String('#svgPath' + capitalize(skill)), {
-                    easing: 'easeInOut',
-                    duration: 1400,
-                }).animate(Object.values(skillset.frontend.skills[String(skill)])[0])
-            );
-            Object.keys(skillset.frontend.libraries).map(library =>
-                new ProgressBar.Path(String('#svgPath' + capitalize(library)), {
-                    easing: 'easeInOut',
-                    duration: 1400,
-                }).animate(Object.values(skillset.frontend.libraries[String(library)])[0])
-            )
-        }
-        animateSVGs()
+
 
     })
 
