@@ -4,8 +4,7 @@ import $ from 'jquery';
 import { withBreakpoints} from 'react-breakpoints'
 
 
-
-const NavBar = ({children, breakpoints, currentBreakpoint}) => {
+const NavBar = ({children, breakpoints, currentBreakpoint, style}) => {
 
     const scrollToView = (sectionId) => {
         document.querySelector(sectionId).scrollIntoView({
@@ -30,14 +29,11 @@ const NavBar = ({children, breakpoints, currentBreakpoint}) => {
                 borderRadius: '10px 0px 10px 10px'})
         }
 
-    React.useEffect( () => {
-        // console.log(currentBreakpoint)
-
-    })
     return (
-        <Container fluid="true" id="navContainer">
+        <Container fluid="true" id="navContainer" style={style.navBar}>
             {children}
-            <Navbar id="pageNav" bg = "transparent" variant = "light" collapseOnSelect={true} expand="lg" fixed="top">
+
+            <Navbar id="pageNav" bg = "transparent" variant = "light" collapseOnSelect={true} expand="lg" fixed="top" style={style.navBar.nav}>
                 <Container>
                     <Navbar.Brand>miguellangel</Navbar.Brand>                
 

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&family=Open+Sans:wght@300;400&display=swap');
-// convert variable fonts into all major formats for compatibility -> https://everythingfonts.com/font-face
+/*convert variable fonts into all major formats for compatibility -> https://everythingfonts.com/font-face*/
 @mixin font($font-family, $font-file) {
     @font-face {
         font-family: $font-family;
@@ -10,6 +10,7 @@
             url($font-file + '.svg#' + $font-family) format('svg');
         font-weight: normal;
         font-style: normal;
+        font-display: swap; /*tell browser to display using system font immediately on load*/
     }
 }
 @include font('Quicksand', 'fonts/Quicksand');
@@ -17,22 +18,29 @@
 
 
 body {
+    max-width: 100vw;
+    width: 100vw;
+    max-height: 100vh;
+    height: 100vh;
+    overflow-x: hidden;
+
     background: #fff;
     
     #root {
         #pageNav {
             z-index: 3;
-            padding: 1em;
+            /*padding: 1em;*/
             font-family: 'Quicksand','Open Sans';
-            // font-weight: 700;
+            /*font-weight: 700;*/
             .container {
                 width: max-content;
                 text-align: center;
             }
             .navbar-brand {
                 font-family: 'Dancing Script', 'Open Sans', sans-serif;
-                font-size: 20px;
+                font-size: inherit;
                 text-align: center;
+                transform: translate(35px);
 
                 span {
                     text-align: center;
@@ -41,60 +49,73 @@ body {
         }
         section {
             z-index: 0;
-            width: 100%;
-            height: calc(95vh);
-            border: 10px 10px black;
+            max-width: 100vw;
+            width: 100vw;
+            min-height: 100vh;
+            height: 100vh;   
         }
-        section > h3 {
+        section > div > h3 {
+            position: absolute;
             font-family: 'Dancing Script';
-            padding: '30px';
             letter-spacing: 5px;
-            padding-left: 20px;
+            padding-left: 60px;
         }
         
         #main {
-            
-
-            #portrait {
-                position: relative;
-                width: auto;
-                height: 55vmin;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                border-radius: 50%;
-                shape-outside: circle(10%);
-            }
-
             #intro {
-                h4 {font-family: 'Dancing Script', sans-serif; font-size: 8vmin;}
-                h1, intro-button {font-family: 'Montserrat', sans-serif; font-size: 9vmin;}
+                position: relative;
+                height:100vh;
+                div {
+                    &:first-child {
+                        #portrait{
+                            position: relative;
+                            width: 30vmin;
+                            height: 30vmin;
+                            top: 50%;
+                            border-radius: 50%;
+                            shape-outside: circle(10%);
+                        }
+                    }
+                }
+                div {
+                    h4 {font-family: 'Dancing Script', sans-serif; font-size: 8vmin; text-align: center}
+                    h1, intro-button {font-family: 'Montserrat', sans-serif; font-size: 9vmin; text-align: center}
+
+                }
 
             }
         }
 
         #about {
-
-            .about-img {
-                shape-outside: circle(50%);
-                // border-radius: 100%;
+            .container {
                 position: relative;
-                left: 50%;
-                transform: translate(-50%);
+                max-width: 85vw;
+                top: 50%;
+                transform: translate(0%, -50%);
 
-            }
-            .about-p{
-                // text-align: justify;
-                font-family: 'Montserrat', sans-serif;
-                text-align: center;
+                .row {
+                    .col {
+                        .about-img {
+                            /*shape-outside: circle(50% at 50% 50%);*/
+                            /*border-radius: 100%;*/
+                            /*float: right;*/
+                            position: relative;
+                            left: 50%;
+                            transform: translate(-50%);
+
+                        }
+
+                    }
+                }           
+
             }
         }
         #main, #about, #skills, #projects, #contact {
-            // background: white;
+            /*background: white;*/
         }
 
         #skills {
-            overflow: auto;
+            overflow: hidden;
 
             h3,h5 {
                 font-family: 'Dancing Script';
@@ -105,120 +126,95 @@ body {
             #lineContainer > svg {
                 border-radius: 50px;
             }
-            .row {
-                #skillsetTypeOverviewContainer {
-                    border-right: 2px solid #f0f0f0;
-                    // box-sizing: border-box;
-                    box-shadow: inset -7px 0 5px -7px #c4c4c4;
-                    border-radius: 50px 50px 0px 0px;
-                    // height: 80vh;
-                    padding: 0;
-                }
-
-                #skillTypeOverviewContainer {
-                    background: white;
-                    border-radius: 50px 50px 0px 0px;
-                    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-                    // height: 30vh;
-                    ul {
-                        list-style: none;
-                        padding-top: 5vh;
-
-                        li {
-                            font-family: 'Quicksand';
-                            font-size: 1.5em;
-                        }
-                    }
-                }
                 
-                #skillsetDetailsContainer {
-                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                    border-radius: 50px;
-                    z-index: 40;
-                    margin-bottom: 8px;
-                    padding-left: 0px;
-                    
-                    .nav {
-                        a {
-                            font-family: 'Quicksand';
+            #skillsetDetailsContainer {
+                box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
+                border-radius: 50px;
+                margin-bottom: 8px;
+                max-width: 90vw;
+                width: 90vw;
+                min-height: 60vh;
+                max-height: 100vh;
+                height: max-content;
+                position: relative;
+                top: 50%;
+                transform: translate(0%, -50%);                    
+                .nav {
+                    a {
+                        font-family: 'Quicksand';
+                    }
+                    a:first-child {
+                        border-radius: 50px 0px 0px 0px;
+                        box-shadow: 1px 1px 10px #f0f0f0;
+
+                        &[aria-selected=true] {
+                            box-shadow: inset 1px 1px 10px #f0f0f0;
+                            border-bottom: none;
                         }
-                        a:first-child {
-                            border-radius: 50px 0px 0px 0px;
-                            box-shadow: 1px 1px 10px #f0f0f0;
+                    }
+                    a:nth-child(2) {
+                        border-radius: 0px 50px 0px 0px;
+                        box-shadow: 1px 1px 10px #f0f0f0;
+                        
+                        &[aria-selected=true] {
+                            box-shadow: inset 1px 1px 10px #f0f0f0;
+                            border-bottom: none;
 
-                            &[aria-selected=true] {
-                                box-shadow: inset 1px 1px 10px #f0f0f0;
-                                border-bottom: none;
-                            }
+
                         }
-                        a:nth-child(2) {
-                            border-radius: 0px 50px 0px 0px;
-                            box-shadow: 1px 1px 10px #f0f0f0;
-                            
-                            &[aria-selected=true] {
-                                box-shadow: inset 1px 1px 10px #f0f0f0;
-                                border-bottom: none;
-
-
-                            }
-                        }
-
-
                     }
 
-                    .skillSpanContainer {
-                        width: 400px;
-                        transform: scale(0.7);
-                        display: inline-table;
-                        border: 1px dashed #f0f0f0;
-                        border-radius: 20px;
-                        padding: 6px;
-                        margin: -6px;
 
-                        span {
-                            padding: 8px !important;
-                        }
+                }
+
+                .skillSpanContainer {
+                    width: 100%;
+                    max-width: 400px;
+                    transform: scale(0.7);
+                    display: inline-table;
+                    border: 1px dashed #f0f0f0;
+                    border-radius: 20px;
+
+                    span {
+                        padding: 8px !important;
                     }
                 }
-                
             }
+                
 
+        }
+        #projects {
+            .container {
+                position: relative;
+                top: 50%;
+                transform: translate(0%, -50%);
+                .row {
+                    div {
+                        background: white;
+                        box-shadow: -1px 1px 10px -5px #0f0f0f;
+                        border-radius: 20px;
+                    }
+                }
+            }
         }
 
     
     }
 }
-// html:not([data-scroll='0']) {
-//     #navSVGPath {
-//         fill: #ffffff !important;
-//         display: trans;
-//     }
 
-// }
 html:not([data-scroll='0']) {
-    #navSVGPath {
+    .SVGPath {
         fill: #ffffff !important;
-        display: trans;
     }
 }
 
-
-@media (pointer:coarse), (max-){
-    #about {
-        height: max-content !important;
-    }
-}
-
-.el {
-    width: max-content !important;
-}
 .center {
     position: relative;
     width: 100%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    // text-align: center;
+    /*text-align: center;*/
   }
 
   .fullsize {
@@ -226,9 +222,31 @@ html:not([data-scroll='0']) {
       height: 100% !important;
   }
   
-//   BOOTSTRAP OVERRIDES
+/*BOOTSTRAP OVERRIDES*/
 
 .row {
     /*margin-left: 0px !important;
     margin-right: 0px !important;*/
+}
+
+/*SCROLLBAR MODS*/
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 1px 1px 10px grey; 
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 10px;
+    border: 1px dotted black;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: lightgrey;
 }

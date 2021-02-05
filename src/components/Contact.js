@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Contact = ({children}) => {
+const Contact = ({children, style}) => {
     return (
         <>
             <section id="contact">
-            <h3 style={{position: 'absolute', display: 'inline-flex'}}>contact me!</h3>
-                {children}
+            	<div className="container-true" style={{width: '100vw', height: '50px'}}>
+            		<h3 style={style.common.h3}>contact me!</h3>
+                	{children}
+            	</div>
             </section>
         </>
     )

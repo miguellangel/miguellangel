@@ -9,10 +9,8 @@ const breakpoints = {
     small: 576,
     medium: 768,
     large: 992,
-    extraLarge: 1200,
-    // desktop: 1440,
-    // desktopLarge: 1500,
-    // desktopWide: 1920,
+    larger: 1024,
+    extraLarge: 1441,
   }
 
 ReactDOM.render(

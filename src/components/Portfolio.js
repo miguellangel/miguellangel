@@ -1,4 +1,5 @@
 import React from "react";
+import "./LandingPage.scss";
 
 import WavySVG from "./WavySVG.js";
 import NavBar from "./NavBar.js";
@@ -7,13 +8,10 @@ import About from "./About.js";
 import Skills from "./Skills.js";
 import Projects from "./Projects.js";
 import Contact from "./Contact.js";
-import "./LandingPage.scss";
-import portrait from "../portrait.png";
-import tower from "../UT-Tower.png";
-import nlp from "../nlp.png";
-// import html2canvas from 'html2canvas';
-// import {canvasRGB} from 'stackblur-canvas';
-// import $ from 'jquery';
+
+// import $ from 'jquery'
+
+import { withBreakpoints } from 'react-breakpoints'
 
 // Limit the number of resize calls
 function debounce(fn, ms) {
@@ -27,24 +25,55 @@ function debounce(fn, ms) {
     };
 }
 
-const Portfolio = () => {
-    
+const Portfolio = ({breakpoints, currentBreakpoint}) => {
+
+    let responsiveStyles = {
+        common: {
+            h3: {
+                position: 'absolute',
+                fontFamily: 'Dancing Script',
+                letterSpacing: '5px',
+                paddingLeft: breakpoints[currentBreakpoint] < breakpoints.large ? '20px' : '60px',
+            }
+        },
+        navBar: {
+            position: 'fixed',
+            zIndex: 3,
+            minWidth: '100vw',
+            height: '79px',
+            fontSize: currentBreakpoint === 'small' ? 'small' : currentBreakpoint === 'medium' ? 'medium' : currentBreakpoint === 'large' ? 'large' : currentBreakpoint === 'larger' ? 'large' : 'x-large',
+            nav: {
+                padding: breakpoints[currentBreakpoint] < breakpoints.extraLarge ? '1em' : null,
+            }            
+        },
+        intro: {
+            portrait: {
+                left: breakpoints[currentBreakpoint] > breakpoints.small ? '100%' : '50%',
+                top: breakpoints[currentBreakpoint] > breakpoints.small ? '50%' : '100%',
+                transform: breakpoints[currentBreakpoint] > breakpoints.small ? 'translate(-100%, -50%)' : 'translate(-50%,-100%)'
+            }
+        },
+        about: {
+            p: {
+                fontSize: currentBreakpoint === 'small' ? 'small' : currentBreakpoint === 'medium' ? 'medium' : currentBreakpoint === 'large' ? 'large' : currentBreakpoint === 'larger' ? 'large' : 'x-large',
+                fontFamily: "Montserrat, sans-serif",
+                textAlign: 'center',
+            },
+        },
+        skills: {},
+        projects: {},
+        contact: {},
+    }
+
     React.useEffect(() => {
+        console.log(currentBreakpoint)
+
+    })
+    React.useEffect(() => {
+
         const debouncedStoreScroll = debounce(function storeScroll() {
             document.documentElement.dataset.scroll = window.scrollY;
         }, 25);
-
-        // const renderBlurryNav = () => {
-        //     html2canvas(document.getElementById('root')).then(canvas => {
-        //         canvas.getContext('2d');
-        //         document.body.appendChild(canvas);
-
-        //         canvasRGB(canvas, 0, 0, $('canvas').width(), $('canvas').height(), 23);
-
-        //         var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        //         document.getElementById('pageNav').style.background = 'url(' + image + ')';
-        //     })
-        // }
 
         document.addEventListener("scroll", debouncedStoreScroll);
         // call scrollstate for the first time
@@ -58,29 +87,29 @@ const Portfolio = () => {
 
     return (
         <>
-            <NavBar>
-                <WavySVG isNav={true} fill={"#fff"} />
+            <NavBar style={responsiveStyles} >
+                <WavySVG fill={"#fff"} />
             </NavBar>
 
-            <Intro portrait={portrait} />
+            <Intro style={responsiveStyles} />
 
-            <About tower={tower} nlp={nlp}>
-                <WavySVG isNav={false} fill={"#fff"} />
+            <About style={responsiveStyles} >
+                <WavySVG fill={"#fff"} />
             </About>
 
-            <Skills>
-                <WavySVG isNav={false} fill={"#fff"} />
+            <Skills style={responsiveStyles} >
+                <WavySVG fill={"#fff"} />
             </Skills>
 
-            <Projects>
-                <WavySVG isNav={false} fill={"#fff"} />
+            <Projects style={responsiveStyles} >
+                <WavySVG fill={"#fff"} />
             </Projects>
 
-            <Contact>
-                <WavySVG isNav={false} fill={"#fff"} />
+            <Contact style={responsiveStyles} >
+                <WavySVG fill={"#fff"} />
             </Contact>
         </>
     );
 };
 
-export default Portfolio;
+export default withBreakpoints(Portfolio);

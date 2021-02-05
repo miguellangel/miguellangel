@@ -1,22 +1,27 @@
 import React from 'react';
-import {Row, Col} from "react-bootstrap";
+import { Row, Col } from 'react-bootstrap'
+import portrait from "../portrait1.png";
 
-const MainBody = ({portrait}) => {
+
+const Intro = ({style}) => {
+    // let colStyles = {
+    //     maxWidth: '100% !important'
+    // }
     return (
-        <section id="main">
-            <Row  className="fullsize" id="intro" xs={1} md={1} lg={2}>
-                <Col sm={8} lg={4}>
-                    {/* <Container style={{width: "100%", height: "100%"}}> */}
-                        <img id="portrait" src={portrait} alt="This is me: Miguel Arriaga" />
-                    {/* </Container> */}
+        <section id="main" style={{width: '100vw', maxWidth: '100vw'}}>
+            <Row id="intro" xs={1} sm={2}>
+                <Col sm={4}>
+                    <img id="portrait" src={portrait} alt="This is me: Miguel Arriaga" style={style.intro.portrait}/>
                 </Col>
-                <Col sm={4} lg={8}>
-                    <h4 className="center el">THIS IS ME</h4>
-                    <h1 className="center el">MIGUEL ARRIAGA</h1>
+                <Col sm={8}>
+                    <div className="center">
+                        <h4>THIS IS ME</h4>
+                        <h1>MIGUEL ARRIAGA</h1>
+                    </div>
                 </Col>
             </Row>
     </section>
     
     );
 }
-export default MainBody;
+export default Intro;

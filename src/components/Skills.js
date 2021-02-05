@@ -1,40 +1,11 @@
 import React from 'react';
-import {Container, Row, Col, Tabs, Tab} from 'react-bootstrap'
+import {Container, Tabs, Tab} from 'react-bootstrap'
 import { anime } from 'react-anime'
 import $ from 'jquery'
 
 
 
 const SkillAnimation = ({skillName, skillPercent}) => {
-
-
-    React.useEffect(() => {
-
-        var progressLog = $(`#skill-${skillName}-percentView`)
-        // var progressGloss = $(`#skill-${skillName}-progressGloss`)
-
-        var skillAnimation = anime({
-            targets: `#skillProgressBar-${skillName}`,
-            width: (el) => {return el.getAttribute('width') ? [0, 450 * skillPercent] : null},
-            fill: [`RGB(255, 0, 0`, `RGB(${(510 * skillPercent) > 255 ? Math.abs((510 * skillPercent) - 510) : 255}, ${(510 * skillPercent) > 255 ? 255 : (510 * skillPercent) }, 0)`],
-            easing: 'easeInOutQuad',
-            duration: 1500,
-            direction: 'alternate',
-            loop: false,
-            autoplay: true,
-            update: (anim) => {
-                progressLog.html(`${Math.round(anim.progress * skillPercent)}%`)
-            },
-            complete: (anim) => {
-                skillAnimation.remove()
-                // console.log(anime.running.length)
-            }
-        })
-        // skillAnimation.restart()
-
-        
-
-    })
 
     return (
         <svg id = {`svg-${skillName}`} viewBox="0 0 600 70" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +18,7 @@ const SkillAnimation = ({skillName, skillPercent}) => {
                     </feComponentTransfer>
                     <feGaussianBlur stdDeviation="5"/>
                     <feOffset dx="5" dy="5" result="offsetblur"/>
-                    <feFlood floodColor="darkgrey" result="color"/>
+                    <feFlood floodColor="#005d3a3a" result="color"/>
                     <feComposite in2="offsetblur" operator="in"/>
                     <feComposite in2="SourceAlpha" operator="in" />
                     <feMerge>
@@ -74,7 +45,7 @@ const SkillAnimation = ({skillName, skillPercent}) => {
     )
 }
 
-const Skills = ({children}) => {
+const Skills = ({children, style}) => {
     //  each language/skill will consist of level of comprehension and amount of experience working with it.
     // amount of experience for each skill will be calculated based on the time spent working on projects over the total amount of time I have been programming.
     let frontend = {
@@ -119,18 +90,50 @@ const Skills = ({children}) => {
 
     React.useEffect(() => {
 
+        const animateProgressBars = (group) => {
+            Object.keys(group).forEach((el) => {
 
+                var progressLog = $(`#skill-${el}-percentView`)
+                var skillPercent = Object.values(group[el])[0]
+
+                anime({
+                    targets: `#skillProgressBar-${el}`,
+                    width: skillPercent * 450,
+                    fill: [`RGB(255, 0, 0`, `RGB(${(510 * skillPercent) > 255 ? Math.abs((510 * skillPercent) - 510) : 255}, ${(510 * skillPercent) > 255 ? 255 : (510 * skillPercent) }, 0)`],
+                    // width: 300,
+                    easing: 'easeInOutQuad',
+                    duration: 1500,
+                    direction: 'alternate',
+                    loop: false,
+                    autoplay: true,
+                    delay: 1000,
+                    update: (anim) => {
+                        progressLog.html(`${Math.round(anim.progress * skillPercent)}%`)
+                    },
+                    complete: (anim) => {
+                        // anime.remove(anim)
+                    }
+
+                }).restart()
+            })
+        }
+        animateProgressBars(frontend.skills)
+        animateProgressBars(frontend.libraries)
+
+        setTimeout(() => console.log(anime.running.length), 5000)
     })
 
     return (
         <>
             <section id="skills">
-                <h3 style={{position: 'absolute', display: 'table-caption'}}>my skillset</h3>
-                {children}
-                    <Row className='center'>
-                        <Col>
+                <div className='container-true' style={{minWidth: '100vw', height: '50px'}}>
+                    <h3 style={style.common.h3}>my skillset</h3>
+                    {children}
+                </div>
+{/*                    <Row className='center'>
+                        <Col>*/}
                             <Container id='skillsetDetailsContainer'>
-                                <Tabs defaultActiveKey="languages" id="uncontrolled-tab-example" style={{display: 'inline-flex'}}>
+                                <Tabs defaultActiveKey="languages" id="uncontrolled-tab-example" style={{display: 'inline-flex', marginLeft: '-15px'}}>
                                     <Tab eventKey="languages" title="languages">
                                         {skillMap}
                                     </Tab>
@@ -139,8 +142,8 @@ const Skills = ({children}) => {
                                     </Tab>
                                 </Tabs>
                             </Container>
-                        </Col>
-                    </Row>
+                        {/*</Col>*/}
+                    {/*</Row>*/}
 
             </section>
         </>
