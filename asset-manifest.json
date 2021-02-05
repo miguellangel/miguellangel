@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/miguellangel.github.io/static/css/main.dd663b4a.chunk.css",
-    "main.js": "/miguellangel.github.io/static/js/main.d1b43b92.chunk.js",
-    "main.js.map": "/miguellangel.github.io/static/js/main.d1b43b92.chunk.js.map",
+    "main.css": "/miguellangel.github.io/static/css/main.4902e178.chunk.css",
+    "main.js": "/miguellangel.github.io/static/js/main.51aa0a7a.chunk.js",
+    "main.js.map": "/miguellangel.github.io/static/js/main.51aa0a7a.chunk.js.map",
     "runtime-main.js": "/miguellangel.github.io/static/js/runtime-main.ed9dba80.js",
     "runtime-main.js.map": "/miguellangel.github.io/static/js/runtime-main.ed9dba80.js.map",
     "static/css/2.20aa2d7b.chunk.css": "/miguellangel.github.io/static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.d4f72553.chunk.js": "/miguellangel.github.io/static/js/2.d4f72553.chunk.js",
-    "static/js/2.d4f72553.chunk.js.map": "/miguellangel.github.io/static/js/2.d4f72553.chunk.js.map",
+    "static/js/2.a434cec5.chunk.js": "/miguellangel.github.io/static/js/2.a434cec5.chunk.js",
+    "static/js/2.a434cec5.chunk.js.map": "/miguellangel.github.io/static/js/2.a434cec5.chunk.js.map",
     "index.html": "/miguellangel.github.io/index.html",
     "static/css/2.20aa2d7b.chunk.css.map": "/miguellangel.github.io/static/css/2.20aa2d7b.chunk.css.map",
-    "static/css/main.dd663b4a.chunk.css.map": "/miguellangel.github.io/static/css/main.dd663b4a.chunk.css.map",
-    "static/js/2.d4f72553.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.d4f72553.chunk.js.LICENSE.txt",
+    "static/css/main.4902e178.chunk.css.map": "/miguellangel.github.io/static/css/main.4902e178.chunk.css.map",
+    "static/js/2.a434cec5.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.a434cec5.chunk.js.LICENSE.txt",
     "static/media/LandingPage.scss": "/miguellangel.github.io/static/media/Quicksand.ffab2a99.eot",
     "static/media/UT-Tower.edec963e.png": "/miguellangel.github.io/static/media/UT-Tower.edec963e.png",
     "static/media/nlp.58382e0e.png": "/miguellangel.github.io/static/media/nlp.58382e0e.png",
-    "static/media/portrait.c602c376.png": "/miguellangel.github.io/static/media/portrait.c602c376.png"
+    "static/media/portrait1.2da705f6.png": "/miguellangel.github.io/static/media/portrait1.2da705f6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.ed9dba80.js",
     "static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.d4f72553.chunk.js",
-    "static/css/main.dd663b4a.chunk.css",
-    "static/js/main.d1b43b92.chunk.js"
+    "static/js/2.a434cec5.chunk.js",
+    "static/css/main.4902e178.chunk.css",
+    "static/js/main.51aa0a7a.chunk.js"
   ]
 }
