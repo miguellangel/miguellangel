@@ -23,23 +23,23 @@ const SquaredItem = ({children, breakpoints, currentBreakpoint}) => {
 		<Container>
 			<Row>
 				<Col sm={12} md={6} lg={4} xl={3} style={style}>
-					<p style={{textAlign: 'center'}}>This is an Item</p>
-				</Col>	
-{/*				<Col sm={12} md={6} lg={4} xl={3} style={style}>
-					This is an Item
-				</Col>		
-				<Col sm={12} md={6} lg={4} xl={3} style={style}>
-					This is an Item
-				</Col>		
-				<Col sm={12} md={6} lg={4} xl={3} style={style}>
-					This is an Item
-				</Col>		
-				<Col sm={12} md={6} lg={4} xl={3} style={style}>
-					This is an Item
+					<p style={{textAlign: 'center'}}>Portfolio</p>
 				</Col>	
 				<Col sm={12} md={6} lg={4} xl={3} style={style}>
+					Junglebooks
+				</Col>		
+				<Col sm={12} md={6} lg={4} xl={3} style={style}>
+					Dino Game
+				</Col>		
+				<Col sm={12} md={6} lg={4} xl={3} style={style}>
 					This is an Item
-				</Col>		*/}
+				</Col>		
+				<Col sm={12} md={6} lg={4} xl={3} style={style}>
+					This is an Item
+				</Col>	
+				<Col sm={12} md={6} lg={4} xl={3} style={style}>
+					This is an Item
+				</Col>
 			</Row>
 		</Container>
 	)
