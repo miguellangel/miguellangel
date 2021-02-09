@@ -15,8 +15,8 @@ const Intro = ({style}) => {
                 </Col>
                 <Col sm={8}>
                     <div className="center">
-                        <h4>THIS IS ME</h4>
-                        <h1>MIGUEL ARRIAGA</h1>
+                        <h4>hello, i am</h4>
+                        <h1>MIGUEL ANGEL</h1>
                     </div>
                 </Col>
             </Row>

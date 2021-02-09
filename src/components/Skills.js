@@ -8,7 +8,7 @@ import $ from 'jquery'
 const SkillAnimation = ({skillName, skillPercent}) => {
 
     return (
-        <svg id = {`svg-${skillName}`} viewBox="0 0 600 70" xmlns="http://www.w3.org/2000/svg">
+        <svg id = {`svg-${skillName}`} viewBox="0 0 600 70" xmlns="http://www.w3.org/2000/svg" style={{verticalAlign:'super'}}>
             <defs>
                 <path id = {`skill-${skillName}-textPath`} d="M 15 36 L 515 35"></path>
                 <path id = {`skill-${skillName}-percentTextPath`} d="M 490 65 L 570 65"></path>
@@ -132,15 +132,22 @@ const Skills = ({children, style}) => {
                 </div>
 {/*                    <Row className='center'>
                         <Col>*/}
-                            <Container id='skillsetDetailsContainer'>
-                                <Tabs defaultActiveKey="languages" id="uncontrolled-tab-example" style={{display: 'inline-flex', marginLeft: '-15px'}}>
-                                    <Tab eventKey="languages" title="languages">
-                                        {skillMap}
-                                    </Tab>
-                                    <Tab eventKey="libraries" title="libraries">
-                                        {libraryMap}
-                                    </Tab>
-                                </Tabs>
+                            <Container>
+                                <div id='skillsetDetailsContainer'>
+                                    <Tabs defaultActiveKey="languages" id="uncontrolled-tab-example" style={{display: 'inline-flex'}}>
+                                        <Tab eventKey="languages" title="languages" >
+                                            <div style={style.skills}>
+                                                {skillMap}
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="technologiesAndFrameworkds" title="Technologies and Frameworks" >
+                                            <div style={style.skills}>
+                                                {libraryMap}
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
+
                             </Container>
                         {/*</Col>*/}
                     {/*</Row>*/}

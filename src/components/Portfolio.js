@@ -9,7 +9,7 @@ import Skills from "./Skills.js";
 import Projects from "./Projects.js";
 import Contact from "./Contact.js";
 
-// import $ from 'jquery'
+import $ from 'jquery'
 
 import { withBreakpoints } from 'react-breakpoints'
 
@@ -60,7 +60,10 @@ const Portfolio = ({breakpoints, currentBreakpoint}) => {
                 textAlign: 'center',
             },
         },
-        skills: {},
+        skills: {
+            gridTemplateColumns: currentBreakpoint === 'small' ? 'auto' : currentBreakpoint === 'medium' ? 'auto auto' : 'auto auto auto'
+
+        },
         projects: {},
         contact: {},
     }
@@ -70,9 +73,22 @@ const Portfolio = ({breakpoints, currentBreakpoint}) => {
 
     })
     React.useEffect(() => {
+        var IDs = []
+        $('section').each((el, l) => IDs.push(l.getAttribute('id')))
+        console.log(IDs)
 
         const debouncedStoreScroll = debounce(function storeScroll() {
-            document.documentElement.dataset.scroll = window.scrollY;
+            document.documentElement.dataset.scroll = window.scrollY
+
+            // var scrollTop = window.pageYOffset || document.documentElement.scrollTop
+            // var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
+
+            // window.onscroll = () => {
+            //     console.log(window.scrollY, scrollTop)
+            //     window.scrollY > scrollTop ? window.scrollTo('#about') : console.log('will stop')
+            //     // window.scrollTo(scrollLeft, scrollTop)
+            // }
+        
         }, 25);
 
         document.addEventListener("scroll", debouncedStoreScroll);

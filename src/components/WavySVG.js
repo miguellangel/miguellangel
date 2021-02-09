@@ -24,7 +24,7 @@ const WavySVG = ({ fill, breakpoints, currentBreakpoint }) => {
             targets: '.SVGPath',
             keyframes: [{d: newPaths.dx}],
             easing: 'linear',
-            duration: 7000,
+            duration: 14000,
             loop: false,
             direction: "normal",
             autoplay: true,
