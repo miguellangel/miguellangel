@@ -3,7 +3,7 @@ import { anime } from 'react-anime'
 // import $ from 'jquery'
 
 /*Components*/
-// import SquaredItem from './SquaredItem.js'
+import ProjectItem from './ProjectItem.js'
 
 
 
@@ -35,7 +35,7 @@ const Projects = ({children, style}) => {
 
                 </div>
 
-                {/*<SquaredItem />*/}
+                <ProjectItem />
 
 			</section>
         </>

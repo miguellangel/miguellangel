@@ -23,8 +23,10 @@ body {
     max-height: 100vh;
     height: 100vh;
     overflow-x: hidden;
-
-    background: #fff;
+    --txtColor:#000f0f0f;
+    --mainColor1:#FFE0E6;
+    --mainColor2: #E0FFFA;
+    background: linear-gradient(45deg, var(--mainColor1), var(--mainColor2));
     
     #root {
         #pageNav {
@@ -60,7 +62,7 @@ body {
             position: absolute;
             font-family: 'Dancing Script';
             letter-spacing: 5px;
-            padding-left: 60px;
+            /*padding-left: 60px;*/
         }
         
         #main {
@@ -118,8 +120,8 @@ body {
 
             }
         }
-        #main, #about, #skills, #projects, #contact {
-            /*background: white;*/
+        #about, #projects {
+            background: linear-gradient(-45deg, var(--mainColor2), var(--mainColor1));
         }
 
         #skills {
@@ -145,13 +147,13 @@ body {
                 
             #skillsetDetailsContainer {
                 /*box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);*/
-                background:white;
+                /*background:white;*/
                 border-radius: 50% 50% 0 0;
                 margin-bottom: 8px;
                 position:relative;
 
                 &::before, &::after {
-                    content: "";
+                    /*content: "";*/
                     position:absolute;
                     width: 50%;
                     height: 5%;
@@ -224,16 +226,9 @@ body {
         }
         #projects {
             .container {
-                position: relative;
-                top: 50%;
-                transform: translate(0%, -50%);
-                .row {
-                    div {
-                        background: white;
-                        box-shadow: -1px 1px 10px -5px #0f0f0f;
-                        border-radius: 20px;
-                    }
-                }
+                width: 100%;
+                height:78px;
+                background:white;
             }
         }
 
@@ -242,8 +237,10 @@ body {
 }
 
 html:not([data-scroll='0']) {
-    .SVGPath {
-        fill: #ffffff !important;
+    .SVGPath:first-of-type {
+        fill: white;
+        fill-opacity:.3;
+        stroke: #000f0f0f;
     }
 }
 
@@ -276,7 +273,7 @@ html:not([data-scroll='0']) {
 
 ::-webkit-scrollbar-track {
     border-radius: 10px;
-    box-shadow: inset 1px 1px 10px grey; 
+    box-shadow: inset 1px 1px 10px #eeeeee; 
 }
  
 ::-webkit-scrollbar-thumb {
@@ -287,5 +284,5 @@ html:not([data-scroll='0']) {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: lightgrey;
+    background: #eeeeee;
 }

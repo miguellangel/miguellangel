@@ -1,20 +1,21 @@
 import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 
-import tower from "../UT-Tower.png";
+import tower from "../UT-Tower.svg";
 import nlp from "../nlp.png";
+import workspace from "../workspace.svg"
 
 
 const About = ({children, style}) => {
 
     return (
         <section id="about">
-            <div className="container-true" style={{width: '100vw', height: '50px'}}>
+            <div className="container-true" style={{width: '100vw', height: '78px'}}>
                 <h3 style={style.common.h3}>about me</h3>
                 {children}
             </div>
 
-            <Container>
+            <Container style={{maxWidth:'80vw'}}>
                 <Row xs={1} md={3} lg={3}>
                     <Col className="">
                             <Row md={1} className="">
@@ -32,7 +33,7 @@ const About = ({children, style}) => {
                     <Col className="">
                         <Row className="" md={1} style={{padding:"30px"}}>
                             <Col>
-                                <img className="about-img" alt="web-dev" src="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_960_720.png" width="250px" height="250px" />
+                                <img className="about-img" alt="web-dev" src={workspace} width="250px" height="250px" />
                             </Col>
                             <Col>
                                 <p className="center about-p" style={style.about.p}>My professional interests are Frontend Development and Machine Learning as applied to Natural Language Processing (NLP)</p>

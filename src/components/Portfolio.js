@@ -41,7 +41,7 @@ const Portfolio = ({breakpoints, currentBreakpoint}) => {
             zIndex: 3,
             minWidth: '100vw',
             height: '79px',
-            fontSize: currentBreakpoint === 'small' ? 'small' : currentBreakpoint === 'medium' ? 'medium' : currentBreakpoint === 'large' ? 'large' : currentBreakpoint === 'larger' ? 'large' : 'x-large',
+            fontSize: currentBreakpoint === 'small' ? 'small' : currentBreakpoint === 'medium' ? 'medium' : currentBreakpoint === 'large' ? 'large' : currentBreakpoint === 'larger' ? 'large' : '2.5vmin',
             nav: {
                 padding: breakpoints[currentBreakpoint] < breakpoints.extraLarge ? '1em' : null,
             }            
@@ -55,7 +55,7 @@ const Portfolio = ({breakpoints, currentBreakpoint}) => {
         },
         about: {
             p: {
-                fontSize: currentBreakpoint === 'small' ? 'small' : currentBreakpoint === 'medium' ? 'medium' : currentBreakpoint === 'large' ? 'large' : currentBreakpoint === 'larger' ? 'large' : 'x-large',
+                fontSize: currentBreakpoint === 'small' ? 'small' : currentBreakpoint === 'medium' ? 'medium' : currentBreakpoint === 'large' ? '3vmin' : currentBreakpoint === 'larger' ? '3vmin' : '2vmin',
                 fontFamily: "Montserrat, sans-serif",
                 textAlign: 'center',
             },
