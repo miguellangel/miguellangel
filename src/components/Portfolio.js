@@ -33,7 +33,8 @@ const Portfolio = ({breakpoints, currentBreakpoint}) => {
                 position: 'absolute',
                 fontFamily: 'Dancing Script',
                 letterSpacing: '5px',
-                paddingLeft: breakpoints[currentBreakpoint] < breakpoints.large ? '20px' : '60px',
+                left: breakpoints[currentBreakpoint] < breakpoints.large ? '20px' : '60px',
+                top: breakpoints[currentBreakpoint] < breakpoints.large ? '20px' : '40px'
             }
         },
         navBar: {
@@ -69,13 +70,13 @@ const Portfolio = ({breakpoints, currentBreakpoint}) => {
     }
 
     React.useEffect(() => {
-        console.log(currentBreakpoint)
+        // console.log(currentBreakpoint)
 
     })
     React.useEffect(() => {
         var IDs = []
         $('section').each((el, l) => IDs.push(l.getAttribute('id')))
-        console.log(IDs)
+        // console.log(IDs)
 
         const debouncedStoreScroll = debounce(function storeScroll() {
             document.documentElement.dataset.scroll = window.scrollY

@@ -26,8 +26,7 @@ body {
     --txtColor:#000f0f0f;
     --mainColor1:#FFE0E6;
     --mainColor2: #E0FFFA;
-    background: linear-gradient(45deg, var(--mainColor1), var(--mainColor2));
-    
+        
     #root {
         #pageNav {
             z-index: 3;
@@ -58,11 +57,16 @@ body {
             height: 100vh;
             display:grid;
         }
-        section > div > h3 {
-            position: absolute;
-            font-family: 'Dancing Script';
-            letter-spacing: 5px;
-            /*padding-left: 60px;*/
+        section > .container-true {
+            width:100vw;
+            height: 78px;
+
+            h3 {
+                position: absolute;
+                font-family: 'Dancing Script';
+                letter-spacing: 5px;
+                /*padding-left: 60px;*/
+            }
         }
         
         #main {
@@ -103,15 +107,14 @@ body {
                 .row {
                     .col {
                         .about-img {
-                            /*shape-outside: circle(50% at 50% 50%);*/
-                            /*border-radius: 100%;*/
-                            /*float: right;*/
-                            position: relative !important;
+                            position: relative;
                             top:50%;
                             left: 50%;
                             transform: translate(-50%,-50%);
-                            width: 30vmin;
-                            height:30vmin;
+                            &:nth-child(2) {
+                                width: 30vmin;
+                                height:30vmin;
+                            }
 
                         }
 
@@ -120,6 +123,9 @@ body {
 
             }
         }
+        #main, #skills, #contact {
+            background: linear-gradient(45deg, var(--mainColor1), var(--mainColor2));
+        }
         #about, #projects {
             background: linear-gradient(-45deg, var(--mainColor2), var(--mainColor1));
         }
@@ -127,12 +133,12 @@ body {
         #skills {
             overflow: hidden;
 
-            h3,h5 {
+/*            h3,h5 {
                 font-family: 'Dancing Script';
                 padding: '30px';
                 letter-spacing: 5px;
                 padding-left: 20px;
-            }
+            }*/
             .container {
                 max-width: 90vw;
                 width: 90vw;
@@ -172,26 +178,20 @@ body {
                 }
 
                 .nav {
-                    a {
-                        font-family: 'Quicksand';
-                        border:none;
-                    }
-                    a:first-child {
-                        box-shadow: 1px 1px 10px #f0f0f0;
+                    a{
+                        box-shadow: 1px 1px 10px rgba(0,0,0,.05);
+                        font-family: 'Quicksand light';
+                        color:rgba(0,0,0,0.5);
+                        border-radius:3em 0 0 0 / 0.5em 0 0 0;
 
-                        &[aria-selected=true] {
-                            box-shadow: inset 1px 1px 10px #f0f0f0;
-                            border-bottom: none;
+                        & + a {
+                            border-radius:0 3em 0 0 / 0 0.5em 0 0;
                         }
-                    }
-                    a:nth-child(2) {
-                        box-shadow: 1px 1px 10px #f0f0f0;
-                        
+
                         &[aria-selected=true] {
-                            box-shadow: inset 1px 1px 10px #f0f0f0;
+                            background:transparent;
+                            box-shadow: inset 1px 1px 10px rgba(0,0,0,.05);
                             border-bottom: none;
-
-
                         }
                     }
 
@@ -279,10 +279,10 @@ html:not([data-scroll='0']) {
 ::-webkit-scrollbar-thumb {
     background: white; 
     border-radius: 10px;
-    border: 1px dotted black;
+    border: 1px groove aliceblue;
 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #eeeeee;
+    background: #eee;
 }

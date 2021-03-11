@@ -29,7 +29,7 @@ const Projects = ({children, style}) => {
         <>
             <section id="projects">
 
-                <div className='container-true' style={{minWidth: '100vw', height: '50px'}}>
+                <div className='container-true'>
 	            	<h3 style={style.common.h3}>my projects</h3>
                 	{children}
 

@@ -10,7 +10,7 @@ const About = ({children, style}) => {
 
     return (
         <section id="about">
-            <div className="container-true" style={{width: '100vw', height: '78px'}}>
+            <div className="container-true">
                 <h3 style={style.common.h3}>about me</h3>
                 {children}
             </div>
