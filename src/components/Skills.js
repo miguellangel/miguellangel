@@ -120,13 +120,13 @@ const Skills = ({children, style}) => {
         animateProgressBars(frontend.skills)
         animateProgressBars(frontend.libraries)
 
-        setTimeout(() => console.log(anime.running.length), 5000)
+        // setTimeout(() => console.log(anime.running.length), 5000)
     })
 
     return (
         <>
             <section id="skills">
-                <div className='container-true' style={{minWidth: '100vw', height: '50px'}}>
+                <div className='container-true'>
                     <h3 style={style.common.h3}>my skillset</h3>
                     {children}
                 </div>
@@ -135,12 +135,12 @@ const Skills = ({children, style}) => {
                             <Container>
                                 <div id='skillsetDetailsContainer'>
                                     <Tabs defaultActiveKey="languages" id="uncontrolled-tab-example" style={{display: 'inline-flex'}}>
-                                        <Tab eventKey="languages" title="languages" >
+                                        <Tab eventKey="languages" title="Languages" >
                                             <div style={style.skills}>
                                                 {skillMap}
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="technologiesAndFrameworkds" title="Technologies and Frameworks" >
+                                        <Tab eventKey="technologiesAndFrameworkds" title="Technologies & Frameworks" >
                                             <div style={style.skills}>
                                                 {libraryMap}
                                             </div>
