@@ -33,6 +33,9 @@ body {
             /*padding: 1em;*/
             font-family: 'Quicksand','Open Sans';
             /*font-weight: 700;*/
+            backdrop-filter:blur(15px)saturate(1.25);
+            box-shadow: 1px 1px 10px rgba(0,0,0,0.25);
+
             .container {
                 width: max-content;
                 text-align: center;
@@ -227,8 +230,26 @@ body {
         #projects {
             .container {
                 width: 100%;
-                height:78px;
-                background:white;
+                height:50%;
+                /*background: rgba(1,1,1,0.015);*/
+                border-radius: 3em;
+                display:grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+                div {
+                    /*place-self: center;*/
+                    font-family: 'Quicksand light';
+                    display:grid;
+                    grid-template-columns: auto;
+                    background: rgba(1,1,1,0.015);
+                    border-radius:3em 3em 3em 3em / 1em 1em 1em 1em;
+                    box-shadow: 1px 1px 10px rgba(1,1,1,0.1);
+                    margin:10px;
+
+                    img, a {
+                        place-self:center;
+                    }
+                }
             }
         }
 

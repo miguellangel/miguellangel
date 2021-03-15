@@ -20,8 +20,8 @@ const NavBar = ({children, breakpoints, currentBreakpoint, style}) => {
                 
         breakpoints[currentBreakpoint] < breakpoints.large 
             ? $('#responsive-navbar-nav').css({
-                background: 'linear-gradient(0deg, rgba(255,255,255,0.5), rgba(255,255,255,0))',
-                boxShadow: '0 7px 9px -7px black',
+                // background: 'linear-gradient(0deg, rgba(255,255,255,0.5), rgba(255,255,255,0))',
+                // boxShadow: '0 7px 9px -7px black',
                 borderRadius: '10px 0px 10px 10px'})
             : $('#responsive-navbar-nav').css({
                 background: 'transparent',

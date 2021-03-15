@@ -105,8 +105,8 @@ const Portfolio = ({breakpoints, currentBreakpoint}) => {
     return (
         <>
             <NavBar style={responsiveStyles} >
-                <WavySVG fill={"#fff"} />
-            </NavBar>
+{/*                <WavySVG fill={"#fff"} />
+*/}            </NavBar>
 
             <Intro style={responsiveStyles} />
 

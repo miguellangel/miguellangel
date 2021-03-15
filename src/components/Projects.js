@@ -32,7 +32,6 @@ const Projects = ({children, style}) => {
                 <div className='container-true'>
 	            	<h3 style={style.common.h3}>my projects</h3>
                 	{children}
-
                 </div>
 
                 <ProjectItem />
