@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import ReactBreakpoints from 'react-breakpoints'
-import './index.css';
-import App from './App.js';
-import * as serviceWorker from './serviceWorker';
+// import './index.css'
+import './App.scss'
+import App from './App.js'
+import * as serviceWorker from './serviceWorker'
 
 const breakpoints = {
     small: 576,
@@ -16,13 +17,10 @@ const breakpoints = {
 ReactDOM.render(
     // <React.StrictMode> 
     <ReactBreakpoints breakpoints={breakpoints}>
-        <App/>
+        <App />
     </ReactBreakpoints>,
     // </React.StrictMode>,
     document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

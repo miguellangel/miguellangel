@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&family=Open+Sans:wght@300;400&display=swap');
+/*convert variable fonts into all major formats for compatibility -> https://everythingfonts.com/font-face*/
+@mixin font($font-family, $font-file) {
+    @font-face {
+        font-family: $font-family;
+        src:url($font-file + '.eot');
+        src:url($font-file + '.eot?#iefix') format('embedded-opentype'),
+            url($font-file + '.woff') format('woff'),
+            url($font-file + '.ttf') format('truetype'),
+            url($font-file + '.svg#' + $font-family) format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap; /*tell browser to display using system font immediately on load*/
+    }
+}
+@include font('Quicksand', 'components/fonts/Quicksand');
+
+
+@keyframes sidebar-collapse {
+	0% {grid-template-columns: 22.5% 77.5% }
+	10% {grid-template-columns: 20.25% 79.75%}
+	20% {grid-template-columns: 18% 82%}
+	30% {grid-template-columns: 15.75% 84.25%}
+	40% {grid-template-columns: 13.5% 86.5%}
+	50% {grid-template-columns: 11.25% 88.75%}
+	60% {grid-template-columns: 9% 91%}
+	70% {grid-template-columns: 6.75% 93.25}
+	80% {grid-template-columns: 4.5% 95.5%}
+	90% {grid-template-columns: 2.25% 97.75%}
+	100% { grid-template-columns: 0% 100% }
+}
+
+
+html {
+	min-width: 100vw;
+	width: 100vw;
+	min-height: 100vh; 
+	height: 100vh;
+
+}
+body,#root { width: inherit; height: inherit; }
+body {
+	margin: 0;
+  	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 
+  	'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+  	$mainColor: #79f2c0;
+  	$scndryColor: #172b4d;
+
+	/*BREAKPOINTS*/
+	$small: 0px;
+	$medium: 768px;
+	$large: 992px;
+	$larger: 1024px;
+	$extraLarge: 1441px;
+
+	@mixin media($orientation, $breakpoint) {
+		/*determine orientation*/
+		@media (orientation: $orientation) {
+			@media (min-width: $breakpoint) {
+				@content;
+			}
+		}
+	}
+
+  	#root {
+        // animation: sidebar-collapse 0.25s ease 1 reverse forwards;
+
+        &[grid-sidebar-collapse="true"] {
+            // grid-template-columns: 0% 100%;
+  		    animation: sidebar-collapse 0.25s ease 1 forwards;
+        }
+
+  		@include media('portrait', $small) {
+  			grid-template-columns: 0% 100%;
+  		}
+
+  		display: grid;
+
+  		grid-template-columns: 22.5% 77.5%;
+
+
+	  	.sidebar, .content {
+	  		display:grid;
+	  		place-self:center;
+	  	}
+
+
+	  	.sidebar {
+
+	  		#sidebar-toggler {
+
+	  			position:relative;
+	  			float:right;
+				margin:{right:-10vmin;top:5vmin;}
+	  			background: none;
+	  			border: none;
+	  			padding: none;
+	  			cursor: pointer;
+	  			width:5vmin;
+	  			height:5vmin;
+
+	  			&::before {
+	  				position: absolute;
+	  				content: url('./components/media/sidebarButton.svg');
+	  				width:100%;
+	  				height:100%;
+	  				top:0;
+	  				left:0;
+	  			}
+	  			&:focus {
+	  				outline: none;
+	  			}
+	  		}
+
+	  		@include media('portrait', $small) {
+	  			width:0%;
+	  		}
+
+	  		width: 100%;
+	  		height: 100%;
+
+
+	  		background: $mainColor;
+	  	}
+	  	.content {
+	  		background: $scndryColor;
+	  		width: 100%;
+	  		height: 100%;
+	  	}
+
+  	}
+
+
+
+
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.container {
+	min-width: 85%;
+	width: 85%;
+	max-width: 85%;
+
+	min-height: 10%;
+	height: 85%;
+	max-height: 85%;
+	position:relative;
+	display: grid;
+
+	&-true, &-center{width: 100%;height:100%;}
+
+	&-true {
+
+		&-center {
+			place-self:center;
+		}
+	};
+
+	&-center {
+		width: initial;
+		height:initial;
+		place-self: center;
+	};
+}

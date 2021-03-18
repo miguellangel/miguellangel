@@ -1,19 +1,30 @@
 import React from 'react';
+import { withBreakpoints } from 'react-breakpoints'
 
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
+import Sidebar from './components/Sidebar.jsx'
+import Intro from './components/Intro.js'
 
-import Portfolio from "./components/Portfolio.js";
+const App = ({ currentBreakpoint, breakpoints }) => {
 
-const App = () => {
+	var props = {
+		'breakpoint': currentBreakpoint,
+	}
 
 	React.useEffect(() => {
+		// console.log(currentBreakpoint)
 	})
 
 	return (
-		<Portfolio />
+		<>
+			<div className="sidebar">
+				<Sidebar props={ props }/>
+			</div>
+			<div className="content">
+				<Intro props={ props }/>
+			</div>
+
+		</>
 	)
 }
 
-export default App;
+export default withBreakpoints(App);
