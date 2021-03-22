@@ -1,14 +1,8 @@
 import React from 'react';
-import { withBreakpoints } from 'react-breakpoints'
 
 import Sidebar from './components/Sidebar.jsx'
-import Intro from './components/Intro.js'
-
-const App = ({ currentBreakpoint, breakpoints }) => {
-
-	var props = {
-		'breakpoint': currentBreakpoint,
-	}
+const App = () => {
+    // determine breakpoint small and portrait on start => setActive: false
 
 	React.useEffect(() => {
 		// console.log(currentBreakpoint)
@@ -16,15 +10,10 @@ const App = ({ currentBreakpoint, breakpoints }) => {
 
 	return (
 		<>
-			<div className="sidebar">
-				<Sidebar props={ props }/>
-			</div>
-			<div className="content">
-				<Intro props={ props }/>
-			</div>
-
+			<Sidebar />
+			<div className="content"></div>
 		</>
 	)
 }
 
-export default withBreakpoints(App);
+export default App;

@@ -15,22 +15,6 @@
 }
 @include font('Quicksand', 'components/fonts/Quicksand');
 
-
-@keyframes sidebar-collapse {
-	0% {grid-template-columns: 22.5% 77.5% }
-	10% {grid-template-columns: 20.25% 79.75%}
-	20% {grid-template-columns: 18% 82%}
-	30% {grid-template-columns: 15.75% 84.25%}
-	40% {grid-template-columns: 13.5% 86.5%}
-	50% {grid-template-columns: 11.25% 88.75%}
-	60% {grid-template-columns: 9% 91%}
-	70% {grid-template-columns: 6.75% 93.25}
-	80% {grid-template-columns: 4.5% 95.5%}
-	90% {grid-template-columns: 2.25% 97.75%}
-	100% { grid-template-columns: 0% 100% }
-}
-
-
 html {
 	min-width: 100vw;
 	width: 100vw;
@@ -46,8 +30,8 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-  	$mainColor: #79f2c0;
-  	$scndryColor: #172b4d;
+  	--mainColor: rgba(1,1,1,0.1);
+  	--scndryColor: rgba(1,1,1,0);
 
 	/*BREAKPOINTS*/
 	$small: 0px;
@@ -66,22 +50,53 @@ body {
 	}
 
   	#root {
-        // animation: sidebar-collapse 0.25s ease 1 reverse forwards;
+        $sb: 22.5%;
+        $ct: 77.5%;
 
-        &[grid-sidebar-collapse="true"] {
-            // grid-template-columns: 0% 100%;
-  		    animation: sidebar-collapse 0.25s ease 1 forwards;
+        @keyframes sidebar-collapse {
+
+            0% {grid-template-columns: $sb $ct }
+            10% {grid-template-columns: 20.25% 79.75%}
+            20% {grid-template-columns: 18% 82%}
+            30% {grid-template-columns: 15.75% 84.25%}
+            40% {grid-template-columns: 13.5% 86.5%}
+            50% {grid-template-columns: 11.25% 88.75%}
+            60% {grid-template-columns: 9% 91%}
+            70% {grid-template-columns: 6.75% 93.25}
+            80% {grid-template-columns: 4.5% 95.5%}
+            90% {grid-template-columns: 2.25% 97.75%}
+            100% { grid-template-columns: 0% 100% }
+        }
+        @keyframes sidebar-show {
+            0% { grid-template-columns: 0% 100% }
+            10% {grid-template-columns: 2.25% 97.75%}
+            20% {grid-template-columns: 4.5% 95.5%}
+            30% {grid-template-columns: 6.75% 93.25}
+            40% {grid-template-columns: 9% 91%}
+            50% {grid-template-columns: 11.25% 88.75%}
+            60% {grid-template-columns: 13.5% 86.5%}
+            70% {grid-template-columns: 15.75% 84.25%}
+            80% {grid-template-columns: 18% 82%}
+            90% {grid-template-columns: 20.25% 79.75%}
+            100% {grid-template-columns: 22.5% 77.5% }
         }
 
-  		@include media('portrait', $small) {
-  			grid-template-columns: 0% 100%;
-  		}
+        @include media('portrait', $small) {
+            $sb: 70%;
+            $ct: 30%;
+            grid-template-columns: 0% 100%;
+        }
+
+        &[grid-sidebar-show="false"] {
+  		    animation: sidebar-collapse 0.125s ease-out 1 forwards;
+        }
+
+        &[grid-sidebar-show="true"] {
+            animation: sidebar-show 0.125s ease-in 1 forwards;
+        }
 
   		display: grid;
-
-  		grid-template-columns: 22.5% 77.5%;
-
-
+        
 	  	.sidebar, .content {
 	  		display:grid;
 	  		place-self:center;
@@ -89,15 +104,19 @@ body {
 
 
 	  	.sidebar {
+	  		background: var(--mainColor);
+            box-shadow: 1px 1px 10px rgba(#0f0f0f, 0.5);
+	  		position: relative;
+            width: 100%;
+	  		height: 100%;
 
 	  		#sidebar-toggler {
-
-	  			position:relative;
-	  			float:right;
-				margin:{right:-10vmin;top:5vmin;}
+                z-index:1;
+	  			position: absolute;
+	  			right:-10vmin;
+                top:5vmin;
 	  			background: none;
 	  			border: none;
-	  			padding: none;
 	  			cursor: pointer;
 	  			width:5vmin;
 	  			height:5vmin;
@@ -115,18 +134,50 @@ body {
 	  			}
 	  		}
 
-	  		@include media('portrait', $small) {
-	  			width:0%;
-	  		}
+            .row {
+                display: grid;
+                grid-template-columns: auto;
+                opacity: 100%;
+                transition: opacity 0.125s;
+                transition-delay: 0.125s;
+            }
+            .hide {
+                opacity: 0%;
+            }
 
-	  		width: 100%;
-	  		height: 100%;
+            #intro {
+                grid-template-rows: 40% 5% 5%;
 
+                img:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 7px 9px -7px rgba(0,0,0,0.7);
+                }
 
-	  		background: $mainColor;
+                img {
+                    place-self: center;
+                    background: rgba(0,0,0, 0.05);
+                    border-radius: 50%;
+                    transform: scale(1);
+                    box-shadow: 0 -7px 9px -7px rgba(0,0,0,0.4);
+                    transition: transform 1s, box-shadow 1s;
+                    position: relative;
+                    width: 15vmin;
+                }
+                h3 {
+                    font-family: 'Quicksand';                }
+                h3, h5 {
+                    padding: 0;
+                    margin: 0;
+                    width: max-content;
+                    height: min-content;
+                    place-self: center;
+                    font-family: 'Montserrat'
+                }
+            }
+
 	  	}
 	  	.content {
-	  		background: $scndryColor;
+	  		background: var(--scndryColor);
 	  		width: 100%;
 	  		height: 100%;
 	  	}
