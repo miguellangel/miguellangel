@@ -81,12 +81,6 @@ body {
             100% {grid-template-columns: 22.5% 77.5% }
         }
 
-        @include media('portrait', $small) {
-            $sb: 70%;
-            $ct: 30%;
-            grid-template-columns: 0% 100%;
-        }
-
         &[grid-sidebar-show="false"] {
   		    animation: sidebar-collapse 0.125s ease-out 1 forwards;
         }
@@ -109,6 +103,7 @@ body {
 	  		position: relative;
             width: 100%;
 	  		height: 100%;
+            grid-template-rows: 40% 60%;
 
 	  		#sidebar-toggler {
                 z-index:1;
@@ -146,7 +141,7 @@ body {
             }
 
             #intro {
-                grid-template-rows: 40% 5% 5%;
+                grid-template-rows: 70% 15% 15%;
 
                 img:hover {
                     transform: scale(1.05);
@@ -163,16 +158,18 @@ body {
                     position: relative;
                     width: 15vmin;
                 }
-                h3 {
-                    font-family: 'Quicksand';                }
                 h3, h5 {
                     padding: 0;
                     margin: 0;
                     width: max-content;
                     height: min-content;
                     place-self: center;
-                    font-family: 'Montserrat'
+                    font-family: 'Dancing Script';
+                    font-size: 3vmin;
+                    font-weight:100
                 }
+                h3 {font-family: 'Montserrat'; font-size: 3.5vmin;}
+                h5 {letter-spacing: 0.3vmin}
             }
 
 	  	}

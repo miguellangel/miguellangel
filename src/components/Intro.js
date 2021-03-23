@@ -3,7 +3,6 @@ import profile from './media/portrait1.png'
 // import { lazyload } from 'react-lazyload'
 
 const Intro = ({shouldHide}) => {
-    console.log('should hide?', shouldHide)
 	return (
 		<>
             <img src={profile} width="50%" alt="miguel angel" />
