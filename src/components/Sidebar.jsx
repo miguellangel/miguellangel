@@ -1,7 +1,10 @@
 import React from 'react'
 import $ from 'jquery'
 import { Suspense } from 'react'
+import ProgressSVG from './ProgressSVG.js'
 const Intro = React.lazy( () => import('./Intro.js') )
+
+
 
 const Sidebar = ({ props }) => {
 
@@ -13,39 +16,55 @@ const Sidebar = ({ props }) => {
     const [isActive, setActive] = React.useState(isPortraitSmall ? false : true)
     const [isModifiedPurposefully, setModifiedPurposely] = React.useState(false)
 
-    const handleClick = () => {
+    const [isDark, setDark] = React.useState(false)
+
+    const handleToggleSidebar = () => {
         setActive(!isActive)
         setModifiedPurposely(true)
     }
-    /* determine whether state modified purposely --fix bug where 
-        e.g. hide sidebar in landscape, then switch to portrait, 
-        the sidebar is shown  */
+
+    const handleSwitchBG = () => {
+        !isDark
+            ? $('#root, #sidebar-toggler, #bgSwitchButton').addClass('dark')
+            : $('#root, #sidebar-toggler, #bgSwitchButton').removeClass('dark')
+
+        setDark(!isDark)
+
+    }
 
 	React.useEffect(() => {
         /* re-determine statusbar display mode on orientation update 
             but check whether to set statusbar active or not 
             depending on already-existing value*/
         window.onorientationchange = () => 
-            isModifiedPurposefully ? setModifiedPurposely(false) : setActive(!isActive)
+            isModifiedPurposefully ? setModifiedPurposely(!isModifiedPurposefully) : setActive(!isActive)
 
         /* change dom aria values conditionally*/
         isActive 
-        ? $('#root').attr('grid-sidebar-show', true)
-        : $('#root').attr('grid-sidebar-show', false)
+        ? $('.sidebar').attr('hide', false)
+        : $('.sidebar').attr('hide', true)
 
 	})
 	return (
 		<div className="sidebar">
-            { /*on-click event update statusbar display mode*/ }
-			<button id="sidebar-toggler" onClick={handleClick}></button>
-			<div className={isActive ? "row" : "row hide"} id="intro">
-                { /*lazyload component*/ }
-                <Suspense fallback={<div>Loading</div>}>
-                    <Intro shouldHide={!isActive}/>
-                </Suspense>
-			</div>
-			<div className={isActive ? "row" : "row hide"}>
-			</div>
+            <div className="container-true">
+                { /*on-click event update statusbar display mode*/ }
+    			<button id="sidebar-toggler" onClick={handleToggleSidebar} />
+    			<div className={isActive ? "row" : "row hide"} id="intro">
+                    { /*lazyload component*/ }
+                    <Suspense fallback={<div>Loading</div>}>
+                        <Intro shouldHide={!isActive}/>
+                    </Suspense>
+    			</div>
+    			<div id="roadmapContainer" className={isActive ? "row" : "row hide"}>
+                    <ProgressSVG />
+
+    			</div>
+                <div className="pillSwitchContainer" onClick={handleSwitchBG}>
+                    <button id="bgSwitchButton"/>
+                </div>
+
+            </div>
 		</div>
 	)
 }

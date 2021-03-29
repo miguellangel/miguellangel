@@ -10,8 +10,12 @@ const App = () => {
 
 	return (
 		<>
-			<Sidebar />
-			<div className="content"></div>
+			<Sidebar />	
+			<div className="content container-true">
+				<div>
+
+				</div>
+			</div>
 		</>
 	)
 }

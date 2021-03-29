@@ -30,9 +30,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-  	--mainColor: rgba(1,1,1,0.1);
-  	--scndryColor: rgba(1,1,1,0);
-
 	/*BREAKPOINTS*/
 	$small: 0px;
 	$medium: 768px;
@@ -50,47 +47,26 @@ body {
 	}
 
   	#root {
-        $sb: 22.5%;
-        $ct: 77.5%;
 
-        @keyframes sidebar-collapse {
+        &[class="dark"] {
 
-            0% {grid-template-columns: $sb $ct }
-            10% {grid-template-columns: 20.25% 79.75%}
-            20% {grid-template-columns: 18% 82%}
-            30% {grid-template-columns: 15.75% 84.25%}
-            40% {grid-template-columns: 13.5% 86.5%}
-            50% {grid-template-columns: 11.25% 88.75%}
-            60% {grid-template-columns: 9% 91%}
-            70% {grid-template-columns: 6.75% 93.25}
-            80% {grid-template-columns: 4.5% 95.5%}
-            90% {grid-template-columns: 2.25% 97.75%}
-            100% { grid-template-columns: 0% 100% }
-        }
-        @keyframes sidebar-show {
-            0% { grid-template-columns: 0% 100% }
-            10% {grid-template-columns: 2.25% 97.75%}
-            20% {grid-template-columns: 4.5% 95.5%}
-            30% {grid-template-columns: 6.75% 93.25}
-            40% {grid-template-columns: 9% 91%}
-            50% {grid-template-columns: 11.25% 88.75%}
-            60% {grid-template-columns: 13.5% 86.5%}
-            70% {grid-template-columns: 15.75% 84.25%}
-            80% {grid-template-columns: 18% 82%}
-            90% {grid-template-columns: 20.25% 79.75%}
-            100% {grid-template-columns: 22.5% 77.5% }
+            --bgColor: rgba(13, 17, 23, 1);
+            --canvasBg: rgba(13, 17, 23, 1); 
+            --contrastColor: var(rgba(225, 223, 255, 1), black);
+
+            --btnFill: rgba(225, 223, 255, 1);
+            --btnBg: transparent;
+            --rotate: rotate(360deg);
+            // background: var(--canvasBg);
+            color: rgba(225, 223, 255, 1);
+
         }
 
-        &[grid-sidebar-show="false"] {
-  		    animation: sidebar-collapse 0.125s ease-out 1 forwards;
-        }
-
-        &[grid-sidebar-show="true"] {
-            animation: sidebar-show 0.125s ease-in 1 forwards;
-        }
-
-  		display: grid;
-        
+        --bgColor: rgba(255,255,255,0.5);
+  		
+        display: grid;
+        background: var(--bgColor);
+        transition: background 0.25s, color 0.125s;
 	  	.sidebar, .content {
 	  		display:grid;
 	  		place-self:center;
@@ -98,78 +74,197 @@ body {
 
 
 	  	.sidebar {
-	  		background: var(--mainColor);
-            box-shadow: 1px 1px 10px rgba(#0f0f0f, 0.5);
-	  		position: relative;
-            width: 100%;
-	  		height: 100%;
-            grid-template-rows: 40% 60%;
+            
+            &[hide="true"] {
 
-	  		#sidebar-toggler {
-                z-index:1;
-	  			position: absolute;
-	  			right:-10vmin;
-                top:5vmin;
-	  			background: none;
-	  			border: none;
-	  			cursor: pointer;
-	  			width:5vmin;
-	  			height:5vmin;
+                @include media('portrait', $small) {
+                    transform: translate(-60vw)
+                }
 
-	  			&::before {
-	  				position: absolute;
-	  				content: url('./components/media/sidebarButton.svg');
-	  				width:100%;
-	  				height:100%;
-	  				top:0;
-	  				left:0;
-	  			}
-	  			&:focus {
-	  				outline: none;
-	  			}
-	  		}
+                transform: translate(-30vw);
+            }
 
-            .row {
+	  		// background: var(--mainColor-dark);
+            box-shadow: inset 1px 1px 2em 0px rgba(0, 0, 0, .1);
+	  		position: fixed;
+            @include media('portrait', $small) {
+                width: 60vw;
+            }
+            width: 30vw;
+	  		height: 100vh;
+            left: 0;
+            transition: transform 0.125s;
+            background: transparent;
+            backdrop-filter: blur(10px)saturate(1.25);
+
+            .container-true {
                 display: grid;
-                grid-template-columns: auto;
-                opacity: 100%;
-                transition: opacity 0.125s;
-                transition-delay: 0.125s;
-            }
-            .hide {
-                opacity: 0%;
-            }
+                position: relative;
+                grid-template-rows: 40vh 52vh 4vh 4vh;
 
-            #intro {
-                grid-template-rows: 70% 15% 15%;
+                #sidebar-toggler {
+                    z-index:1;
+                    position: absolute;
+                    right:-10vmin;
+                    top:5vmin;
+                    background: var(--btnBg);
+                    border: none;
+                    cursor: pointer;
+                    width:5vmin;
+                    height:5vmin;
+                    transform: none;
+                    transition: transform 0.25s;
 
-                img:hover {
-                    transform: scale(1.05);
-                    box-shadow: 0 7px 9px -7px rgba(0,0,0,0.7);
+                    &::before {
+                        position: absolute;
+                        content: '';
+                        mask: url("./components/media/sidebarButton.svg#open(viewBox(0,0,50,50))") no-repeat 50% 50%;
+                        -webkit-mask-size: cover;
+                        mask-size: cover;
+                        background: var(--btnFill, rgba(23, 41, 71, 1));
+                        transition: background 0.25s;
+                        width:100%;
+                        height:100%;
+                        top:0;
+                        left:0;
+                    }
+                    &:focus {
+                        outline: none;
+                    }
+                    &:hover{
+                        transform: rotate(-360deg) scale(0.85);
+
+                    }
                 }
 
-                img {
+                #bgContainer {
+                    position: absolute;
+                    z-index: -1;
+                    width: 100%;
+                    height: 100%;
+                    background: var(--btnFill, #172947);
+                    -webkit-mask-position: 50% 50% !important;
+                }
+
+                .row {
+                    display: grid;
+                    grid-template-columns: auto;
+                    opacity: 100%;
+                    transition: opacity 0.125s;
+                    transition-delay: 0.125s;
+                }
+                .hide {
+                    opacity: 0%;
+                }
+
+                #intro {
+                    grid-template-rows: 60% 10% 10% 20%;
+
+                    img:hover {
+                        transform: scale(1.05);
+                        box-shadow: 0 7px 9px -7px rgba(0,0,0,0.7);
+                    }
+
+                    img {
+                        place-self: center;
+                        background: rgba(0,0,0, 0.05);
+                        border-radius: 50%;
+                        transform: scale(1);
+                        box-shadow: 0 -7px 9px -7px rgba(0,0,0,0.4);
+                        transition: transform 1s, box-shadow 1s;
+                        position: relative;
+                        width: 15vmin;
+                    }
+                    h3, h5 {
+                        padding: 0;
+                        margin: 0;
+                        width: max-content;
+                        height: min-content;
+                        place-self: center;
+                        font-family: 'Dancing Script';
+                        font-size: 3vmin;
+                        font-weight:100
+                    }
+                    h5 {letter-spacing: 0.3vmin}
+                    h3 {
+                        font-family: 'Montserrat'; 
+                        font-size: 3.5vmin;
+                        position: relative;
+                    }
+                    #contact-icons {
+                        display: grid;
+                        place-self: center;
+                        grid-template-columns: repeat(4, auto);
+                        grid-gap: 1.5vmin;
+                        max-width:100%;
+                        padding: 0;
+                        margin:0;
+                        position: relative;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            place-self: center;
+                            width: 75%;
+                            height: 0.1vmin;
+                            background: var(--btnFill, #172947);
+                            top: 5vmin;
+                            
+
+                        }
+
+                        a {
+                            place-self: center;
+                            font-size: 2vmin;
+                            width:3vmin;
+                            height: 3vmin;
+                            border-radius: 50%;
+                            cursor: pointer;
+                            background: var(--btnFill, rgba(23, 41, 71, 1));
+                            transform: var(--rotate, none);
+                            transition: background 0.25s, transform 1s;
+                        }
+
+                    }
+                }
+                #roadmapContainer {
+                    #roadmapPB-top {
+                        fill: var(--btnFill, rgba(0, 0, 73, 1));
+                        transition: fill 1s;
+                    }
+                    .sectionIcon {
+                        // fill: var(--black, black);
+                    }
+                }
+                .pillSwitchContainer, #bgSwitchButton {cursor: pointer}
+                .pillSwitchContainer {
+                    max-width: 5vmin;
+                    max-height: 2.5vmin;
+                    width: 5vmin;
+                    height: 2.5vmin;
                     place-self: center;
-                    background: rgba(0,0,0, 0.05);
-                    border-radius: 50%;
-                    transform: scale(1);
-                    box-shadow: 0 -7px 9px -7px rgba(0,0,0,0.4);
-                    transition: transform 1s, box-shadow 1s;
-                    position: relative;
-                    width: 15vmin;
+                    background: rgba(255,255,255,0.4);
+                    border-radius: 3em;
+                    display: grid;
+                    box-shadow: inset -1vmin 0 1vmin rgba(0,0,0,0.15);
+
+                    .dark {
+                        transform: translate(2.5vmin);
+                    }
+                    #bgSwitchButton {
+                        align-self: center;
+                        justify-self: start;
+                        width: 50%;
+                        height: 100%;
+                        border-radius: 3em;
+                        border: 0;
+                        background: var(--btnFill, #172947);
+                        transition: transform 0.25s, background 0.25s;
+
+                    }
+
                 }
-                h3, h5 {
-                    padding: 0;
-                    margin: 0;
-                    width: max-content;
-                    height: min-content;
-                    place-self: center;
-                    font-family: 'Dancing Script';
-                    font-size: 3vmin;
-                    font-weight:100
-                }
-                h3 {font-family: 'Montserrat'; font-size: 3.5vmin;}
-                h5 {letter-spacing: 0.3vmin}
+
             }
 
 	  	}

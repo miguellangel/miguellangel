@@ -11,100 +11,84 @@
    height="100%"
    viewBox="0 0 100 100"
    version="1.1"
-   id="svg8"
+   id="button"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
    sodipodi:docname="sidebarButton.svg">
-  <defs
-     id="defs2" />
+  <defs />
   <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="4.4942713"
-     inkscape:cx="77.733063"
-     inkscape:cy="60.968943"
-     inkscape:document-units="pc"
-     inkscape:current-layer="layer1"
-     inkscape:document-rotation="0"
-     showgrid="false"
-     showguides="false"
-     inkscape:guide-bbox="true"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     units="pc">
-    <sodipodi:guide
-       position="111.09358,-577.5966"
-       orientation="0,1"
-       id="guide864"
-       inkscape:label=""
-       inkscape:locked="false"
-       inkscape:color="rgb(0,0,255)" />
-    <sodipodi:guide
-       position="111.09358,-105.15565"
-       orientation="0,-1"
-       id="guide866" />
-    <sodipodi:guide
-       position="111.09358,-105.15565"
-       orientation="1,0"
-       id="guide868" />
-    <sodipodi:guide
-       position="583.53453,-105.15565"
-       orientation="1,0"
-       id="guide870" />
-  </sodipodi:namedview>
+     inkscape:zoom="3.0681063"
+     inkscape:cx="141.42409"
+     inkscape:cy="77.356226"
+     inkscape:current-layer="button" />
+  <g
+     id="open">
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="top"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="40.202133"
+       rx="6.8596997"
+       ry="9.6128016" />
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="mid"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="67.199333"
+       rx="6.8596997"
+       ry="9.6128016" />
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="low"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="13.575061"
+       rx="6.8596997"
+       ry="9.6128016" />
+  </g>
+  <g
+     id="openGreen"
+     transform="matrix(0.24742155,0,0,0.24742155,127.73757,61.901046)"
+     style="fill-opacity:1">
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="top-2"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="40.202133"
+       rx="6.8596997"
+       ry="9.6128016" />
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="mid-9"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="67.199333"
+       rx="6.8596997"
+       ry="9.6128016" />
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="low-1"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="13.575061"
+       rx="6.8596997"
+       ry="9.6128016" />
+  </g>
   <metadata
-     id="metadata5">
+     id="metadata998">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-51.200432,-63.267879)">
-    <g
-       id="g875"
-       transform="matrix(0.52603291,0,0,0.52603291,45.73537,51.454942)"
-       style="fill:#79f2c0;fill-opacity:1">
-      <rect
-         style="fill:#79f2c0;fill-opacity:1;fill-rule:evenodd;stroke-width:1.67089;paint-order:markers fill stroke"
-         id="rect833"
-         width="125"
-         height="32.988392"
-         x="42.940289"
-         y="100.696"
-         rx="11.770266"
-         ry="16.494196" />
-      <rect
-         style="fill:#79f2c0;fill-opacity:1;fill-rule:evenodd;stroke-width:1.67089;paint-order:markers fill stroke"
-         id="rect833-3"
-         width="125"
-         height="32.988392"
-         x="42.940289"
-         y="147.01935"
-         rx="11.770266"
-         ry="16.494196" />
-      <rect
-         style="fill:#79f2c0;fill-opacity:1;fill-rule:evenodd;stroke-width:1.67089;paint-order:markers fill stroke"
-         id="rect833-6"
-         width="125"
-         height="32.988392"
-         x="42.940289"
-         y="55.007736"
-         rx="11.770266"
-         ry="16.494196" />
-    </g>
-  </g>
 </svg>
