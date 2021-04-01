@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100%"
+   height="100%"
+   viewBox="0 0 100 100"
+   version="1.1"
+   id="button"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="sidebarButton.svg">
+  <defs />
+  <sodipodi:namedview
+     inkscape:zoom="3.0681063"
+     inkscape:cx="141.42409"
+     inkscape:cy="77.356226"
+     inkscape:current-layer="button" />
+  <g
+     id="open">
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="top"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="40.202133"
+       rx="6.8596997"
+       ry="9.6128016" />
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="mid"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="67.199333"
+       rx="6.8596997"
+       ry="9.6128016" />
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="low"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="13.575061"
+       rx="6.8596997"
+       ry="9.6128016" />
+  </g>
+  <g
+     id="openGreen"
+     transform="matrix(0.24742155,0,0,0.24742155,127.73757,61.901046)"
+     style="fill-opacity:1">
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="top-2"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="40.202133"
+       rx="6.8596997"
+       ry="9.6128016" />
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="mid-9"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="67.199333"
+       rx="6.8596997"
+       ry="9.6128016" />
+    <rect
+       style="fill-opacity:1;fill-rule:evenodd;stroke-width:0.973794;paint-order:markers fill stroke"
+       id="low-1"
+       width="72.849884"
+       height="19.225603"
+       x="13.575058"
+       y="13.575061"
+       rx="6.8596997"
+       ry="9.6128016" />
+  </g>
+  <metadata
+     id="metadata998">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

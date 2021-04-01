@@ -1,28 +1,26 @@
 {
   "files": {
-    "main.css": "/miguellangel.github.io/static/css/main.a2fe71ec.chunk.css",
-    "main.js": "/miguellangel.github.io/static/js/main.f7a47e63.chunk.js",
-    "main.js.map": "/miguellangel.github.io/static/js/main.f7a47e63.chunk.js.map",
-    "runtime-main.js": "/miguellangel.github.io/static/js/runtime-main.ed9dba80.js",
-    "runtime-main.js.map": "/miguellangel.github.io/static/js/runtime-main.ed9dba80.js.map",
-    "static/css/2.20aa2d7b.chunk.css": "/miguellangel.github.io/static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.a434cec5.chunk.js": "/miguellangel.github.io/static/js/2.a434cec5.chunk.js",
-    "static/js/2.a434cec5.chunk.js.map": "/miguellangel.github.io/static/js/2.a434cec5.chunk.js.map",
+    "main.css": "/miguellangel.github.io/static/css/main.97055413.chunk.css",
+    "main.js": "/miguellangel.github.io/static/js/main.ffa628e3.chunk.js",
+    "main.js.map": "/miguellangel.github.io/static/js/main.ffa628e3.chunk.js.map",
+    "runtime-main.js": "/miguellangel.github.io/static/js/runtime-main.23d71fcd.js",
+    "runtime-main.js.map": "/miguellangel.github.io/static/js/runtime-main.23d71fcd.js.map",
+    "static/js/2.70d7185a.chunk.js": "/miguellangel.github.io/static/js/2.70d7185a.chunk.js",
+    "static/js/2.70d7185a.chunk.js.map": "/miguellangel.github.io/static/js/2.70d7185a.chunk.js.map",
+    "static/js/3.6d7a1f4c.chunk.js": "/miguellangel.github.io/static/js/3.6d7a1f4c.chunk.js",
+    "static/js/3.6d7a1f4c.chunk.js.map": "/miguellangel.github.io/static/js/3.6d7a1f4c.chunk.js.map",
     "index.html": "/miguellangel.github.io/index.html",
-    "static/css/2.20aa2d7b.chunk.css.map": "/miguellangel.github.io/static/css/2.20aa2d7b.chunk.css.map",
-    "static/css/main.a2fe71ec.chunk.css.map": "/miguellangel.github.io/static/css/main.a2fe71ec.chunk.css.map",
-    "static/js/2.a434cec5.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.a434cec5.chunk.js.LICENSE.txt",
-    "static/media/LandingPage.scss": "/miguellangel.github.io/static/media/Quicksand.ffab2a99.eot",
-    "static/media/UT-Tower.90a6bd75.svg": "/miguellangel.github.io/static/media/UT-Tower.90a6bd75.svg",
-    "static/media/nlp.58382e0e.png": "/miguellangel.github.io/static/media/nlp.58382e0e.png",
-    "static/media/portrait1.2da705f6.png": "/miguellangel.github.io/static/media/portrait1.2da705f6.png",
-    "static/media/workspace.d5e1a697.svg": "/miguellangel.github.io/static/media/workspace.d5e1a697.svg"
+    "static/css/main.97055413.chunk.css.map": "/miguellangel.github.io/static/css/main.97055413.chunk.css.map",
+    "static/js/2.70d7185a.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.70d7185a.chunk.js.LICENSE.txt",
+    "static/media/LinkedIn.a8810742.svg": "/miguellangel.github.io/static/media/LinkedIn.a8810742.svg",
+    "static/media/App.scss": "/miguellangel.github.io/static/media/sidebarButton.23005f2e.svg",
+    "static/media/gitHub.842cb2ec.svg": "/miguellangel.github.io/static/media/gitHub.842cb2ec.svg",
+    "static/media/portrait1.f2305aa6.png": "/miguellangel.github.io/static/media/portrait1.f2305aa6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.ed9dba80.js",
-    "static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.a434cec5.chunk.js",
-    "static/css/main.a2fe71ec.chunk.css",
-    "static/js/main.f7a47e63.chunk.js"
+    "static/js/runtime-main.23d71fcd.js",
+    "static/js/2.70d7185a.chunk.js",
+    "static/css/main.97055413.chunk.css",
+    "static/js/main.ffa628e3.chunk.js"
   ]
 }
