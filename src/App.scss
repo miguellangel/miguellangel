@@ -228,12 +228,24 @@ body {
                     }
                 }
                 #roadmapContainer {
-                    #roadmapPB-top {
-                        fill: var(--btnFill, rgba(0, 0, 73, 1));
-                        transition: fill 1s;
+                    #road {
+                        &-bottom{
+                            fill: black;
+                            stroke: white;
+                        }
+                        &-top, &-center {transition: stroke 1s}
+                        &-top {
+                            stroke: var(--btnFill, rgba(0, 0, 73, 1));
+                        }
+                        &-center {
+                            stroke: var(--bgColor, white);
+                        }
                     }
-                    .sectionIcon {
-                        // fill: var(--black, black);
+
+                    g[id*="icon"] {
+                        circle:hover {
+                            fill: var(--btnFill, #f2f2f2)
+                        }
                     }
                 }
                 .pillSwitchContainer, #bgSwitchButton {cursor: pointer}

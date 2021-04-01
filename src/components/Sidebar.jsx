@@ -1,7 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 import { Suspense } from 'react'
-import ProgressSVG from './ProgressSVG.js'
+import RoadmapSVG from './RoadmapSVG.js'
 const Intro = React.lazy( () => import('./Intro.js') )
 
 
@@ -57,7 +57,7 @@ const Sidebar = ({ props }) => {
                     </Suspense>
     			</div>
     			<div id="roadmapContainer" className={isActive ? "row" : "row hide"}>
-                    <ProgressSVG />
+                    <RoadmapSVG />
 
     			</div>
                 <div className="pillSwitchContainer" onClick={handleSwitchBG}>
