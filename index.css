@@ -1,0 +1,18 @@
+body{
+    --portrait: false;
+    --landscape: false;
+
+    --small: false;
+    --medium: false;
+    --large: false;
+    --extraLarge: false;
+
+}
+
+@media (orientation: portrait) and (max-width: 576px) {
+    body {
+        --portrait: true;
+        --small: true;
+
+    }
+}
