@@ -5,13 +5,13 @@
     "main.js.map": "/miguellangel.github.io/static/js/main.ffa628e3.chunk.js.map",
     "runtime-main.js": "/miguellangel.github.io/static/js/runtime-main.23d71fcd.js",
     "runtime-main.js.map": "/miguellangel.github.io/static/js/runtime-main.23d71fcd.js.map",
-    "static/js/2.70d7185a.chunk.js": "/miguellangel.github.io/static/js/2.70d7185a.chunk.js",
-    "static/js/2.70d7185a.chunk.js.map": "/miguellangel.github.io/static/js/2.70d7185a.chunk.js.map",
+    "static/js/2.02c82213.chunk.js": "/miguellangel.github.io/static/js/2.02c82213.chunk.js",
+    "static/js/2.02c82213.chunk.js.map": "/miguellangel.github.io/static/js/2.02c82213.chunk.js.map",
     "static/js/3.6d7a1f4c.chunk.js": "/miguellangel.github.io/static/js/3.6d7a1f4c.chunk.js",
     "static/js/3.6d7a1f4c.chunk.js.map": "/miguellangel.github.io/static/js/3.6d7a1f4c.chunk.js.map",
     "index.html": "/miguellangel.github.io/index.html",
     "static/css/main.97055413.chunk.css.map": "/miguellangel.github.io/static/css/main.97055413.chunk.css.map",
-    "static/js/2.70d7185a.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.70d7185a.chunk.js.LICENSE.txt",
+    "static/js/2.02c82213.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.02c82213.chunk.js.LICENSE.txt",
     "static/media/LinkedIn.a8810742.svg": "/miguellangel.github.io/static/media/LinkedIn.a8810742.svg",
     "static/media/App.scss": "/miguellangel.github.io/static/media/sidebarButton.23005f2e.svg",
     "static/media/gitHub.842cb2ec.svg": "/miguellangel.github.io/static/media/gitHub.842cb2ec.svg",
@@ -19,7 +19,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.23d71fcd.js",
-    "static/js/2.70d7185a.chunk.js",
+    "static/js/2.02c82213.chunk.js",
     "static/css/main.97055413.chunk.css",
     "static/js/main.ffa628e3.chunk.js"
   ]
