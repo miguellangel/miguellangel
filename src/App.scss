@@ -149,12 +149,12 @@ body {
                 .row {
                     display: grid;
                     grid-template-columns: auto;
-                    opacity: 100%;
+                    opacity: 1.0;
                     transition: opacity 0.125s;
                     transition-delay: 0.125s;
                 }
                 .hide {
-                    opacity: 0%;
+                    opacity: 0.0;
                 }
 
                 #intro {
