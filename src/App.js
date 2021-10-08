@@ -1,4 +1,5 @@
 import React from 'react';
+import About from './components/About'
 
 import Sidebar from './components/Sidebar.jsx'
 const App = () => {
@@ -12,9 +13,7 @@ const App = () => {
 		<>
 			<Sidebar />	
 			<div className="content container-true">
-				<div>
-
-				</div>
+				<About />
 			</div>
 		</>
 	)

@@ -22,6 +22,7 @@ html {
 	height: 100vh;
 
 }
+* {box-sizing: border-box;}
 body,#root { width: inherit; height: inherit; }
 body {
 	margin: 0;
@@ -82,6 +83,10 @@ body {
                 }
 
                 transform: translate(-30vw);
+
+                &+.content {
+                    width: 100vw !important;
+                }
             }
 
 	  		// background: var(--mainColor-dark);
@@ -96,6 +101,7 @@ body {
             transition: transform 0.125s;
             background: transparent;
             backdrop-filter: blur(10px)saturate(1.25);
+            z-index: 1;
 
             .container-true {
                 display: grid;
@@ -282,8 +288,27 @@ body {
 	  	}
 	  	.content {
 	  		background: var(--scndryColor);
-	  		width: 100%;
+	  		width: 70vw;
 	  		height: 100%;
+            position: fixed;
+            right: 0;
+            padding: 8em 3em 0;
+
+            .animHeader {
+                .active {
+                    animation: jello-vertical 0.9s both;
+                    @keyframes jello-vertical{0%{transform:scale3d(1,1,1)}30%{transform:scale3d(.75,1.25,1)}40%{transform:scale3d(1.25,.75,1)}50%{transform:scale3d(.85,1.15,1)}65%{transform:scale3d(1.05,.95,1)}75%{transform:scale3d(.95,1.05,1)}100%{transform:scale3d(1,1,1)}}
+                    
+                }
+                & span b:empty, & span b:-moz-only-whitespace {
+                    display: initial !important;
+                }
+                & span b {
+                    font-size: 36px;
+                    font-weight: 800;
+                    display: inline-block;
+                }
+            }
 	  	}
 
   	}
