@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.5af2b3bc.chunk.css",
-    "main.js": "/static/js/main.41e47dbc.chunk.js",
-    "main.js.map": "/static/js/main.41e47dbc.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.31160a74.js",
-    "runtime-main.js.map": "/static/js/runtime-main.31160a74.js.map",
-    "static/js/2.02c82213.chunk.js": "/static/js/2.02c82213.chunk.js",
-    "static/js/2.02c82213.chunk.js.map": "/static/js/2.02c82213.chunk.js.map",
-    "static/js/3.6d7a1f4c.chunk.js": "/static/js/3.6d7a1f4c.chunk.js",
-    "static/js/3.6d7a1f4c.chunk.js.map": "/static/js/3.6d7a1f4c.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.5af2b3bc.chunk.css.map": "/static/css/main.5af2b3bc.chunk.css.map",
-    "static/js/2.02c82213.chunk.js.LICENSE.txt": "/static/js/2.02c82213.chunk.js.LICENSE.txt",
-    "static/media/LinkedIn.a8810742.svg": "/static/media/LinkedIn.a8810742.svg",
-    "static/media/App.scss": "/static/media/sidebarButton.23005f2e.svg",
-    "static/media/gitHub.842cb2ec.svg": "/static/media/gitHub.842cb2ec.svg",
-    "static/media/portrait1.f2305aa6.png": "/static/media/portrait1.f2305aa6.png"
+    "main.css": "/miguellangel.github.io/static/css/main.a8501eab.chunk.css",
+    "main.js": "/miguellangel.github.io/static/js/main.2a62abbf.chunk.js",
+    "main.js.map": "/miguellangel.github.io/static/js/main.2a62abbf.chunk.js.map",
+    "runtime-main.js": "/miguellangel.github.io/static/js/runtime-main.426992d9.js",
+    "runtime-main.js.map": "/miguellangel.github.io/static/js/runtime-main.426992d9.js.map",
+    "static/js/2.293ac54c.chunk.js": "/miguellangel.github.io/static/js/2.293ac54c.chunk.js",
+    "static/js/2.293ac54c.chunk.js.map": "/miguellangel.github.io/static/js/2.293ac54c.chunk.js.map",
+    "static/js/3.4b679bf5.chunk.js": "/miguellangel.github.io/static/js/3.4b679bf5.chunk.js",
+    "static/js/3.4b679bf5.chunk.js.map": "/miguellangel.github.io/static/js/3.4b679bf5.chunk.js.map",
+    "index.html": "/miguellangel.github.io/index.html",
+    "static/css/main.a8501eab.chunk.css.map": "/miguellangel.github.io/static/css/main.a8501eab.chunk.css.map",
+    "static/js/2.293ac54c.chunk.js.LICENSE.txt": "/miguellangel.github.io/static/js/2.293ac54c.chunk.js.LICENSE.txt",
+    "static/media/LinkedIn.a8810742.svg": "/miguellangel.github.io/static/media/LinkedIn.a8810742.svg",
+    "static/media/App.scss": "/miguellangel.github.io/static/media/sidebarButton.23005f2e.svg",
+    "static/media/gitHub.842cb2ec.svg": "/miguellangel.github.io/static/media/gitHub.842cb2ec.svg",
+    "static/media/profile.29cbcd55.jpg": "/miguellangel.github.io/static/media/profile.29cbcd55.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.31160a74.js",
-    "static/js/2.02c82213.chunk.js",
-    "static/css/main.5af2b3bc.chunk.css",
-    "static/js/main.41e47dbc.chunk.js"
+    "static/js/runtime-main.426992d9.js",
+    "static/js/2.293ac54c.chunk.js",
+    "static/css/main.a8501eab.chunk.css",
+    "static/js/main.2a62abbf.chunk.js"
   ]
 }
