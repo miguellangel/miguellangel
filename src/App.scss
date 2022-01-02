@@ -15,11 +15,55 @@
 }
 @include font('Quicksand', 'components/fonts/Quicksand');
 
+/* my mixins */
+@mixin fluid-layout($devices) {
+
+	@each $device in $devices {
+
+		@if $device == mobile-portrait {
+			@media (max-width: 576px) and (max-height: 1024px) and (max-aspect-ratio: 2/3) {
+				@content
+			}
+		}
+		@if $device == mobile-landscape {
+			@media (max-width: 1024px) and (max-height: 576px) and (min-aspect-ratio: 3/2) {
+				@content
+			}
+		}
+		@if $device == tablet-portrait {
+			@media (max-width: 1024px) and (min-width: 480px) and (min-aspect-ratio: 10/17) and (max-aspect-ratio: 1/1) {
+				@content
+			}
+		}
+		@if $device == tablet-landscape {
+			@media (max-width: 1440px) and (min-height: 468px) and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 17/10) {
+				@content
+			}
+		}
+		@if $device == desktop-portrait {
+			@media (min-width: 682px) and (min-height: 1024px) and (min-aspect-ratio: 1/2) and (max-aspect-ratio: 2/3) {
+				@content
+			}
+		}
+		@if $device == desktop-landscape {
+			@media (max-width: 1920px) and (min-height: 576px) and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 2/1) {
+				@content
+			}
+		}
+	}
+
+}
+
+$landscapeOnly: (mobile-landscape, tablet-landscape, desktop-landscape);
+$portraitOnly: (mobile-portrait, tablet-portrait, desktop-portrait);
+
+
 html {
 	min-width: 100vw;
 	width: 100vw;
 	min-height: 100vh; 
 	height: 100vh;
+    scroll-behavior: smooth;
 
 }
 * {box-sizing: border-box;}
@@ -63,19 +107,25 @@ body {
 
         }
 
-        --bgColor: rgba(255,255,255,0.5);
+        --bgColor: rgba(255,255,255,1);
   		
         display: grid;
         background: var(--bgColor);
         transition: background 0.25s, color 0.125s;
-	  	.sidebar, .content {
+	  	.sidebar {
 	  		display:grid;
 	  		place-self:center;
 	  	}
 
 
 	  	.sidebar {
-            
+            &[hide="false"] {
+                &+.content {
+                    @include fluid-layout($portraitOnly) {
+                        width: 100vw !important;
+                    }
+                }
+            }
             &[hide="true"] {
 
                 @include media('portrait', $small) {
@@ -290,9 +340,75 @@ body {
 	  		background: var(--scndryColor);
 	  		width: 70vw;
 	  		height: 100%;
-            position: fixed;
-            right: 0;
-            padding: 8em 3em 0;
+			  position: fixed;
+			  right: 0;
+			  // padding: 7em 7em 0;
+			  overflow: hidden;
+			  perspective: 500px;
+			  perspective-origin: 25% 50%;
+			  
+            section {
+
+                width: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                position: absolute;
+                padding: 7em;
+                background: var(--bgColor);
+                box-shadow: inset 1px 1px 0.5em 0.5em rgba(0,0,0,0.1);
+
+                .text {
+                    p {
+                        @include fluid-layout($portraitOnly) {
+                            width: 100%;
+                        }
+                        width: 45%;
+                        font-size: 22px;
+                        line-height: 1.5;
+                        text-align: initial;
+                        font-family: 'Montserrat';
+                    }
+                }
+
+                &.active {
+                    transform:translateZ(500px);
+                    animation: scrldwn-entrance 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;;
+                }
+
+                &.removing {
+                    // animation: scrlup-exit 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+                }
+				&:not(active) {
+					opacity: 0;
+				}
+
+
+				@keyframes scrldwn-entrance {
+					0% {
+						transform: translateZ(600px);
+						opacity: 0;
+					}
+					100% {
+						transform: translateZ(0);
+						opacity: 1;
+					}
+				}
+				@keyframes scrlup-exit {
+					0% {
+						transform: translateZ(1);
+						opacity: 1;
+					}
+					100% {
+						transform: translateZ(600px);
+						opacity: 0;
+					}
+				}
+  
+  
+
+            }
 
             .animHeader {
                 .active {
@@ -304,11 +420,12 @@ body {
                     display: initial !important;
                 }
                 & span b {
-                    font-size: 36px;
+                    font-size: 56px;
                     font-weight: 800;
                     display: inline-block;
                 }
             }
+
 	  	}
 
   	}
