@@ -1,8 +1,23 @@
 import React from "react"
-import {Tween } from 'react-gsap'
+import { Tween } from 'react-gsap'
 
 
 const RoadmapSVG = (props) => {
+	function smoothScrollTo(el, e) {
+		e.preventDefault()
+		
+		/* TODO: Replace this block to support new implementation */
+		const targetTop = document.querySelector(el).offsetTop
+		document.querySelector('.content').scrollTo({
+			top: targetTop,
+			left: 0,
+			behavior: 'smooth'
+		})
+	}
+	React.useEffect(() => {
+
+	})
+
 	return (
 		<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid" {...props}>
 			<defs id="roadMapDefs">
@@ -135,7 +150,7 @@ const RoadmapSVG = (props) => {
 				strokeLinejoin="round"
 				strokeWidth={0.174}
 			/>
-			<a href="#about">
+			<a href="#about" onClick={smoothScrollTo.bind(this, '#about')}>
 				<g id="icon-about">
 					<path
 						transform="translate(-27.274 -3.92)"
@@ -162,7 +177,7 @@ const RoadmapSVG = (props) => {
 					</g>
 				</g>
 			</a>
-			<a href="#skills">
+			<a href="#skills" onClick={smoothScrollTo.bind(this, '#skills')}>
 				<g id="icon-skills">
 					<path
 						transform="translate(-53.569 6.725)"
@@ -203,7 +218,7 @@ const RoadmapSVG = (props) => {
 					</g>
 				</g>
 			</a>
-			<a href="#projects">
+			<a href="#projects" onClick={smoothScrollTo.bind(this, '#projects')}>
 				<g id="icon-projects">
 					<path
 						transform="translate(-40.107 17.145)"
