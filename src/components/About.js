@@ -17,7 +17,7 @@ const About = () => {
     return (
         <section id="about" className="active">
             <div className="animHeader">
-                {String("Me Myself & I").split('').map((i, index) => 
+                {String`Me\u00A0Myself\u00A0&\u00A0I`.split('').map((i, index) => // explicit non-breaking space
                     <span key={index}><b className="anim">{i}</b></span>
                 )}
             </div>
