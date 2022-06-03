@@ -380,8 +380,9 @@ body {
                 &.removing {
                     // animation: scrlup-exit 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
                 }
-				&:not(active) {
+				&:not(.active) {
 					opacity: 0;
+                    pointer-events: none; // since we only use opacity to hide inactive cards, we need this explicitly disabled
 				}
 
 

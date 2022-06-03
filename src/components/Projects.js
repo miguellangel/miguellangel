@@ -2,6 +2,8 @@ import React from 'react'
 
 const Projects = () => {
 
+    const HeaderRef = React.useRef()
+
     const handleLetterAnim = (letterGroup) => {
         document.querySelectorAll(letterGroup).forEach((item, index) => {
             item.addEventListener('mouseenter', () => {
@@ -12,14 +14,15 @@ const Projects = () => {
     }
 
     React.useEffect(() => {
+
         handleLetterAnim('#projects .anim')
     })
 
 
     return (
         <section id="projects">
-            <div className="animHeader">
-                {String("Projects").split('').map((item, index) => 
+            <div className="animHeader" ref={HeaderRef}>
+                {String`Projects`.split('').map((item, index) => 
                     <span key={index}><b className="anim">{item}</b></span>
                 )}
             </div>
