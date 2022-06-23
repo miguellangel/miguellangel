@@ -2,19 +2,88 @@ import React from "react"
 import { Tween } from 'react-gsap'
 
 
-const RoadmapSVG = (props) => {
+const mod = (a, n) => ((a % n) + n) % n
+// const clamp = (n, min, max) => Math.min(Math.max(n, min), max) 
+function throttle (callback, limit) {
+    var waiting = false;                      // Initially, we're not waiting
+    return function () {                      // We return a throttled function
+        if (!waiting) {                       // If we're not waiting
+            callback.apply(this, arguments);  // Execute users function
+            waiting = true;                   // Prevent future invocations
+            setTimeout(function () {          // After a period of time
+                waiting = false;              // And allow future invocations
+            }, limit);
+        }
+    }
+}
+
+const RoadmapSVG = ({ ...props }) => {
+	
+	const cardNum = React.useRef(1)
+	const prevCardNum = React.useRef()
+	const container = React.useRef()
+
+	const touchMoveStart = React.useRef({x: 0, y: 0})
+
+	function presentCard(...props) {
+		const [e, touchDelta, button] = props
+		prevCardNum.current = cardNum.current // record previous val before updating
+
+		if (Math.sign(e.deltaY ?? touchDelta.y) >= 0) { // if scrolling or swiping down
+			cardNum.current ++ 
+		} else cardNum.current --
+		
+		if (!button) {
+			if (cardNum.current === 0) cardNum.current -- // mod doesn't work w 0, so set to -1 in order to loop around
+			
+			cardNum.current = mod(cardNum.current, 4) || mod(cardNum.current, 3) // restrict to three card states
+		} else cardNum.current = button
+
+		
+
+		const x = document.querySelectorAll('.content > section') // get all card section elements
+
+		const target = x[cardNum.current - 1]
+		const prev = x[prevCardNum.current - 1]
+
+		prev.classList.remove('active')
+		// if prev is not also the active one, add 'removing' class for 250ms for animation purposes 
+		if (prev !== target) prev.classList.toggle('removing') && setTimeout(() => prev.classList.remove('removing'), 755)
+		
+		target.classList.toggle('active')
+	}
+
+	function touchStart(e) {
+		touchMoveStart.current.x = e.touches[0].pageX
+		touchMoveStart.current.y = e.touches[0].pageY
+	}
+
+	function touchMove(e) {
+		var delta = {}
+
+		delta.x = touchMoveStart.current.x - e.touches[0].pageX
+		delta.y = touchMoveStart.current.y - e.touches[0].pageY
+
+		presentCard(e, delta)
+		
+	}
+	
 	function smoothScrollTo(el, e) {
 		e.preventDefault()
-		
-		/* TODO: Replace this block to support new implementation */
-		const targetTop = document.querySelector(el).offsetTop
-		document.querySelector('.content').scrollTo({
-			top: targetTop,
-			left: 0,
-			behavior: 'smooth'
-		})
+		console.log(el)
+		presentCard(0, 0, el)
+
 	}
+
+
 	React.useEffect(() => {
+		container.current = document.querySelector('.content.container-true')
+
+		container.current.addEventListener('wheel', throttle(presentCard, 200))
+
+		container.current.addEventListener("touchstart", throttle(touchStart, 1000), false) /* should i also throttle this? */
+		container.current.addEventListener("touchmove", throttle(touchMove, 200), false)
+
 
 	})
 
@@ -150,7 +219,7 @@ const RoadmapSVG = (props) => {
 				strokeLinejoin="round"
 				strokeWidth={0.174}
 			/>
-			<a href="#about" onClick={smoothScrollTo.bind(this, '#about')}>
+			<a href="#about" onClick={smoothScrollTo.bind(this, 1)}>
 				<g id="icon-about">
 					<path
 						transform="translate(-27.274 -3.92)"
@@ -177,7 +246,7 @@ const RoadmapSVG = (props) => {
 					</g>
 				</g>
 			</a>
-			<a href="#skills" onClick={smoothScrollTo.bind(this, '#skills')}>
+			<a href="#skills" onClick={smoothScrollTo.bind(this, 2)}>
 				<g id="icon-skills">
 					<path
 						transform="translate(-53.569 6.725)"
@@ -218,7 +287,7 @@ const RoadmapSVG = (props) => {
 					</g>
 				</g>
 			</a>
-			<a href="#projects" onClick={smoothScrollTo.bind(this, '#projects')}>
+			<a href="#projects" onClick={smoothScrollTo.bind(this, 3)}>
 				<g id="icon-projects">
 					<path
 						transform="translate(-40.107 17.145)"
