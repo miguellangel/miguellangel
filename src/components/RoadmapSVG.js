@@ -1,5 +1,5 @@
 import React from "react"
-import { Tween } from 'react-gsap'
+import { PlayState, Tween } from 'react-gsap'
 
 
 const mod = (a, n) => ((a % n) + n) % n
@@ -18,7 +18,7 @@ function throttle (callback, limit) {
 }
 
 const RoadmapSVG = ({ ...props }) => {
-	
+	const tween = React.useRef(null)
 	const cardNum = React.useRef(1)
 	const prevCardNum = React.useRef()
 	const container = React.useRef()
@@ -26,18 +26,19 @@ const RoadmapSVG = ({ ...props }) => {
 	const touchMoveStart = React.useRef({x: 0, y: 0})
 
 	function presentCard(...props) {
-		const [e, touchDelta, button] = props
+		const [e, touchDelta, buttonNum] = props
+	
 		prevCardNum.current = cardNum.current // record previous val before updating
 
 		if (Math.sign(e.deltaY ?? touchDelta.y) >= 0) { // if scrolling or swiping down
 			cardNum.current ++ 
 		} else cardNum.current --
 		
-		if (!button) {
+		if (!buttonNum) {
 			if (cardNum.current === 0) cardNum.current -- // mod doesn't work w 0, so set to -1 in order to loop around
 			
 			cardNum.current = mod(cardNum.current, 4) || mod(cardNum.current, 3) // restrict to three card states
-		} else cardNum.current = button
+		} else cardNum.current = buttonNum
 
 		
 
@@ -68,22 +69,20 @@ const RoadmapSVG = ({ ...props }) => {
 		
 	}
 	
-	function smoothScrollTo(el, e) {
+	const handleClick = buttonNum => e => {
 		e.preventDefault()
-		console.log(el)
-		presentCard(0, 0, el)
-
+		presentCard(0, 0, buttonNum)
 	}
 
 
 	React.useEffect(() => {
+
 		container.current = document.querySelector('.content.container-true')
 
 		container.current.addEventListener('wheel', throttle(presentCard, 200))
 
 		container.current.addEventListener("touchstart", throttle(touchStart, 1000), false) /* should i also throttle this? */
 		container.current.addEventListener("touchmove", throttle(touchMove, 200), false)
-
 
 	})
 
@@ -197,7 +196,9 @@ const RoadmapSVG = ({ ...props }) => {
 				opacity={0.66}
 				paintOrder="markers fill stroke"
 			/>
-			<Tween from={{svgDraw: 0}} to={{svgDraw:0.25}} duration={3} >
+			<div>{cardNum.current === 1 ? "hello" : "world"}</div>
+			
+			<Tween ref={ tween } from={{svgDraw: 0}} to={{svgDraw:0.25}} duration={3} playState={PlayState.play}>
 				<path
 					id="road-top"
 					d="M10.955 8.335s19.945-6.306 26.095 0c2.493 2.557 2.493 8.29 0 10.845-6.15 6.307-19.945-6.306-26.095 0-2.5 2.564-2.5 8.312 0 10.875 3.063 3.14 9.933-3.141 12.996 0 2.53 2.594-2.53 8.411 0 11.006 3.087 3.165 13.099 0 13.099 0"
@@ -208,18 +209,7 @@ const RoadmapSVG = ({ ...props }) => {
 					strokeWidth={1.303}
 				/>
 			</Tween>
-			<path
-				id="road-center"
-				d="M10.955 8.335s19.945-6.306 26.095 0c2.493 2.557 2.493 8.29 0 10.845-6.15 6.307-19.945-6.306-26.095 0-2.5 2.564-2.5 8.312 0 10.875 3.063 3.14 9.933-3.141 12.996 0 2.53 2.594-2.53 8.411 0 11.006 3.087 3.165 13.099 0 13.099 0"
-				fill="none"
-				stroke="#fff"
-				strokeDasharray="1.392, 1.39199999999999990"
-				strokeDashoffset={0.696}
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				strokeWidth={0.174}
-			/>
-			<a href="#about" onClick={smoothScrollTo.bind(this, 1)}>
+			<a href="#about" onClick={handleClick(3)}>
 				<g id="icon-about">
 					<path
 						transform="translate(-27.274 -3.92)"
@@ -246,7 +236,7 @@ const RoadmapSVG = ({ ...props }) => {
 					</g>
 				</g>
 			</a>
-			<a href="#skills" onClick={smoothScrollTo.bind(this, 2)}>
+			<a href="#skills" onClick={handleClick(2)}>
 				<g id="icon-skills">
 					<path
 						transform="translate(-53.569 6.725)"
@@ -287,7 +277,7 @@ const RoadmapSVG = ({ ...props }) => {
 					</g>
 				</g>
 			</a>
-			<a href="#projects" onClick={smoothScrollTo.bind(this, 3)}>
+			<a href="#projects" onClick={handleClick(3)}>
 				<g id="icon-projects">
 					<path
 						transform="translate(-40.107 17.145)"

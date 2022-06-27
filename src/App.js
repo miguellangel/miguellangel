@@ -7,10 +7,6 @@ import Projects from './components/Projects'
 
 
 const App = () => {
-	
-	React.useEffect(() => {
-
-	})
 
 	return (
 		<>
