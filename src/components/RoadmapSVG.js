@@ -1,10 +1,9 @@
 import React from "react"
-import { PlayState, Tween } from 'react-gsap'
-
+import { Tween, PlayState } from 'react-gsap'
 
 const mod = (a, n) => ((a % n) + n) % n
 // const clamp = (n, min, max) => Math.min(Math.max(n, min), max) 
-function throttle (callback, limit) {
+function throttle (callback, limit) {	
     var waiting = false;                      // Initially, we're not waiting
     return function () {                      // We return a throttled function
         if (!waiting) {                       // If we're not waiting
@@ -18,40 +17,52 @@ function throttle (callback, limit) {
 }
 
 const RoadmapSVG = ({ ...props }) => {
+	const [ cardNum, setCardNum ] = React.useState(1)
 	const tween = React.useRef(null)
-	const cardNum = React.useRef(1)
+	const cardNumRef = React.useRef(1)
 	const prevCardNum = React.useRef()
 	const container = React.useRef()
+	const prevProgress = React.useRef(0)
+	const progress = React.useRef(0.25)
 
 	const touchMoveStart = React.useRef({x: 0, y: 0})
 
-	function presentCard(...props) {
-		const [e, touchDelta, buttonNum] = props
-	
-		prevCardNum.current = cardNum.current // record previous val before updating
-
-		if (Math.sign(e.deltaY ?? touchDelta.y) >= 0) { // if scrolling or swiping down
-			cardNum.current ++ 
-		} else cardNum.current --
+	function presentCard(e, ...props) {
+		const [touchDelta, buttonNum] = props
+		prevCardNum.current = cardNumRef.current // record previous vals before updating
+		prevProgress.current = progress.current
 		
 		if (!buttonNum) {
-			if (cardNum.current === 0) cardNum.current -- // mod doesn't work w 0, so set to -1 in order to loop around
-			
-			cardNum.current = mod(cardNum.current, 4) || mod(cardNum.current, 3) // restrict to three card states
-		} else cardNum.current = buttonNum
+			// TODO: Do something about natural scrolling
+			if (Math.sign(e.deltaY ?? touchDelta.y) <= 0) { // if scrolling or swiping down
+				progress.current = mod(progress.current + (progress.current === 0.75 ? 0.5 : 0.25), 1)
+				cardNumRef.current = mod(cardNumRef.current + 1, 4) || mod(cardNumRef.current + 1, 3) // restrict to three card states
+			} else {
+				progress.current = mod(progress.current + (progress.current === 0.25 ? -0.5 : -0.25), 1)
+				// mod doesn't work w 0, so set to -1 in order to loop around e.g. -1 % 4 = 3
+				// -1 % 3 returns 2 but we want it to be 3 so we increase the mod to 4
+				// (x % 4 || x % 3) will return the one on the left by default regardless which one is greater
+				cardNumRef.current = mod(cardNumRef.current + (cardNumRef.current === 1 ? -2 : -1), 4) || mod(cardNumRef.current + (cardNumRef.current === 1 ? -2 : -1), 3) // restrict to three card states
+			}
 
-		
+
+		} else (cardNumRef.current = buttonNum)
 
 		const x = document.querySelectorAll('.content > section') // get all card section elements
 
-		const target = x[cardNum.current - 1]
+		const target = x[cardNumRef.current - 1]
 		const prev = x[prevCardNum.current - 1]
-
 		prev.classList.remove('active')
 		// if prev is not also the active one, add 'removing' class for 250ms for animation purposes 
-		if (prev !== target) prev.classList.toggle('removing') && setTimeout(() => prev.classList.remove('removing'), 755)
-		
+		if (prev !== target) prev.classList.toggle('removing') && setTimeout(() => prev.classList.remove('removing'), 500)
 		target.classList.toggle('active')
+		
+		/* 
+		since we use setTimeout to allow time for animations, 
+		set state of the card after all class changes go into effect to avoid errors
+		*/
+		setTimeout(() => setCardNum(cardNumRef.current), 510)
+
 	}
 
 	function touchStart(e) {
@@ -65,26 +76,39 @@ const RoadmapSVG = ({ ...props }) => {
 		delta.x = touchMoveStart.current.x - e.touches[0].pageX
 		delta.y = touchMoveStart.current.y - e.touches[0].pageY
 
-		presentCard(e, delta)
+		presentCard(e, delta, null)
 		
 	}
 	
 	const handleClick = buttonNum => e => {
 		e.preventDefault()
-		presentCard(0, 0, buttonNum)
+		const timeline = tween.current.getGSAP()
+		presentCard(0, 0, buttonNum, timeline)
 	}
-
 
 	React.useEffect(() => {
 
+		const listeners = {}
+
+		function getSetListeners(index, ...props) {
+			const [ fn, n ] = props
+			return listeners[index] || (listeners[index] = throttle(fn, n))
+		}
+
 		container.current = document.querySelector('.content.container-true')
 
-		container.current.addEventListener('wheel', throttle(presentCard, 200))
+		container.current.addEventListener('wheel', getSetListeners('wheel', presentCard, 200))
+		container.current.addEventListener('touchstart', getSetListeners('touchStart', touchStart, 1000), false)
+		container.current.addEventListener('touchmove', getSetListeners('touchMove', touchMove, 200), false)
 
-		container.current.addEventListener("touchstart", throttle(touchStart, 1000), false) /* should i also throttle this? */
-		container.current.addEventListener("touchmove", throttle(touchMove, 200), false)
+		return () => {
+			
+			for (const i in listeners) {
+				container.current.removeEventListener(i, listeners[i])
+			}
+		}
 
-	})
+	}, [cardNum, presentCard, touchMove])
 
 	return (
 		<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid" {...props}>
@@ -196,9 +220,8 @@ const RoadmapSVG = ({ ...props }) => {
 				opacity={0.66}
 				paintOrder="markers fill stroke"
 			/>
-			<div>{cardNum.current === 1 ? "hello" : "world"}</div>
 			
-			<Tween ref={ tween } from={{svgDraw: 0}} to={{svgDraw:0.25}} duration={3} playState={PlayState.play}>
+			<Tween ref={ tween } from={{svgDraw: prevProgress.current}} to={{svgDraw:progress.current}} duration={3} playState={PlayState.play}>
 				<path
 					id="road-top"
 					d="M10.955 8.335s19.945-6.306 26.095 0c2.493 2.557 2.493 8.29 0 10.845-6.15 6.307-19.945-6.306-26.095 0-2.5 2.564-2.5 8.312 0 10.875 3.063 3.14 9.933-3.141 12.996 0 2.53 2.594-2.53 8.411 0 11.006 3.087 3.165 13.099 0 13.099 0"
@@ -209,7 +232,7 @@ const RoadmapSVG = ({ ...props }) => {
 					strokeWidth={1.303}
 				/>
 			</Tween>
-			<a href="#about" onClick={handleClick(3)}>
+			<a href="#about" onClick={handleClick(1)}>
 				<g id="icon-about">
 					<path
 						transform="translate(-27.274 -3.92)"
