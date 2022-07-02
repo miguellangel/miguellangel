@@ -6,7 +6,7 @@ const Intro = React.lazy( () => import('./Intro.js') )
 
 
 
-const Sidebar = ({ props }) => {
+const Sidebar = ({ ...props }) => {
 
     /* determine whether window is portrait mode */
     let isPortraitSmall = window.matchMedia('(orientation: portrait)').matches
@@ -32,7 +32,9 @@ const Sidebar = ({ props }) => {
 
     }
 
+    
 	React.useEffect(() => {
+
         /* re-determine statusbar display mode on orientation update 
             but check whether to set statusbar active or not 
             depending on already-existing value*/
