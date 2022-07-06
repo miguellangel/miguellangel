@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&family=Open+Sans:wght@300;400&display=swap');
 /*convert variable fonts into all major formats for compatibility -> https://everythingfonts.com/font-face*/
 @mixin font($font-family, $font-file) {
-    @font-face {
-        font-family: $font-family;
-        src:url($font-file + '.eot');
-        src:url($font-file + '.eot?#iefix') format('embedded-opentype'),
-            url($font-file + '.woff') format('woff'),
-            url($font-file + '.ttf') format('truetype'),
-            url($font-file + '.svg#' + $font-family) format('svg');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap; /*tell browser to display using system font immediately on load*/
-    }
+	@font-face {
+		font-family: $font-family;
+		src:url($font-file + '.eot');
+		src:url($font-file + '.eot?#iefix') format('embedded-opentype'),
+			url($font-file + '.woff') format('woff'),
+			url($font-file + '.ttf') format('truetype'),
+			url($font-file + '.svg#' + $font-family) format('svg');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap; /*tell browser to display using system font immediately on load*/
+	}
 }
 @include font('Quicksand', 'components/fonts/Quicksand');
 
@@ -63,7 +63,7 @@ html {
 	width: 100vw;
 	min-height: 100vh; 
 	height: 100vh;
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 
 }
 * {box-sizing: border-box;}
@@ -93,25 +93,25 @@ body {
 
   	#root {
 
-        &[class="dark"] {
+		&[class="dark"] {
 
-            --bgColor: rgba(13, 17, 23, 1);
-            --canvasBg: rgba(13, 17, 23, 1); 
-            --contrastColor: var(rgba(225, 223, 255, 1), black);
+			--bgColor: rgba(13, 17, 23, 1);
+			--canvasBg: rgba(13, 17, 23, 1); 
+			--contrastColor: var(rgba(225, 223, 255, 1), black);
 
-            --btnFill: rgba(225, 223, 255, 1);
-            --btnBg: transparent;
-            --rotate: rotate(360deg);
-            // background: var(--canvasBg);
-            color: rgba(225, 223, 255, 1);
+			--btnFill: rgba(225, 223, 255, 1);
+			--btnBg: transparent;
+			--rotate: rotate(360deg);
+			// background: var(--canvasBg);
+			color: rgba(225, 223, 255, 1);
 
-        }
+		}
 
-        --bgColor: rgba(255,255,255,1);
+		--bgColor: rgba(255,255,255,1);
   		
-        display: grid;
-        background: var(--bgColor);
-        transition: background 0.25s, color 0.125s;
+		display: grid;
+		background: var(--bgColor);
+		transition: background 0.25s, color 0.125s;
 	  	.sidebar {
 	  		display:grid;
 	  		place-self:center;
@@ -119,314 +119,354 @@ body {
 
 
 	  	.sidebar {
-            &[hide="false"] {
-                &+.content {
-                    @include fluid-layout($portraitOnly) {
-                        width: 100vw !important;
-                    }
-                }
-            }
-            &[hide="true"] {
+			&[hide="false"] {
+				&+.content {
+					@include fluid-layout($portraitOnly) {
+						width: 100vw !important;
+					}
+				}
+			}
+			&[hide="true"] {
 
-                @include media('portrait', $small) {
-                    transform: translate(-60vw)
-                }
+				@include media('portrait', $small) {
+					transform: translate(-60vw)
+				}
 
-                transform: translate(-30vw);
+				transform: translate(-30vw);
 
-                &+.content {
-                    width: 100vw !important;
-                }
-            }
+				&+.content {
+					width: 100vw !important;
+				}
+			}
 
 	  		// background: var(--mainColor-dark);
-            box-shadow: inset 1px 1px 2em 0px rgba(0, 0, 0, .1);
+			box-shadow: inset 1px 1px 2em 0px rgba(0, 0, 0, .1);
 	  		position: fixed;
-            @include media('portrait', $small) {
-                width: 60vw;
-            }
-            width: 30vw;
+			@include media('portrait', $small) {
+				width: 60vw;
+			}
+			width: 30vw;
 	  		height: 100vh;
-            left: 0;
-            transition: transform 0.125s;
-            background: transparent;
-            backdrop-filter: blur(10px)saturate(1.25);
-            z-index: 1;
+			left: 0;
+			transition: transform 0.125s;
+			background: transparent;
+			backdrop-filter: blur(10px)saturate(1.25);
+			z-index: 1;
 
-            .container-true {
-                display: grid;
-                position: relative;
-                grid-template-rows: 40vh 52vh 4vh 4vh;
+			.container-true {
+				display: grid;
+				position: relative;
+				grid-template-rows: 40vh 52vh 4vh 4vh;
 
-                #sidebar-toggler {
-                    z-index:1;
-                    position: absolute;
-                    right:-10vmin;
-                    top:5vmin;
-                    background: var(--btnBg);
-                    border: none;
-                    cursor: pointer;
-                    width:5vmin;
-                    height:5vmin;
-                    transform: none;
-                    transition: transform 0.25s;
+				#sidebar-toggler {
+					z-index:1;
+					position: absolute;
+					right:-10vmin;
+					top:5vmin;
+					background: var(--btnBg);
+					border: none;
+					cursor: pointer;
+					width:5vmin;
+					height:5vmin;
+					transform: none;
+					transition: transform 0.25s;
 
-                    &::before {
-                        position: absolute;
-                        content: '';
-                        mask: url("./components/media/sidebarButton.svg#open(viewBox(0,0,50,50))") no-repeat 50% 50%;
-                        -webkit-mask-size: cover;
-                        mask-size: cover;
-                        background: var(--btnFill, rgba(23, 41, 71, 1));
-                        transition: background 0.25s;
-                        width:100%;
-                        height:100%;
-                        top:0;
-                        left:0;
-                    }
-                    &:focus {
-                        outline: none;
-                    }
-                    &:hover{
-                        transform: rotate(-360deg) scale(0.85);
+					&::before {
+						position: absolute;
+						content: '';
+						mask: url("./components/media/sidebarButton.svg#open(viewBox(0,0,50,50))") no-repeat 50% 50%;
+						-webkit-mask-size: cover;
+						mask-size: cover;
+						background: var(--btnFill, rgba(23, 41, 71, 1));
+						transition: background 0.25s;
+						width:100%;
+						height:100%;
+						top:0;
+						left:0;
+					}
+					&:focus {
+						outline: none;
+					}
+					&:hover{
+						transform: rotate(-360deg) scale(0.85);
 
-                    }
-                }
+					}
+				}
 
-                #bgContainer {
-                    position: absolute;
-                    z-index: -1;
-                    width: 100%;
-                    height: 100%;
-                    background: var(--btnFill, #172947);
-                    -webkit-mask-position: 50% 50% !important;
-                }
+				#bgContainer {
+					position: absolute;
+					z-index: -1;
+					width: 100%;
+					height: 100%;
+					background: var(--btnFill, #172947);
+					-webkit-mask-position: 50% 50% !important;
+				}
 
-                .row {
-                    display: grid;
-                    grid-template-columns: auto;
-                    opacity: 1.0;
-                    transition: opacity 0.125s;
-                    transition-delay: 0.125s;
-                }
-                .hide {
-                    opacity: 0.0;
-                }
+				.row {
+					display: grid;
+					grid-template-columns: auto;
+					opacity: 1.0;
+					transition: opacity 0.125s;
+					transition-delay: 0.125s;
+				}
+				.hide {
+					opacity: 0.0;
+				}
 
-                #intro {
-                    grid-template-rows: 60% 10% 10% 20%;
+				#intro {
+					grid-template-rows: 60% 10% 10% 20%;
 
-                    img:hover {
-                        transform: scale(1.05);
-                        box-shadow: 0 7px 9px -7px rgba(0,0,0,0.7);
-                    }
+					img:hover {
+						transform: scale(1.05);
+						box-shadow: 0 7px 9px -7px rgba(0,0,0,0.7);
+					}
 
-                    img {
-                        place-self: center;
-                        background: rgba(0,0,0, 0.05);
-                        border-radius: 50%;
-                        transform: scale(1);
-                        box-shadow: 0 -7px 9px -7px rgba(0,0,0,0.4);
-                        transition: transform 1s, box-shadow 1s;
-                        position: relative;
-                        width: 15vmin;
-                    }
-                    h3, h5 {
-                        padding: 0;
-                        margin: 0;
-                        width: max-content;
-                        height: min-content;
-                        place-self: center;
-                        font-family: 'Dancing Script';
-                        font-size: 3vmin;
-                        font-weight:100
-                    }
-                    h5 {letter-spacing: 0.3vmin}
-                    h3 {
-                        font-family: 'Montserrat'; 
-                        font-size: 3.5vmin;
-                        position: relative;
-                    }
-                    #contact-icons {
-                        display: grid;
-                        place-self: center;
-                        grid-template-columns: repeat(4, auto);
-                        grid-gap: 1.5vmin;
-                        max-width:100%;
-                        padding: 0;
-                        margin:0;
-                        position: relative;
+					img {
+						place-self: center;
+						background: rgba(0,0,0, 0.05);
+						border-radius: 50%;
+						transform: scale(1);
+						box-shadow: 0 -7px 9px -7px rgba(0,0,0,0.4);
+						transition: transform 1s, box-shadow 1s;
+						position: relative;
+						width: 15vmin;
+					}
+					h3, h5 {
+						padding: 0;
+						margin: 0;
+						width: max-content;
+						height: min-content;
+						place-self: center;
+						font-family: 'Dancing Script';
+						font-size: 3vmin;
+						font-weight:100
+					}
+					h5 {letter-spacing: 0.3vmin}
+					h3 {
+						font-family: 'Montserrat'; 
+						font-size: 3.5vmin;
+						position: relative;
+					}
+					#contact-icons {
+						display: grid;
+						place-self: center;
+						grid-template-columns: repeat(4, auto);
+						grid-gap: 1.5vmin;
+						max-width:100%;
+						padding: 0;
+						margin:0;
+						position: relative;
 
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            place-self: center;
-                            width: 75%;
-                            height: 0.1vmin;
-                            background: var(--btnFill, #172947);
-                            top: 5vmin;
-                            
+						&::before {
+							content: '';
+							position: absolute;
+							place-self: center;
+							width: 75%;
+							height: 0.1vmin;
+							background: var(--btnFill, #172947);
+							top: 5vmin;
+							
 
-                        }
+						}
 
-                        a {
-                            place-self: center;
-                            font-size: 2vmin;
-                            width:3vmin;
-                            height: 3vmin;
-                            border-radius: 50%;
-                            cursor: pointer;
-                            background: var(--btnFill, rgba(23, 41, 71, 1));
-                            transform: var(--rotate, none);
-                            transition: background 0.25s, transform 1s;
-                        }
+						a {
+							place-self: center;
+							font-size: 2vmin;
+							width:3vmin;
+							height: 3vmin;
+							border-radius: 50%;
+							cursor: pointer;
+							background: var(--btnFill, rgba(23, 41, 71, 1));
+							transform: var(--rotate, none);
+							transition: background 0.25s, transform 1s;
+						}
 
-                    }
-                }
-                #roadmapContainer {
-                    #road {
-                        &-bottom{
-                            fill: black;
-                            stroke: white;
-                        }
-                        &-top, &-center {transition: stroke 1s}
-                        &-top {
-                            stroke: var(--btnFill, rgba(0, 0, 73, 1));
-                        }
-                        &-center {
-                            stroke: var(--bgColor, white);
-                        }
-                    }
+					}
+				}
+				#roadmapContainer {
+					#road {
+						&-bottom{
+							fill: black;
+							stroke: white;
+						}
+						&-top, &-center {transition: stroke 1s}
+						&-top {
+							stroke: var(--btnFill, rgba(0, 0, 73, 1));
+						}
+						&-center {
+							stroke: var(--bgColor, white);
+						}
+					}
 
-                    g[id*="icon"] {
-                        circle:hover {
-                            fill: var(--btnFill, #f2f2f2)
-                        }
-                    }
-                }
-                .pillSwitchContainer, #bgSwitchButton {cursor: pointer}
-                .pillSwitchContainer {
-                    max-width: 5vmin;
-                    max-height: 2.5vmin;
-                    width: 5vmin;
-                    height: 2.5vmin;
-                    place-self: center;
-                    background: rgba(255,255,255,0.4);
-                    border-radius: 3em;
-                    display: grid;
-                    box-shadow: inset -1vmin 0 1vmin rgba(0,0,0,0.15);
+					g[id*="icon"] {
+						circle:hover {
+							fill: var(--btnFill, #f2f2f2)
+						}
+					}
+				}
+				.pillSwitchContainer, #bgSwitchButton {cursor: pointer}
+				.pillSwitchContainer {
+					max-width: 5vmin;
+					max-height: 2.5vmin;
+					width: 5vmin;
+					height: 2.5vmin;
+					place-self: center;
+					background: rgba(255,255,255,0.4);
+					border-radius: 3em;
+					display: grid;
+					box-shadow: inset -1vmin 0 1vmin rgba(0,0,0,0.15);
 
-                    .dark {
-                        transform: translate(2.5vmin);
-                    }
-                    #bgSwitchButton {
-                        align-self: center;
-                        justify-self: start;
-                        width: 50%;
-                        height: 100%;
-                        border-radius: 3em;
-                        border: 0;
-                        background: var(--btnFill, #172947);
-                        transition: transform 0.25s, background 0.25s;
+					.dark {
+						transform: translate(2.5vmin);
+					}
+					#bgSwitchButton {
+						align-self: center;
+						justify-self: start;
+						width: 50%;
+						height: 100%;
+						border-radius: 3em;
+						border: 0;
+						background: var(--btnFill, #172947);
+						transition: transform 0.25s, background 0.25s;
 
-                    }
+					}
 
-                }
+				}
 
-            }
+			}
 
 	  	}
 	  	.content {
 	  		background: var(--scndryColor);
 	  		width: 70vw;
 	  		height: 100%;
-			  position: fixed;
-			  right: 0;
-			  // padding: 7em 7em 0;
-			  overflow: hidden;
-			  perspective: 500px;
-			  perspective-origin: 25% 50%;
-			  
-            section {
+			position: fixed;
+			right: 0;
+			// padding: 7em 7em 0;
+			overflow: hidden;
+			perspective: 500px;
+			perspective-origin: 25% 50%;
+			
+			&.container-true {
+				@extend .content;
 
-                width: 100%;
-                min-height: 100%;
-                display: flex;
-                flex-flow: column nowrap;
-                justify-content: center;
-                position: absolute;
-                padding: 7em;
-                background: var(--bgColor);
-                box-shadow: inset 1px 1px 0.5em 0.5em rgba(0,0,0,0.1);
+				#firefox-helper {
+					display: none;
+				}
+				@-moz-document url-prefix() {
+						#firefox-helper {
+							position: fixed;
+							z-index: 999;
+							display: flex;
+							flex-direction: column;
+							top: calc(50% - 1em);
+							right: 5%;
+							gap: 1em;
+							
+							#_up, #_down {
+								width: 64px;
+								aspect-ratio: 1;
+								background: white;
+								border: none;
+								border-radius: 3em;
+								box-shadow:1px 0px 10px 0.01em #b9b9b9;
 
-                .text {
-                    p {
-                        @include fluid-layout($portraitOnly) {
-                            width: 100%;
-                        }
-                        width: 45%;
-                        font-size: 22px;
-                        line-height: 1.5;
-                        text-align: initial;
-                        font-family: 'Montserrat';
-                    }
-                }
-
-                &.active {
-                    transform:translateZ(500px);
-                    animation: scrldwn-entrance 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;;
-                }
-
-                &.removing {
-                    // animation: scrlup-exit 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-                }
-				&:not(.active) {
-					opacity: 0;
-                    pointer-events: none; // since we only use opacity to hide inactive cards, we need this explicitly disabled
+								&:active {
+									background: rgba(0,0,0,15%);
+								}
+								
+							}
+						}
+				}
+				@media (pointer: fine) {
+					#firefox-helper {
+						display: none;
+					}
 				}
 
+			
+			
 
-				@keyframes scrldwn-entrance {
-					0% {
-						transform: translateZ(600px);
+				section {
+
+					width: 100%;
+					min-height: 100%;
+					display: flex;
+					flex-flow: column nowrap;
+					justify-content: center;
+					position: absolute;
+					padding: 7em;
+					background: var(--bgColor);
+					box-shadow: inset 1px 1px 0.5em 0.5em rgba(0,0,0,0.1);
+
+					.text {
+						p {
+							width: 45%;
+							font-size: 22px;
+							line-height: 1.5;
+							text-align: initial;
+							font-family: 'Montserrat';
+							@include fluid-layout($portraitOnly) {
+								width: 100%;
+							}
+						}
+					}
+
+					&.active {
+						transform:translateZ(500px);
+						animation: scrldwn-entrance 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;;
+					}
+
+					&.removing {
+						// animation: scrlup-exit 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+					}
+					&:not(.active) {
 						opacity: 0;
+						pointer-events: none; // since we only use opacity to hide inactive cards, we need this explicitly disabled
 					}
-					100% {
-						transform: translateZ(0);
-						opacity: 1;
+
+
+					@keyframes scrldwn-entrance {
+						0% {
+							transform: translateZ(600px);
+							opacity: 0;
+						}
+						100% {
+							transform: translateZ(0);
+							opacity: 1;
+						}
+					}
+					@keyframes scrlup-exit {
+						0% {
+							transform: translateZ(1);
+							opacity: 1;
+						}
+						100% {
+							transform: translateZ(600px);
+							opacity: 0;
+						}
+					}
+	
+	
+
+				}
+
+				.animHeader {
+					.active {
+						animation: jello-vertical 0.9s both;
+						@keyframes jello-vertical{0%{transform:scale3d(1,1,1)}30%{transform:scale3d(.75,1.25,1)}40%{transform:scale3d(1.25,.75,1)}50%{transform:scale3d(.85,1.15,1)}65%{transform:scale3d(1.05,.95,1)}75%{transform:scale3d(.95,1.05,1)}100%{transform:scale3d(1,1,1)}}
+						
+					}
+					& span b:empty, & span b:-moz-only-whitespace {
+						display: initial !important;
+					}
+					& span b {
+						font-size: 56px;
+						font-weight: 800;
+						display: inline-block;
 					}
 				}
-				@keyframes scrlup-exit {
-					0% {
-						transform: translateZ(1);
-						opacity: 1;
-					}
-					100% {
-						transform: translateZ(600px);
-						opacity: 0;
-					}
-				}
-  
-  
-
-            }
-
-            .animHeader {
-                .active {
-                    animation: jello-vertical 0.9s both;
-                    @keyframes jello-vertical{0%{transform:scale3d(1,1,1)}30%{transform:scale3d(.75,1.25,1)}40%{transform:scale3d(1.25,.75,1)}50%{transform:scale3d(.85,1.15,1)}65%{transform:scale3d(1.05,.95,1)}75%{transform:scale3d(.95,1.05,1)}100%{transform:scale3d(1,1,1)}}
-                    
-                }
-                & span b:empty, & span b:-moz-only-whitespace {
-                    display: initial !important;
-                }
-                & span b {
-                    font-size: 56px;
-                    font-weight: 800;
-                    display: inline-block;
-                }
-            }
-
+			}
 	  	}
 
   	}
