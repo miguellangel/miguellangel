@@ -149,9 +149,14 @@ body {
 	  		height: 100vh;
 			left: 0;
 			transition: transform 0.125s;
-			background: transparent;
+			background: rgba(255,255,255, 0);
 			backdrop-filter: blur(10px)saturate(1.25);
 			z-index: 1;
+
+			@-moz-document url-prefix() {
+				background: var(--bgColor, white);
+				opacity: 96%;
+			}
 
 			.container-true {
 				display: grid;
@@ -337,15 +342,19 @@ body {
 
 	  	}
 	  	.content {
-	  		background: var(--scndryColor);
-	  		width: 70vw;
-	  		height: 100%;
+			background: var(--scndryColor);
+			width: 70vw; /* TODO: only resize to 100 initially on portrait mode; 70vw initially on landscape -> 100vw hiding sidebar */
+			height: 100%;
 			position: fixed;
 			right: 0;
 			// padding: 7em 7em 0;
 			overflow: hidden;
 			perspective: 500px;
 			perspective-origin: 25% 50%;
+			  
+			@include fluid-layout($portraitOnly) {
+				width: 100vw !important;
+			}
 			
 			&.container-true {
 				@extend .content;
@@ -398,16 +407,19 @@ body {
 					padding: 7em;
 					background: var(--bgColor);
 					box-shadow: inset 1px 1px 0.5em 0.5em rgba(0,0,0,0.1);
+					@include fluid-layout($portraitOnly) {
+						padding: 3em;
+					}
 
 					.text {
 						p {
-							width: 45%;
-							font-size: 22px;
+							// width: 45%;
+							// font-size: 22px;
 							line-height: 1.5;
 							text-align: initial;
 							font-family: 'Montserrat';
 							@include fluid-layout($portraitOnly) {
-								width: 100%;
+								width: 100% !important;
 							}
 						}
 					}

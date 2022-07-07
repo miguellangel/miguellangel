@@ -10,13 +10,13 @@ const Sidebar = ({ ...props }) => {
 
     /* determine whether window is portrait mode */
     let isPortraitSmall = window.matchMedia('(orientation: portrait)').matches
-        && window.matchMedia('(max-width:576px)').matches
+        // && window.matchMedia('(max-width:600px)').matches
 
     /* start inactive in small portrait mode */
     const [isActive, setActive] = React.useState(isPortraitSmall ? false : true)
     const [isModifiedPurposefully, setModifiedPurposely] = React.useState(false)
 
-    const [isDark, setDark] = React.useState(false)
+    const [isDark, setDark] = React.useState(true)
 
     const handleToggleSidebar = () => {
         setActive(!isActive)
@@ -24,7 +24,7 @@ const Sidebar = ({ ...props }) => {
     }
 
     const handleSwitchBG = () => {
-        !isDark
+        isDark
             ? $('#root, #sidebar-toggler, #bgSwitchButton').addClass('dark')
             : $('#root, #sidebar-toggler, #bgSwitchButton').removeClass('dark')
 
@@ -62,8 +62,8 @@ const Sidebar = ({ ...props }) => {
                     <RoadmapSVG />
 
     			</div>
-                <div className="pillSwitchContainer" onClick={handleSwitchBG}>
-                    <button id="bgSwitchButton"/>
+                <div className={`pillSwitchContainer`} onClick={handleSwitchBG}>
+                    <button id="bgSwitchButton" className='dark'/>
                 </div>
 
             </div>

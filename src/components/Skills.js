@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Skills = () => {
+    const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
     const handleLetterAnim = (letterGroup) => {
         document.querySelectorAll(letterGroup).forEach((item, index) => {
@@ -18,8 +19,10 @@ const Skills = () => {
     return (
         <section id="skills">
             <div className="animHeader">
-                {String`Skills\u00A0 &\u00A0 Experience`.split('').map((item, index) => // explicit non-breaking space
-                    <span key={index}><b className="anim">{item}</b></span>
+                {`Skills\u00A0&\u00A0Experience`.split('').map((item, index) => // explicit non-breaking space
+                    isPortrait && item === '&'
+                        ? <div style={{display: 'inline'}}><span key={index}><b className="anim">{item}</b></span><br></br></div>
+                        : <span key={index}><b className="anim">{item}</b></span>
                 )}
             </div>
             <div className="text">
