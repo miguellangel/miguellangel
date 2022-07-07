@@ -1,5 +1,5 @@
 import React from "react"
-import { Tween, PlayState } from 'react-gsap'
+import { Tween } from 'react-gsap'
 
 const mod = (a, n) => ((a % n) + n) % n
 // const clamp = (n, min, max) => Math.min(Math.max(n, min), max) 
@@ -34,7 +34,7 @@ const RoadmapSVG = ({ ...props }) => {
 		
 		if (!buttonNum) {
 			// TODO: Do something about natural scrolling
-			if (Math.sign(e.deltaY ?? touchDelta.y) <= 0) { // if scrolling or swiping down
+			if (Math.sign(e.deltaY ?? touchDelta.y) >= 0) { // if scrolling or swiping down
 				progress.current = mod(progress.current + (progress.current === 0.75 ? 0.5 : 0.25), 1)
 				cardNumRef.current = mod(cardNumRef.current + 1, 4) || mod(cardNumRef.current + 1, 3) // restrict to three card states
 			} else {
@@ -46,7 +46,11 @@ const RoadmapSVG = ({ ...props }) => {
 			}
 
 
-		} else (cardNumRef.current = buttonNum)
+		} else {
+			cardNumRef.current = buttonNum
+			progress.current = buttonNum * 0.25
+		}
+		
 
 		const x = document.querySelectorAll('.content > section') // get all card section elements
 
@@ -61,7 +65,7 @@ const RoadmapSVG = ({ ...props }) => {
 		since we use setTimeout to allow time for animations, 
 		set state of the card after all class changes go into effect to avoid errors
 		*/
-		setTimeout(() => setCardNum(cardNumRef.current), 510)
+		setTimeout(() => setCardNum(cardNumRef.current), 0)
 
 	}
 
@@ -82,33 +86,18 @@ const RoadmapSVG = ({ ...props }) => {
 	
 	const handleClick = buttonNum => e => {
 		e.preventDefault()
-		const timeline = tween.current.getGSAP()
-		presentCard(0, 0, buttonNum, timeline)
+		presentCard(0, 0, buttonNum)
 	}
 
 	React.useEffect(() => {
 
-		const listeners = {}
-
-		function getSetListeners(index, ...props) {
-			const [ fn, n ] = props
-			return listeners[index] || (listeners[index] = throttle(fn, n))
-		}
-
 		container.current = document.querySelector('.content.container-true')
 
-		container.current.addEventListener('wheel', getSetListeners('wheel', presentCard, 200))
-		container.current.addEventListener('touchstart', getSetListeners('touchStart', touchStart, 1000), false)
-		container.current.addEventListener('touchmove', getSetListeners('touchMove', touchMove, 200), false)
+		container.current.addEventListener('wheel', throttle(presentCard, 200), {passive: true})
+		container.current.addEventListener('touchstart', throttle(touchStart, 2000), {useCapture: false, passive: true})
+		container.current.addEventListener('touchmove', throttle(touchMove, 600), {useCapture: false, passive: true})
 
-		return () => {
-			
-			for (const i in listeners) {
-				container.current.removeEventListener(i, listeners[i])
-			}
-		}
-
-	}, [cardNum, presentCard, touchMove])
+	}, [])
 
 	return (
 		<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid" {...props}>
@@ -221,7 +210,7 @@ const RoadmapSVG = ({ ...props }) => {
 				paintOrder="markers fill stroke"
 			/>
 			
-			<Tween ref={ tween } from={{svgDraw: prevProgress.current}} to={{svgDraw:progress.current}} duration={3} playState={PlayState.play}>
+			<Tween ref={ tween } from={{svgDraw: prevProgress.current}} to={{svgDraw:progress.current}} duration={0.5} >
 				<path
 					id="road-top"
 					d="M10.955 8.335s19.945-6.306 26.095 0c2.493 2.557 2.493 8.29 0 10.845-6.15 6.307-19.945-6.306-26.095 0-2.5 2.564-2.5 8.312 0 10.875 3.063 3.14 9.933-3.141 12.996 0 2.53 2.594-2.53 8.411 0 11.006 3.087 3.165 13.099 0 13.099 0"
