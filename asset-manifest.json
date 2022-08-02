@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/miguellangel/static/css/main.07d1e675.chunk.css",
-    "main.js": "/miguellangel/static/js/main.bb6fc22d.chunk.js",
-    "main.js.map": "/miguellangel/static/js/main.bb6fc22d.chunk.js.map",
-    "runtime-main.js": "/miguellangel/static/js/runtime-main.3520dad9.js",
-    "runtime-main.js.map": "/miguellangel/static/js/runtime-main.3520dad9.js.map",
-    "static/js/2.600c80a3.chunk.js": "/miguellangel/static/js/2.600c80a3.chunk.js",
-    "static/js/2.600c80a3.chunk.js.map": "/miguellangel/static/js/2.600c80a3.chunk.js.map",
-    "static/js/3.dc98fb53.chunk.js": "/miguellangel/static/js/3.dc98fb53.chunk.js",
-    "static/js/3.dc98fb53.chunk.js.map": "/miguellangel/static/js/3.dc98fb53.chunk.js.map",
+    "main.css": "/miguellangel/static/css/main.408baa70.chunk.css",
+    "main.js": "/miguellangel/static/js/main.5f6d7351.chunk.js",
+    "main.js.map": "/miguellangel/static/js/main.5f6d7351.chunk.js.map",
+    "runtime-main.js": "/miguellangel/static/js/runtime-main.7a324716.js",
+    "runtime-main.js.map": "/miguellangel/static/js/runtime-main.7a324716.js.map",
+    "static/js/2.98ee0fc1.chunk.js": "/miguellangel/static/js/2.98ee0fc1.chunk.js",
+    "static/js/2.98ee0fc1.chunk.js.map": "/miguellangel/static/js/2.98ee0fc1.chunk.js.map",
+    "static/js/3.c9242c86.chunk.js": "/miguellangel/static/js/3.c9242c86.chunk.js",
+    "static/js/3.c9242c86.chunk.js.map": "/miguellangel/static/js/3.c9242c86.chunk.js.map",
     "index.html": "/miguellangel/index.html",
-    "static/css/main.07d1e675.chunk.css.map": "/miguellangel/static/css/main.07d1e675.chunk.css.map",
-    "static/js/2.600c80a3.chunk.js.LICENSE.txt": "/miguellangel/static/js/2.600c80a3.chunk.js.LICENSE.txt",
+    "static/css/main.408baa70.chunk.css.map": "/miguellangel/static/css/main.408baa70.chunk.css.map",
+    "static/js/2.98ee0fc1.chunk.js.LICENSE.txt": "/miguellangel/static/js/2.98ee0fc1.chunk.js.LICENSE.txt",
     "static/media/LinkedIn.a8810742.svg": "/miguellangel/static/media/LinkedIn.a8810742.svg",
-    "static/media/App.scss": "/miguellangel/static/media/sidebarButton.23005f2e.svg",
+    "static/media/App.scss": "/miguellangel/static/media/Quicksand.ffab2a99.eot",
+    "static/media/cssbattle.58cc8e17.svg": "/miguellangel/static/media/cssbattle.58cc8e17.svg",
     "static/media/gitHub.842cb2ec.svg": "/miguellangel/static/media/gitHub.842cb2ec.svg",
     "static/media/profile.29cbcd55.jpg": "/miguellangel/static/media/profile.29cbcd55.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3520dad9.js",
-    "static/js/2.600c80a3.chunk.js",
-    "static/css/main.07d1e675.chunk.css",
-    "static/js/main.bb6fc22d.chunk.js"
+    "static/js/runtime-main.7a324716.js",
+    "static/js/2.98ee0fc1.chunk.js",
+    "static/css/main.408baa70.chunk.css",
+    "static/js/main.5f6d7351.chunk.js"
   ]
 }
