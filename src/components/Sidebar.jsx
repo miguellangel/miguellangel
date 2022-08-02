@@ -1,73 +1,89 @@
 import React from 'react'
-import $ from 'jquery'
 import { Suspense } from 'react'
+import SidebarButton from './SidebarButton.js'
 import RoadmapSVG from './RoadmapSVG.js'
 const Intro = React.lazy( () => import('./Intro.js') )
 
 
 
 const Sidebar = ({ ...props }) => {
+    
+    const listeners = React.useRef({})
+    const sidebar = React.useRef()
+    const isPortrait = React.useRef(window.matchMedia('(orientation: portrait)'))
+    const isDark = React.useRef(true)
+
+    const memoize = (label, fn) =>
+		listeners.current[label]
+			? listeners.current[label]
+			: (listeners.current[label] = fn)
 
     /* determine whether window is portrait mode */
-    let isPortraitSmall = window.matchMedia('(orientation: portrait)').matches
         // && window.matchMedia('(max-width:600px)').matches
 
     /* start inactive in small portrait mode */
-    const [isActive, setActive] = React.useState(isPortraitSmall ? false : true)
-    const [isModifiedPurposefully, setModifiedPurposely] = React.useState(false)
 
-    const [isDark, setDark] = React.useState(true)
 
-    const handleToggleSidebar = () => {
-        setActive(!isActive)
-        setModifiedPurposely(true)
+
+    const handleToggle = ClickEvent => {
+		// denote user click vs reorientation event dispatch with event.isTrusted
+		//only toggle if explicit click by user
+		if ( ClickEvent.isTrusted ) sidebar.current.classList.toggle('sb-active')
+		
+		if ( sidebar.current.classList.contains('sb-active') ) {
+			
+			if ( isPortrait.current.matches ) document.querySelector('main#content').removeEventListener('click', memoize('isoutside'))
+			
+		} else {
+		
+			if ( isPortrait.current.matches ) document.querySelector('main#content').addEventListener('click', memoize('isoutside', handleToggle))
+			else document.querySelector('main#content').removeEventListener('click', memoize('isoutside'))
+			
+		}
+
     }
 
-    const handleSwitchBG = () => {
-        isDark
-            ? $('#root, #sidebar-toggler, #bgSwitchButton').addClass('dark')
-            : $('#root, #sidebar-toggler, #bgSwitchButton').removeClass('dark')
+    const handleBGSwitch = () => {
+        document.querySelector('#root').classList.toggle('dark')
 
-        setDark(!isDark)
+        isDark.current = !isDark.current
 
     }
-
     
 	React.useEffect(() => {
 
         /* re-determine statusbar display mode on orientation update 
             but check whether to set statusbar active or not 
             depending on already-existing value*/
-        window.onorientationchange = () => 
-            isModifiedPurposefully ? setModifiedPurposely(!isModifiedPurposefully) : setActive(!isActive)
+        isPortrait.current.addEventListener('change', e => document.querySelector('#sidebar-toggle').dispatchEvent(new Event('click', {bubbles: true})))
+    
+        
 
         /* change dom aria values conditionally*/
-        isActive 
-        ? $('.sidebar').attr('hide', false)
-        : $('.sidebar').attr('hide', true)
 
 	})
 	return (
-		<div className="sidebar">
-            <div className="container-true">
-                { /*on-click event update statusbar display mode*/ }
-    			<button id="sidebar-toggler" onClick={handleToggleSidebar} />
-    			<div className={isActive ? "row" : "row hide"} id="intro">
+		<nav ref={ sidebar }className="sb-active" id="sidebar-placeholder">
+            <div id="sidebar">
+    			<div id="intro">
                     { /*lazyload component*/ }
                     <Suspense fallback={<div>Loading</div>}>
-                        <Intro shouldHide={!isActive}/>
+                        <Intro />
                     </Suspense>
     			</div>
-    			<div id="roadmapContainer" className={isActive ? "row" : "row hide"}>
+    			<div id="roadmapContainer">
                     <RoadmapSVG />
-
     			</div>
-                <div className={`pillSwitchContainer`} onClick={handleSwitchBG}>
-                    <button id="bgSwitchButton" className='dark'/>
+                <div className={`pillSwitchContainer`} onClick={ handleBGSwitch }>
+                    <button id="bgSwitchButton"/>
                 </div>
 
             </div>
-		</div>
+            <button id="sidebar-toggle" onClick={ handleToggle }>
+                <SidebarButton />
+            </button>
+
+		</nav>
 	)
 }
 export default Sidebar;

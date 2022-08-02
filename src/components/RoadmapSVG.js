@@ -52,7 +52,7 @@ const RoadmapSVG = ({ ...props }) => {
 		}
 		
 
-		const x = document.querySelectorAll('.content > section') // get all card section elements
+		const x = document.querySelectorAll('#content > section') // get all card section elements
 
 		const target = x[cardNumRef.current - 1]
 		const prev = x[prevCardNum.current - 1]
@@ -91,7 +91,7 @@ const RoadmapSVG = ({ ...props }) => {
 
 	React.useEffect(() => {
 
-		container.current = document.querySelector('.content.container-true')
+		container.current = document.querySelector('#content.container-true')
 
 		container.current.addEventListener('wheel', throttle(presentCard, 200), {passive: true})
 		container.current.addEventListener('touchstart', throttle(touchStart, 2000), {useCapture: false, passive: true})

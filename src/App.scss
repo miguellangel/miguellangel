@@ -21,7 +21,7 @@
 	@each $device in $devices {
 
 		@if $device == mobile-portrait {
-			@media (max-width: 576px) and (max-height: 1024px) and (max-aspect-ratio: 2/3) {
+			@media (min-width: 0px) and (min-height: 250px) and (max-width: 600px) and (max-height: 1440px) and (min-aspect-ratio: 5/12) and (max-aspect-ratio: 2/3) {
 				@content
 			}
 		}
@@ -31,22 +31,27 @@
 			}
 		}
 		@if $device == tablet-portrait {
-			@media (max-width: 1024px) and (min-width: 480px) and (min-aspect-ratio: 10/17) and (max-aspect-ratio: 1/1) {
+			@media (min-width: 400px) and (max-width: 1024px) and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1) {
 				@content
 			}
 		}
 		@if $device == tablet-landscape {
-			@media (max-width: 1440px) and (min-height: 468px) and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 17/10) {
+			@media (max-width: 1440px) and (min-height: 468px) and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 12/5) {
 				@content
 			}
 		}
 		@if $device == desktop-portrait {
-			@media (min-width: 682px) and (min-height: 1024px) and (min-aspect-ratio: 1/2) and (max-aspect-ratio: 2/3) {
+			@media (min-width: 720px) and (max-aspect-ratio: 1/1) {
 				@content
 			}
 		}
 		@if $device == desktop-landscape {
-			@media (max-width: 1920px) and (min-height: 576px) and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 2/1) {
+			@media (min-width: 1280px) and (min-height: 576px) and (min-aspect-ratio: 1/1) {
+				@content
+			}
+		}
+		@if $device == square {
+			@media (aspect-ratio: 1/1) {
 				@content
 			}
 		}
@@ -57,13 +62,16 @@
 $landscapeOnly: (mobile-landscape, tablet-landscape, desktop-landscape);
 $portraitOnly: (mobile-portrait, tablet-portrait, desktop-portrait);
 
-
+html, body {
+	overscroll-behavior-y: contain;
+}
 html {
 	min-width: 100vw;
 	width: 100vw;
 	min-height: 100vh; 
 	height: 100vh;
 	scroll-behavior: smooth;
+	font-size: calc(1vmin + 0.625em)//calc(5vmin * .625);
 
 }
 * {box-sizing: border-box;}
@@ -92,139 +100,135 @@ body {
 	}
 
   	#root {
+		&.dark {
 
-		&[class="dark"] {
-
-			--bgColor: rgba(13, 17, 23, 1);
-			--canvasBg: rgba(13, 17, 23, 1); 
-			--contrastColor: var(rgba(225, 223, 255, 1), black);
+			--bgColorMain: rgba(13, 17, 23, 1);
+			--contrastColor: rgba(225, 223, 255, 1);
+			--boxShadow: #0f0f0f;
+			--bgButtonSwitch: end;
 
 			--btnFill: rgba(225, 223, 255, 1);
 			--btnBg: transparent;
 			--rotate: rotate(360deg);
-			// background: var(--canvasBg);
 			color: rgba(225, 223, 255, 1);
 
 		}
 
-		--bgColor: rgba(255,255,255,1);
+		--bgColorMain: rgba(255,255,255,1);
+		--contrastColor: rgba(13, 17, 23, 1);
+		--boxShadow: #e9e9e9;
+
+		&::before {
+			display: block;
+			position: absolute;
+			
+			z-index: 99;
+			content: 'WARNING: UNSUPPORTED DEVICE LAYOUT';
+			font-size: 1.625vmin;
+			border-radius: 3em;
+			padding: 1em;
+			box-shadow: 0 0 10px var(--boxShadow);
+			backdrop-filter: blur(5px);
+			bottom: 5%;
+			right: 15%;
+
+			@include fluid-layout('mobile-portrait') {
+				content: 'mobile portrait'
+			}
+			@include fluid-layout('mobile-landscape') {
+				content: 'mobile-landscape'
+			}
+			@include fluid-layout('tablet-portrait') {
+				content: 'tablet-portrait'
+			}
+			@include fluid-layout('tablet-landscape') {
+				content: 'tablet-landscape'
+			}
+			@include fluid-layout('desktop-portrait') {
+				content: 'desktop-portrait'
+			}
+			@include fluid-layout('desktop-landscape') {
+				content: 'desktop-landscape'
+			}
+			@include fluid-layout('square') {
+				content: 'square'
+			}
+		}
   		
 		display: grid;
-		background: var(--bgColor);
+		background: var(--bgColorMain);
 		transition: background 0.25s, color 0.125s;
-	  	.sidebar {
-	  		display:grid;
-	  		place-self:center;
-	  	}
 
+		nav, main {
+			position: fixed;
+			height: 100%;
+			transition: 0.5s;
+		}
 
-	  	.sidebar {
-			&[hide="false"] {
-				&+.content {
-					@include fluid-layout($portraitOnly) {
-						width: 100vw !important;
+	  	nav#sidebar-placeholder {
+			@include fluid-layout($portraitOnly) {
+				--sb-w: 75vw;
+				--sb-active-tl: translate(0);
+				--sb-button-active: rotate(0deg);
+			}
+			&.sb-active {
+				--sb-w: 30vw;
+				--sb-button-active: rotate(0deg);
+				--sb-active-tl: translate(0);
+				@include fluid-layout($portraitOnly) {
+					--sb-w: 0%;
+					--sb-active-tl: translate(-75vw);
+					--sb-button-active: rotate(90deg)
+				}
+				
+				&+main {
+					--mn-w: 100vw;
+					//--mn-inactive-tl: translate(30vw);
+					@include fluid-layout($landscapeOnly) {
+						--mn-w: 70vw;
+						--mn-inactive-tl: translate(0);
 					}
 				}
 			}
-			&[hide="true"] {
 
-				@include media('portrait', $small) {
-					transform: translate(-60vw)
-				}
-
-				transform: translate(-30vw);
-
-				&+.content {
-					width: 100vw !important;
-				}
-			}
-
-	  		// background: var(--mainColor-dark);
-			box-shadow: inset 1px 1px 2em 0px rgba(0, 0, 0, .1);
-	  		position: fixed;
-			@include media('portrait', $small) {
-				width: 60vw;
-			}
-			width: 30vw;
-	  		height: 100vh;
-			left: 0;
-			transition: transform 0.125s;
-			background: rgba(255,255,255, 0);
-			backdrop-filter: blur(10px)saturate(1.25);
-			z-index: 1;
+			display: contents;
+			z-index: 0;
 
 			@-moz-document url-prefix() {
-				background: var(--bgColor, white);
+				background: var(--bgColorMain, white);
 				opacity: 0.96;
 			}
 
-			.container-true {
-				display: grid;
-				position: relative;
-				grid-template-rows: 40vh 52vh 4vh 4vh;
-
-				#sidebar-toggler {
-					z-index:1;
-					position: absolute;
-					right:-10vmin;
-					top:5vmin;
-					background: var(--btnBg);
-					border: none;
-					cursor: pointer;
-					width:5vmin;
-					height:5vmin;
-					transform: none;
-					transition: transform 0.25s;
-
-					&::before {
-						position: absolute;
-						content: '';
-						mask: url("./components/media/sidebarButton.svg#open(viewBox(0,0,50,50))") no-repeat 50% 50%;
-						-webkit-mask-size: cover;
-						mask-size: cover;
-						background: var(--btnFill, rgba(23, 41, 71, 1));
-						transition: background 0.25s;
-						width:100%;
-						height:100%;
-						top:0;
-						left:0;
-					}
-					&:focus {
-						outline: none;
-					}
-					&:hover{
-						transform: rotate(-360deg) scale(0.85);
-
-					}
-				}
-
-				#bgContainer {
-					position: absolute;
-					z-index: -1;
+			#sidebar {
+				width: var(--sb-w, 0%);
+				height: 100%;
+				left: 0;
+				z-index: 1;
+				transform: var(--sb-active-tl, translate(-75vw));
+				transition: 0.5s;
+				display: flex;
+				flex-flow: column nowrap;
+				justify-content: space-evenly;
+				align-items: center;
+				box-shadow: 0 0 10px var(--boxShadow, #e9e9e9);
+				backdrop-filter: blur(9px);
+				
+				.animContainer {
 					width: 100%;
-					height: 100%;
-					background: var(--btnFill, #172947);
-					-webkit-mask-position: 50% 50% !important;
-				}
-
-				.row {
-					display: grid;
-					grid-template-columns: auto;
-					opacity: 1.0;
-					transition: opacity 0.125s;
-					transition-delay: 0.125s;
-				}
-				.hide {
-					opacity: 0.0;
+					height: 200px;
+					display: flex;
+					flex-flow: column nowrap;
+					justify-content: center;
+					align-items: center;
 				}
 
 				#intro {
-					grid-template-rows: 60% 10% 10% 20%;
-
-					img:hover {
-						transform: scale(1.05);
-						box-shadow: 0 7px 9px -7px rgba(0,0,0,0.7);
-					}
+					display: flex;
+					flex-flow: column nowrap;
+					justify-content: space-evenly;
+					align-items: center;
+					width: 100%;
+					height: 33%;
 
 					img {
 						place-self: center;
@@ -232,9 +236,14 @@ body {
 						border-radius: 50%;
 						transform: scale(1);
 						box-shadow: 0 -7px 9px -7px rgba(0,0,0,0.4);
-						transition: transform 1s, box-shadow 1s;
+						transition: 0.5s;
 						position: relative;
 						width: 15vmin;
+
+						&:hover {
+							transform: scale(1.05);
+							box-shadow: 0 7px 9px -7px rgba(0,0,0,0.7);
+						}
 					}
 					h3, h5 {
 						padding: 0;
@@ -252,30 +261,14 @@ body {
 						font-size: 3.5vmin;
 						position: relative;
 					}
+
 					#contact-icons {
-						display: grid;
-						place-self: center;
-						grid-template-columns: repeat(4, auto);
-						grid-gap: 1.5vmin;
-						max-width:100%;
-						padding: 0;
-						margin:0;
-						position: relative;
-
-						&::before {
-							content: '';
-							position: absolute;
-							place-self: center;
-							width: 75%;
-							height: 0.1vmin;
-							background: var(--btnFill, #172947);
-							top: 5vmin;
-							
-
-						}
+						@extend #intro;
+						flex-direction: row;
+						justify-content: center;
+						gap: 2vmin;
 
 						a {
-							place-self: center;
 							font-size: 2vmin;
 							width:3vmin;
 							height: 3vmin;
@@ -283,12 +276,19 @@ body {
 							cursor: pointer;
 							background: var(--btnFill, rgba(23, 41, 71, 1));
 							transform: var(--rotate, none);
-							transition: background 0.25s, transform 1s;
-						}
+							transition: 0.5s;
 
+							&:hover {
+								width: 5vmin;
+								height: 5vmin;
+							}
+						}
 					}
 				}
 				#roadmapContainer {
+					width: 100%;
+					height: 50%;
+
 					#road {
 						&-bottom{
 							fill: black;
@@ -299,7 +299,7 @@ body {
 							stroke: var(--btnFill, rgba(0, 0, 73, 1));
 						}
 						&-center {
-							stroke: var(--bgColor, white);
+							stroke: var(--bgColorMain, white);
 						}
 					}
 
@@ -309,44 +309,61 @@ body {
 						}
 					}
 				}
+
 				.pillSwitchContainer, #bgSwitchButton {cursor: pointer}
 				.pillSwitchContainer {
 					max-width: 5vmin;
 					max-height: 2.5vmin;
 					width: 5vmin;
 					height: 2.5vmin;
-					place-self: center;
 					background: rgba(255,255,255,0.4);
 					border-radius: 3em;
-					display: grid;
 					box-shadow: inset -1vmin 0 1vmin rgba(0,0,0,0.15);
+					display: flex;
+					justify-content: var(--bgButtonSwitch, initial);
 
-					.dark {
-						transform: translate(2.5vmin);
-					}
 					#bgSwitchButton {
-						align-self: center;
-						justify-self: start;
 						width: 50%;
 						height: 100%;
 						border-radius: 3em;
 						border: 0;
 						background: var(--btnFill, #172947);
-						transition: transform 0.25s, background 0.25s;
+						transition: 0.25s;
 
 					}
 
 				}
-
 			}
+			#sidebar-toggle {
+				position: absolute;
+				width: 3em;
+				aspect-ratio: 1/1;
+				z-index: 1;
+				top:3vmin;
+				left: calc(var(--sb-w, 0vmin) + 5vmin);
+				border: none;
+				border-radius: 3em;
+				background: transparent;
+				
+				transform: var(--sb-button-active, rotate(90deg));
+				transition: .5s;
+				cursor: pointer;
+			
+				&:active {
+					border: 1px solid #b9b9b9;
+				}
 
+				svg {
+					fill: var(--contrastColor, rgba(13, 17, 23, 1))
+				}
+			}
 	  	}
-	  	.content {
+		
+		main#content {
 			background: var(--scndryColor);
-			width: 70vw; /* TODO: only resize to 100 initially on portrait mode; 70vw initially on landscape -> 100vw hiding sidebar */
-			height: 100%;
-			position: fixed;
+			width: var(--mn-w, 100%);
 			right: 0;
+			
 			// padding: 7em 7em 0;
 			overflow: hidden;
 			perspective: 500px;
@@ -357,7 +374,7 @@ body {
 			}
 			
 			&.container-true {
-				@extend .content;
+				@extend #content;
 
 				#firefox-helper {
 					display: none;
@@ -404,12 +421,9 @@ body {
 					flex-flow: column nowrap;
 					justify-content: center;
 					position: absolute;
-					padding: 7em;
-					background: var(--bgColor);
-					box-shadow: inset 1px 1px 0.5em 0.5em rgba(0,0,0,0.1);
-					@include fluid-layout($portraitOnly) {
-						padding: 3em;
-					}
+					padding: 0 15vmin;
+					background: var(--bgColorMain);
+					// box-shadow: inset 1px 1px 0.5em 0.5em rgba(0,0,0,0.1);
 
 					.text {
 						p {
