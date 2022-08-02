@@ -2,6 +2,7 @@ import React from 'react'
 import profile from './media/profile.jpg'
 import LinkedIn from './media/LinkedIn.svg'
 import gitHub from './media/gitHub.svg'
+import cssbattle from './media/cssbattle.svg'
 // import { lazyload } from 'react-lazyload'
 
 const Intro = ({shouldHide}) => {
@@ -13,8 +14,8 @@ const Intro = ({shouldHide}) => {
             <div id="contact-icons">
                 <a style={{WebkitMask: `url(${LinkedIn}) no-repeat 50% 50%`}} href="https://www.linkedin.com/in/miguel-arriaga-950b2412b/"> </a>
                 <a style={{WebkitMask: `url(${gitHub}) no-repeat 50% 50%`}} href="https://github.com/miguellangel"> </a>
-                <a style={{WebkitMask: `url(${LinkedIn}) no-repeat 50% 50%`}} href="google.com"> </a>
-                <a style={{WebkitMask: `url(${LinkedIn}) no-repeat 50% 50%`}} href="google.com"> </a>
+                <a style={{WebkitMask: `url(${cssbattle}) no-repeat 50% 50%`}} href="https://cssbattle.dev/player/miguel"> </a>
+                <a style={{WebkitMask: `url(${LinkedIn}) no-repeat 50% 50%`}} href="https://leetcode.com/xmiguel_ar/"> </a>
 
 
             </div>
