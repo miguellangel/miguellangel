@@ -1,40 +1,90 @@
-import React from 'react'
+import React, { Suspense } from 'react'
+import * as THREE from 'three'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Text } from '@react-three/drei'
+import Quicksand from './fonts/Quicksand.ttf'
+
+
+const Caption = ({ position, children }) => {
+	return (
+		<Text
+			characters="abcdefghijklmnopqrstuvwxyz0123456789!"
+			position={position}
+			// lineHeight={0.8}
+			fontSize={0.5}
+			font={Quicksand}
+			anchorX="start"
+			anchorY="middle"
+			>
+			{children}
+		</Text>
+	)
+}
+
+function Rig({ v = new THREE.Vector3() }) {
+	return useFrame((state) => {
+		state.camera.position.lerp(v.set(state.mouse.x / 2, state.mouse.y / 2, 10), 0.05)
+	})
+}
 
 const About = () => {
+	const spacify = index => {
 
-    const handleLetterAnim = (letterGroup) => {
-        document.querySelectorAll(letterGroup).forEach((item, index) => {
-            item.addEventListener('mouseenter', () => {
-                item.classList.toggle('active')
-                setTimeout(() => item.classList.remove('active'), 1000)
-            }, {once: false})
-        })
-    }
+		const locations = {0: [-10,-4,0], 1: [1, 5, 0], 2: [5, -5, 0], 3: [-2, -6, 0], 4: [-8, 6, 0]}
+		return locations[index]
+	}
 
-    React.useEffect(() => {
-        handleLetterAnim('#about .anim')
-    })
-    return (
-        <section id="about" className="active">
-            <div className="animHeader">
-                {String`Me\u00A0Myself\u00A0&\u00A0I`.split('').map((i, index) => // explicit non-breaking space
-                    <span key={index}><b className="anim">{i}</b></span>
-                )}
-            </div>
-            <div className="text">
-                <p>
-                    I am a software engineer located in Austin, TX. <br></br>Fluid Responsive Layouts, UI Animations, and Semantic Code are my passion.<br></br>
-                    My Alma Mater, <span>The University of Texas at Austin</span>, engraved in me the importance of work ethic and team collaboration amidst 
-                    a vast number of fun and challenging projects which employ industry-standard practices in the real world.<br></br>
-                    
-                    Having a detail-oriented mindset is one of my most powerful strengths, as there will always be a new problem to tackle
-                    until a project reaches its utmost perfect state. <br></br>On top of that, I excel in team environments, 
-                    this being either leadership or support.<br></br>
-                    
-                    LET'S MAKE <span>beau idéal</span> THE STANDARD</p>
-            </div>
-        </section>
-    )
+	const target = React.useRef()
+	const handleLetterAnim = (letterGroup) => {
+		document.querySelectorAll(letterGroup).forEach((item, index) => {
+			item.addEventListener('mouseenter', () => {
+				item.classList.toggle('active')
+				setTimeout(() => item.classList.remove('active'), 1000)
+			}, { once: false })
+		})
+	}
+
+	React.useEffect(() => {
+		handleLetterAnim('#about .anim')
+
+	})
+	return (
+		<section id="about" className="active flag" ref={target}>
+			<div className="animHeader">
+				{String`Me\u00A0Myself\u00A0&\u00A0I`.split('').map((i, index) => // explicit non-breaking space
+					<span key={index}><b className="anim">{i}</b></span>
+				)}
+			</div>
+			<div className="text">
+				<p>
+					I am a software engineer located in Austin, TX. <br></br>I am an experienced front-end developer, modernizing web apps by implementing responsive layouts, animations, and an overhaul of the user experience (UX). <br></br>
+
+				</p>
+			</div>
+			<div id="canvas-container">
+				<Delay waitBeforeShow={1500}>
+					<Canvas>
+						<Suspense fallback={null}>
+							{
+								['flexible', 'problem solver', 'determined', 'intuitive', 'detail-oriented']
+									.map((item, index) => (
+										<Caption key={`item-${item}`} position={spacify(index)}>{item}</Caption>
+									)
+								)
+							}
+							<Rig />
+						</Suspense>
+					</Canvas>
+
+				</Delay>
+			</div>
+		</section>
+	)
+}
+const Delay = ({ waitBeforeShow, children }) => {
+	const [hidden, setHidden] = React.useState(true)
+	React.useEffect(() => { setTimeout(() => setHidden(false), waitBeforeShow) })
+	return hidden ? '' : children
 }
 
 export default About

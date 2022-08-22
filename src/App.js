@@ -5,7 +5,6 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 
-
 const App = () => {
 
 	const handleScroll = (direction) => (e) => {
@@ -19,10 +18,6 @@ const App = () => {
 		target.dispatchEvent(wheelEvent)
 	
 	}
-
-
-	React.useEffect(() => {
-	})
 
 	return (
 		<>
