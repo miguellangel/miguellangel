@@ -64,6 +64,8 @@ $portraitOnly: (mobile-portrait, tablet-portrait, desktop-portrait);
 
 html, body {
 	overscroll-behavior-y: contain;
+	overflow: auto;
+	margin: 0;
 }
 html {
 	min-width: 100vw;
@@ -110,7 +112,7 @@ body {
 			--btnFill: rgba(225, 223, 255, 1);
 			--btnBg: transparent;
 			--rotate: rotate(360deg);
-			color: rgba(225, 223, 255, 1);
+			//color: rgba(225, 223, 255, 1);
 
 		}
 
@@ -157,7 +159,8 @@ body {
   		
 		display: grid;
 		background: var(--bgColorMain);
-		transition: background 0.25s, color 0.125s;
+		color: var(--contrastColor, initial);
+		transition: color 0.025s;
 
 		nav, main {
 			position: fixed;
@@ -415,7 +418,8 @@ body {
 
 				section {
 
-					width: 100%;
+					width: inherit;
+					height: inherit;
 					min-height: 100%;
 					display: flex;
 					flex-flow: column nowrap;
@@ -425,6 +429,36 @@ body {
 					background: var(--bgColorMain);
 					// box-shadow: inset 1px 1px 0.5em 0.5em rgba(0,0,0,0.1);
 
+					&.active {
+						transform:translateZ(500px);
+						animation: scrldwn-entrance 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;;
+					}
+					
+					&.removing {
+						animation: scrlup-exit 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+					}
+					&:not(.active) {
+						opacity: 0;
+						pointer-events: none; // since we only use opacity to hide inactive cards, we need this explicitly disabled
+					}
+
+					.animHeader {
+						.active {
+							animation: jello-vertical 0.9s both;
+							@keyframes jello-vertical{0%{transform:scale3d(1,1,1)}30%{transform:scale3d(.75,1.25,1)}40%{transform:scale3d(1.25,.75,1)}50%{transform:scale3d(.85,1.15,1)}65%{transform:scale3d(1.05,.95,1)}75%{transform:scale3d(.95,1.05,1)}100%{transform:scale3d(1,1,1)}}
+							
+						}
+						& span b:empty, & span b:-moz-only-whitespace {
+							display: initial !important;
+						}
+						& span b {
+							font-size: 56px;
+							font-weight: 800;
+							display: inline-block;
+							user-select: none;
+						}
+					}
+
 					.text {
 						p {
 							// width: 45%;
@@ -432,25 +466,12 @@ body {
 							line-height: 1.5;
 							text-align: initial;
 							font-family: 'Montserrat';
+							user-select: none;
 							@include fluid-layout($portraitOnly) {
 								width: 100% !important;
 							}
 						}
 					}
-
-					&.active {
-						transform:translateZ(500px);
-						animation: scrldwn-entrance 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;;
-					}
-
-					&.removing {
-						// animation: scrlup-exit 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-					}
-					&:not(.active) {
-						opacity: 0;
-						pointer-events: none; // since we only use opacity to hide inactive cards, we need this explicitly disabled
-					}
-
 
 					@keyframes scrldwn-entrance {
 						0% {
@@ -473,24 +494,18 @@ body {
 						}
 					}
 	
-	
+					&#about {
 
-				}
+						#canvas-container {
+							position: absolute;							
+							z-index: -1;
+							width: inherit;
+							height: inherit;
+							
+							transition: 0.5s;
+						}
+					}
 
-				.animHeader {
-					.active {
-						animation: jello-vertical 0.9s both;
-						@keyframes jello-vertical{0%{transform:scale3d(1,1,1)}30%{transform:scale3d(.75,1.25,1)}40%{transform:scale3d(1.25,.75,1)}50%{transform:scale3d(.85,1.15,1)}65%{transform:scale3d(1.05,.95,1)}75%{transform:scale3d(.95,1.05,1)}100%{transform:scale3d(1,1,1)}}
-						
-					}
-					& span b:empty, & span b:-moz-only-whitespace {
-						display: initial !important;
-					}
-					& span b {
-						font-size: 56px;
-						font-weight: 800;
-						display: inline-block;
-					}
 				}
 			}
 	  	}
