@@ -1,23 +1,28 @@
 {
   "files": {
-    "main.css": "/miguellangel/static/css/main.6e52fb48.css",
-    "main.js": "/miguellangel/static/js/main.fbf23dd3.js",
+    "main.css": "/miguellangel/static/css/main.815f34cf.css",
+    "main.js": "/miguellangel/static/js/main.0e53ebc5.js",
     "static/js/297.4ba6fc14.chunk.js": "/miguellangel/static/js/297.4ba6fc14.chunk.js",
+    "static/media/ipaddress.png": "/miguellangel/static/media/ipaddress.d413a509a0e5975928c3.png",
     "static/media/Quicksand.svg": "/miguellangel/static/media/Quicksand.95bd30bdde6acf59e4b1.svg",
+    "static/media/audiophile-2.png": "/miguellangel/static/media/audiophile-2.ae0e783998adff80c828.png",
     "static/media/Quicksand.eot": "/miguellangel/static/media/Quicksand.ffab2a994a6fc620c5a8.eot",
     "static/media/Quicksand.ttf": "/miguellangel/static/media/Quicksand.685eb668fd04cfca73c5.ttf",
+    "static/media/audiophile-3.png": "/miguellangel/static/media/audiophile-3.38857384fd29a0e36949.png",
     "static/media/Quicksand.woff": "/miguellangel/static/media/Quicksand.37b45b648aa0dc624b0a.woff",
+    "static/media/audiophile-1.png": "/miguellangel/static/media/audiophile-1.b76a3d7db57ccbb2f93e.png",
     "static/media/profile.jpg": "/miguellangel/static/media/profile.29cbcd554915f25dcd20.jpg",
     "static/media/gitHub.svg": "/miguellangel/static/media/gitHub.70662ea95030e35413311e0b61d67324.svg",
     "static/media/cssbattle.svg": "/miguellangel/static/media/cssbattle.58cc8e176589c91a05124432acc3e060.svg",
     "static/media/LinkedIn.svg": "/miguellangel/static/media/LinkedIn.29cc5ef105714f97ec526c4602dfdb48.svg",
     "index.html": "/miguellangel/index.html",
-    "main.6e52fb48.css.map": "/miguellangel/static/css/main.6e52fb48.css.map",
-    "main.fbf23dd3.js.map": "/miguellangel/static/js/main.fbf23dd3.js.map",
+    "static/media/external.svg": "/miguellangel/static/media/external.20fce337b47cd72c79cf.svg",
+    "main.815f34cf.css.map": "/miguellangel/static/css/main.815f34cf.css.map",
+    "main.0e53ebc5.js.map": "/miguellangel/static/js/main.0e53ebc5.js.map",
     "297.4ba6fc14.chunk.js.map": "/miguellangel/static/js/297.4ba6fc14.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e52fb48.css",
-    "static/js/main.fbf23dd3.js"
+    "static/css/main.815f34cf.css",
+    "static/js/main.0e53ebc5.js"
   ]
 }
