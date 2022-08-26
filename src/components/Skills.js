@@ -27,7 +27,7 @@ const Skills = () => {
             </div>
             <div className="text">
                 <p>I make detail-rich responsive web apps that are fast and built using the most up-to-date practices in the frontend world. <br></br>
-                I pride myself in knowing a little bit of everything whether it is graphics, animation, photoshop, you name it.<br></br>
+                I pride myself in knowing a little bit of everything whether it is graphics, animation, or photoshop; you name it.<br></br>
                 I mostly thrive in the frontend but have gone full-stack for a certain number of projects. See them all below!
                 </p>
             </div>

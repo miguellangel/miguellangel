@@ -132,7 +132,7 @@ body {
 			box-shadow: 0 0 10px var(--boxShadow);
 			backdrop-filter: blur(5px);
 			bottom: 5%;
-			right: 15%;
+			// right: 15%;
 
 			@include fluid-layout('mobile-portrait') {
 				content: 'mobile portrait'
@@ -503,6 +503,97 @@ body {
 							height: inherit;
 							
 							transition: 0.5s;
+						}
+					}
+					&#projects {
+						&.active {
+							.featuredItem:first-of-type {
+								.featuredDescription {
+									#description {
+										transform: translateX(50%);
+									}
+									#frameworks {transform: translateY(clamp(-120px, -150%, -50%))}
+								}
+							}
+							.featuredItem:last-of-type {
+								.featuredDescription {
+									#description {
+										transform: translateX(-50%);
+
+										backdrop-filter: blur(10px) brightness(64%);
+									}
+									#frameworks {transform: translate(55%, clamp(-120px, -150%, -50%))}
+								}
+							}
+						}
+						.animHeader {transform: translateY(-150%)}
+						.featuredContainer {
+							width: 100%;
+							display: flex;
+							flex-flow: column nowrap;
+							align-items: center;
+							justify-content: center;
+							height: 65%;
+
+							.featuredItem + .featuredItem > .showcase{
+								order: -1
+							}
+
+							.featuredItem {
+								background: transparent;
+								// box-shadow: inset 1px 1px 1px 1vmin rgba(255,255,255,0.01);
+								// flex: 0 1 50%;
+								aspect-ratio: 9/3;
+								display: flex;
+								flex-flow: row nowrap;
+								justify-content: center;
+								align-items: center;
+								width: inherit;
+								height: inherit;
+
+								.featuredDescription, .showcase {width: 100%}
+								.featuredDescription {
+									padding: clamp(15px, 1vmin, 1em);
+									#description {
+										background: rgba(255,255,255,0.1);
+										padding: clamp(15px, 1vmin, 1em);
+										border-radius: 1em;
+										transition: 1s;
+										backdrop-filter: blur(10px);
+										p {text-align: center;font-family: 'Montserrat';}
+									}
+									#frameworks {
+										transition: 1s;
+										transition-delay: 0.1s;
+									}
+									#links {
+										display: inline-flex;
+										flex-flow: row nowrap;
+										gap: clamp(8px, 1vmin, 1em);
+										position: relative;
+										left: 50%;
+										transform: translate(-50%, -200%);
+
+										a {
+											width: 3vmin;
+											aspect-ratio: 1/1;
+											background: var(--btnFill, black)
+										}
+										a:first-of-type {
+											-webkit-mask: url('./components/media/external.svg') 50% 50% no-repeat;
+										}
+										a:last-of-type {
+											-webkit-mask: url('./components/media/gitHub.svg') 50% 50% no-repeat;
+										}
+									}
+								}
+								.showcase{
+									img {
+										border: 1px solid white;
+									}
+								}
+
+							}
 						}
 					}
 
