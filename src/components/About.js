@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import * as THREE from 'three'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import Quicksand from './fonts/Quicksand.ttf'
 
@@ -49,7 +49,7 @@ const About = () => {
 
 	})
 	return (
-		<section id="about" className="active flag" ref={target}>
+		<section id="about" className="flag active" ref={target}>
 			<div className="animHeader">
 				{String`Me\u00A0Myself\u00A0&\u00A0I`.split('').map((i, index) => // explicit non-breaking space
 					<span key={index}><b className="anim">{i}</b></span>
