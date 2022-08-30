@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/miguellangel/static/css/main.815f34cf.css",
-    "main.js": "/miguellangel/static/js/main.0e53ebc5.js",
+    "main.css": "/miguellangel/static/css/main.8094246d.css",
+    "main.js": "/miguellangel/static/js/main.e083582a.js",
     "static/js/297.4ba6fc14.chunk.js": "/miguellangel/static/js/297.4ba6fc14.chunk.js",
     "static/media/ipaddress.png": "/miguellangel/static/media/ipaddress.d413a509a0e5975928c3.png",
     "static/media/Quicksand.svg": "/miguellangel/static/media/Quicksand.95bd30bdde6acf59e4b1.svg",
@@ -17,12 +17,12 @@
     "static/media/LinkedIn.svg": "/miguellangel/static/media/LinkedIn.29cc5ef105714f97ec526c4602dfdb48.svg",
     "index.html": "/miguellangel/index.html",
     "static/media/external.svg": "/miguellangel/static/media/external.20fce337b47cd72c79cf.svg",
-    "main.815f34cf.css.map": "/miguellangel/static/css/main.815f34cf.css.map",
-    "main.0e53ebc5.js.map": "/miguellangel/static/js/main.0e53ebc5.js.map",
+    "main.8094246d.css.map": "/miguellangel/static/css/main.8094246d.css.map",
+    "main.e083582a.js.map": "/miguellangel/static/js/main.e083582a.js.map",
     "297.4ba6fc14.chunk.js.map": "/miguellangel/static/js/297.4ba6fc14.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.815f34cf.css",
-    "static/js/main.0e53ebc5.js"
+    "static/css/main.8094246d.css",
+    "static/js/main.e083582a.js"
   ]
 }
