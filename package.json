@@ -6,10 +6,15 @@
   "dependencies": {
     "@react-three/drei": "^9.20.0",
     "@react-three/fiber": "^8.3.1",
+    "@splinetool/loader": "^0.9.103",
+    "@splinetool/r3f-spline": "^1.0.1",
+    "@splinetool/react-spline": "^2.2.1",
+    "@splinetool/runtime": "^0.9.103",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-gsap": "^3.2.1",
     "react-scripts": "^5.0.1",
+    "react-spline": "^1.2.1",
     "sass": "^1.42.1",
     "three": "^0.143.0"
   },
