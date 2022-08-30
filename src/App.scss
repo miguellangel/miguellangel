@@ -505,6 +505,22 @@ body {
 							transition: 0.5s;
 						}
 					}
+					&#skills {
+						#skillsContainer {
+							display: flex;
+							height: 80%;
+
+							.text{
+								@extend .flexCenter;
+
+							}
+							#canvasContainer {
+								width: 50%;
+								min-width: 50%;
+							}
+
+						}
+					}
 					&#projects {
 						&.active {
 							.featuredItem:first-of-type {
@@ -637,4 +653,9 @@ code {
 		height:initial;
 		place-self: center;
 	};
+}
+.flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
