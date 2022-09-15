@@ -1,2 +1,3 @@
 Welcome to my website!
-miguellangel.github.io/miguellangel
+
+Here I present my portfolio, showcasing the skills I've acquired as an aspiring full stack developer.
